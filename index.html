@@ -163,6 +163,70 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Java邮箱接口" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/CPWS.github.io/2019/09/25/Java邮箱接口/" class="article-date">
+  	<time datetime="2019-09-25T07:52:14.000Z" itemprop="datePublished">2019-09-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/CPWS.github.io/2019/09/25/Java邮箱接口/">
+        Java邮箱接口
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="邮箱的相关标准"><a href="#邮箱的相关标准" class="headerlink" title="邮箱的相关标准"></a>邮箱的相关标准</h2><ol>
+<li>常见的邮件协议<blockquote>
+<ul>
+<li>SMTP（Simple Mail Transfer Protocol）：即简单邮箱传输协议，它是一组用于源地址到目的地址传送邮件的规则，由它来控制信息的中转方式。</li>
+<li>POP3（Post Office Protocol - Version 3）: 即邮局协议版本 3，用于接收电子邮件的标准协议。</li>
+<li></li>
+</ul>
+</blockquote>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-Struts2-5" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -396,6 +460,477 @@
 </ul>
 </blockquote>
 <hr>
+<h3 id="包和命名空间"><a href="#包和命名空间" class="headerlink" title="包和命名空间"></a>包和命名空间</h3><ul>
+<li>定义<code>&lt;package ../&gt;</code>元素时可以指定如下几个元素：</li>
+</ul>
+<ol>
+<li><code>name</code>：必须元素，该属性指定该包的名字，该名字是该包被其他包引用的<code>key</code>；</li>
+<li><code>extends</code>：可选属性，该属性指定该包继承其他包。继承其他包，可以继承其他包中的<code>Action</code>定义、拦截器定义等。</li>
+<li><code>namespace</code>：可选元素。该属性定义该包的命名空间。</li>
+<li><code>abstract</code>：可选元素。它指定该包是否为抽象包。抽象包不能包含<code>Action</code>定义。</li>
+</ol>
+<hr>
+<h3 id="Action的基本配置"><a href="#Action的基本配置" class="headerlink" title="Action的基本配置"></a><code>Action</code>的基本配置</h3><ul>
+<li>定义<code>&lt;action ../ &gt;</code>元素时可以指定如下几个元素：</li>
+</ul>
+<ol>
+<li><code>name</code>：必须元素，该属性定义该action的名字，也定义了处理该请求的<code>url</code></li>
+<li><code>class</code>：非必须元素。用于指定action的实现类，如果没有定义该属性，系统则默认使用<code>ActionSupport</code>作为处理类。</li>
+<li><code>method</code>：非必须元素。该属性用于指定处理类中的业务处理方法的方法名，如果没有定义该属性，系统则默认使用<code>execute</code>。</li>
+</ol>
+<ul>
+<li>配置<code>Action</code>时应该配置逻辑视图名与物理视图名之间的对应关系，而配置他们之间的映射关系，是通过<code>&lt;result ../&gt;</code>元素来完成。</li>
+</ul>
+<hr>
+<h3 id="使用Action的动态方法调用"><a href="#使用Action的动态方法调用" class="headerlink" title="使用Action的动态方法调用"></a>使用<code>Action</code>的动态方法调用</h3><blockquote>
+<ul>
+<li>动态方法调用采用如下方式:<code>ActionName!method.action</code>，其中<code>actionName</code>指定的是要提交到哪个<code>Action</code>，<code>method</code>指定的是交给哪个方法调用。</li>
+<li>案列实现：<blockquote>
+<ul>
+<li>登录注册界面</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">"s"</span> uri=<span class="string">"/struts-tags"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;&lt;s:text name="loginPage"&gt;&lt;/s:text&gt;&lt;/title&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="function">function <span class="title">regist</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="comment">//获得第1个表单页面</span></span><br><span class="line">		targetForm=document.forms[<span class="number">0</span>];</span><br><span class="line">		targetForm.action=<span class="string">"login02!regist"</span></span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;form action=<span class="string">"login02"</span>&gt;</span><br><span class="line">		用户名：&lt;input name=<span class="string">"username"</span>/&gt;&lt;br/&gt;</span><br><span class="line">		密    码：&lt;input name=<span class="string">"password"</span>/&gt;&lt;br/&gt;</span><br><span class="line">		&lt;input type=<span class="string">"submit"</span> value=<span class="string">"登录"</span>/&gt;&lt;input type=<span class="string">"submit"</span> value=<span class="string">"注册"</span> onclick=<span class="string">"regist();"</span>/&gt;</span><br><span class="line">	&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<ul>
+<li>业务处理类</li>
+</ul>
+</blockquote>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.crazyit.app.action;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.opensymphony.xwork2.Action;</span><br><span class="line"><span class="keyword">import</span> com.opensymphony.xwork2.ActionContext;</span><br><span class="line"><span class="keyword">import</span> com.opensymphony.xwork2.ActionSupport;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginRegisterAction</span> <span class="keyword">extends</span> <span class="title">ActionSupport</span></span>&#123;</span><br><span class="line">	<span class="comment">//封装用户请求参数的两个成员变量</span></span><br><span class="line">	<span class="keyword">private</span> String username;</span><br><span class="line">	<span class="keyword">private</span> String password;</span><br><span class="line">	<span class="comment">//封装处理结果的tip成员变量</span></span><br><span class="line">	<span class="keyword">private</span> String tip;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> username;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.username = username;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> password;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.password = password;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getTip</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> tip;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTip</span><span class="params">(String tip)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.tip = tip;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//Action包含的注册控制逻辑</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">regist</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"------regist------"</span>);</span><br><span class="line">		ActionContext.getContext().getSession().put(<span class="string">"user"</span>, getUsername());</span><br><span class="line">		setTip(<span class="string">"恭喜您,"</span>+getUsername()+<span class="string">"，您已经注册成功"</span>);</span><br><span class="line">		<span class="keyword">return</span> Action.SUCCESS;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//Action包含的登录业务逻辑</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"------login------"</span>);</span><br><span class="line">		<span class="keyword">if</span>(getUsername().equals(<span class="string">"crazyit.org"</span>) &amp;&amp; getPassword().equals(<span class="string">"leegang"</span>)) &#123;</span><br><span class="line">			ActionContext.getContext().getSession().put(<span class="string">"user"</span>, getUsername());</span><br><span class="line">			setTip(<span class="string">"欢迎,"</span>+getUsername()+<span class="string">"，您已经登录成功"</span>);</span><br><span class="line">			<span class="keyword">return</span> Action.SUCCESS;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> Action.ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<ul>
+<li>配置文件</li>
+</ul>
+</blockquote>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 下面指定struts2配置文件的dtd信息 --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE struts PUBLIC</span></span><br><span class="line"><span class="meta">        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"</span></span><br><span class="line"><span class="meta">        "http://struts.apache.org/dtds/struts-2.5.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">struts</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定全局国际化资源文件 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">constant</span> <span class="attr">name</span>=<span class="string">"struts.enable.DynamicMethodInvocation"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constant</span> <span class="attr">name</span>=<span class="string">"struts.custom.i18n.resources"</span> <span class="attr">value</span>=<span class="string">"mess"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constant</span> <span class="attr">name</span>=<span class="string">"struts.devMode"</span> <span class="attr">value</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">constant</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"loginForm"</span> <span class="attr">namespace</span>=<span class="string">"/"</span> <span class="attr">extends</span>=<span class="string">"struts-default"</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"*"</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">result</span>&gt;</span>/WEB-INF/content/&#123;1&#125;.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"login02"</span> <span class="attr">class</span>=<span class="string">"org.crazyit.app.action.LoginRegisterAction"</span>&gt;</span></span><br><span class="line">       		<span class="comment">&lt;!-- 处理结果返回为error,则对应于 /WEB-INF/content/error.jsp视图资源 --&gt;</span></span><br><span class="line">       		<span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"error"</span>&gt;</span> /WEB-INF/content/error.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">       		<span class="comment">&lt;!-- 处理结果返回为success,则对应于 /WEB-INF/content/welcome.jsp视图资源 --&gt;</span></span><br><span class="line">       		<span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"success"</span>&gt;</span> /WEB-INF/content/welcome.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">       		<span class="tag">&lt;<span class="name">allowed-methods</span>&gt;</span>regist<span class="tag">&lt;/<span class="name">allowed-methods</span>&gt;</span> </span><br><span class="line">       <span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">package</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">struts</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<ul>
+<li>成功页面</li>
+</ul>
+</blockquote>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%<span class="meta">@taglib</span> prefix=<span class="string">"s"</span> uri=<span class="string">"/struts-tags"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">	&lt;title&gt;&lt;s:text name="succPage"/&gt;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;!-- 本站访问的次数：$&#123;applicationScope.counter&#125;&lt;br&gt; --&gt;</span><br><span class="line">	&lt;!-- $&#123;sessionScope.user&#125; --&gt;$&#123;user&#125;，您已登录成功！</span><br><span class="line">	$&#123;sessionScope.tip&#125;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<ul>
+<li>结果</li>
+</ul>
+</blockquote>
+</blockquote>
+<p><img src="https://i.loli.net/2019/09/21/YPtVnDedqMWkEJ7.png" alt="1569052703_1_.png"></p>
+<hr>
+<h3 id="指定Method属性及其通配符"><a href="#指定Method属性及其通配符" class="headerlink" title="指定Method属性及其通配符"></a>指定<code>Method</code>属性及其通配符</h3><ul>
+<li>在配置<code>&lt;action ../&gt;</code>元素时，允许在指定<code>name</code>使用模式字符串，接下来在<code>method</code>，<code>class</code>，以及<code>&lt;result../&gt;</code>子元素中使用<code>{N}</code>的形式来表示前面第N个所匹配的字符串。</li>
+<li>在<code>Action</code>的<code>name</code>属性中使用模式通配符后，可以用一个<code>&lt;action../&gt;</code>代替多个逻辑<code>Action</code>。</li>
+<li>注意：因为除非请求的<code>URL</code>与<code>action</code>与<code>name</code>属性绝对相同，否则将按先后顺序来决定由哪个<code>action</code>来处理用户请求。因此应该讲<code>name=&quot;*&quot;</code>的<code>Action</code>配置放在最后，否则，<code>Struts2</code>将使用该<code>Action</code>来处理所有希望使用模式字符串匹配的请求。</li>
+</ul>
+<hr>
+<h3 id="配置默认的Action与配置默认的处理类"><a href="#配置默认的Action与配置默认的处理类" class="headerlink" title="配置默认的Action与配置默认的处理类"></a>配置默认的<code>Action</code>与配置默认的处理类</h3><ul>
+<li>默认<code>Action</code>：<code>&lt;default-action-ref name=&quot;ActionName&quot; /&gt;</code></li>
+<li>默认处理类：<code>&lt;default-class-ref name=&quot;className&quot; /&gt;</code></li>
+</ul>
+<hr>
+<h2 id="配置处理结果"><a href="#配置处理结果" class="headerlink" title="配置处理结果"></a>配置处理结果</h2><hr>
+<h3 id="理解处理结果"><a href="#理解处理结果" class="headerlink" title="理解处理结果"></a>理解处理结果</h3><ul>
+<li>Action处理完用户的请求后，并未把请求直接转发给任何具体的视图资源，而是返回一个逻辑视图（逻辑视图就是一个简单的字符串），Struts2框架收到这个逻辑视图，，把请求转发到具体的物理视图资源，然后把处理结果展示给用户看。</li>
+</ul>
+<hr>
+<h3 id="配置结果"><a href="#配置结果" class="headerlink" title="配置结果"></a>配置结果</h3><ul>
+<li><code>Struts2</code>框架在<code>struts.xml</code>文件中使用<code>&lt;result../&gt;</code>元素来配置结果。</li>
+<li>配置<code>&lt;result ../&gt;</code>元素时需要指定如下两个属性:<ul>
+<li><code>name</code>：该属性指定所配置的逻辑视图名。</li>
+<li><code>type</code>：该属性指定结果类型。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Struts2支持的结果类型"><a href="#Struts2支持的结果类型" class="headerlink" title="Struts2支持的结果类型"></a><code>Struts2</code>支持的结果类型</h3><ul>
+<li><code>plainText</code>结果类型：将实际的视图资源的源代码显示到客户端浏览器上。</li>
+<li>案例:<blockquote>
+<ul>
+<li><code>Action</code>实现类 </li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.crazyit.app.action;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.opensymphony.xwork2.ActionSupport;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginAction</span> <span class="keyword">extends</span> <span class="title">ActionSupport</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">	<span class="comment">//用于封装请求的username</span></span><br><span class="line">	<span class="keyword">private</span> String username;</span><br><span class="line">	<span class="comment">//username属性的getter和setter</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> username;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.username = username;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<ul>
+<li><code>struts.xml</code>配置文件</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE struts PUBLIC</span></span><br><span class="line"><span class="meta">        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"</span></span><br><span class="line"><span class="meta">        "http://struts.apache.org/dtds/struts-2.5.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">struts</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constant</span> <span class="attr">name</span>=<span class="string">"struts.devMode"</span> <span class="attr">value</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">constant</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"loginForm"</span> <span class="attr">namespace</span>=<span class="string">"/"</span> <span class="attr">extends</span>=<span class="string">"struts-default"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"*"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">result</span>&gt;</span>/WEB-INF/content/&#123;1&#125;.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"login"</span> <span class="attr">class</span>=<span class="string">"org.crazyit.app.action.LoginAction"</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!-- 指定Result的类型为PlainText --&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">result</span> <span class="attr">type</span>=<span class="string">"plainText"</span>&gt;</span></span><br><span class="line">				<span class="comment">&lt;!-- 指定实际的视图资源 --&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"location"</span>&gt;</span>/WEB-INF/content/welcome.jsp<span class="tag">&lt;/<span class="name">param</span>&gt;</span></span><br><span class="line">				<span class="comment">&lt;!-- 指定使用指定字符串来处理页面代码 --&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"charSet"</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">param</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">package</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">struts</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>结果页面</li>
+</ul>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">"s"</span> uri=<span class="string">"/struts-tags"</span> %&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;欢迎页面&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;s:property value=<span class="string">"username"</span>/&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>效果图：</li>
+</ul>
+</blockquote>
+<p><img src="https://i.loli.net/2019/09/22/uBra3fH8XPh9cUJ.png" alt="1569121660_1_.png"></p>
+<blockquote>
+<ul>
+<li>使用<code>plainText</code>结果类型可以指定如下两个参数<blockquote>
+<ul>
+<li>location：指定实际的视图资源。</li>
+<li>charSet：指定输出页面是所使用的的字符集。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><code>redirect</code>结果类型:<blockquote>
+<ul>
+<li>使用该属性之后，会丢失所有的请求参数，请求属性，当然也丢失了action的处理结果。</li>
+<li>案例：将上面的配置文件修改一下</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">struts</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constant</span> <span class="attr">name</span>=<span class="string">"struts.devMode"</span> <span class="attr">value</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">constant</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"loginForm"</span> <span class="attr">namespace</span>=<span class="string">"/"</span> <span class="attr">extends</span>=<span class="string">"struts-default"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"*"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">result</span>&gt;</span>/WEB-INF/content/&#123;1&#125;.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"login"</span> <span class="attr">class</span>=<span class="string">"org.crazyit.app.action.LoginAction"</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!-- 指定Result的类型为PlainText --&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">result</span> <span class="attr">type</span>=<span class="string">"redirect"</span>&gt;</span></span><br><span class="line">			    /welcome.jsp</span><br><span class="line">			<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">package</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">struts</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>配置一个<code>redirect</code>结果类型时，可以为其指定如下两个参数<blockquote>
+<ul>
+<li>location：该<code>Action</code>指定Action处理完用户请求后跳转的地址。</li>
+<li>parse：该参数指定是否允许<code>location</code>参数值中使用表达式,默认值为 true;</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><code>redirectAction</code>结果类型</li>
+</ul>
+<ul>
+<li><code>redirectAction</code>实现在一个<code>Action</code>处理结束时，直接将请求重定向到里一个<code>Action</code>。</li>
+<li>配置<code>redirectAction</code>结果类型时，可以指定如下两个参数:<blockquote>
+<ul>
+<li><code>actionName</code>：该参数指定重定向的<code>Action</code>名。</li>
+<li><code>namespache</code>：该参数指定需要重定向的<code>Action</code>所在的命名空间。</li>
+</ul>
+</blockquote>
+</li>
+<li><code>redirect</code>与<code>redirectAction</code>，这两种结果都会产生新的请求，区别在于前者重定向的是实际视频的资源，后者重向定的是另一个<code>Action</code>，两种结果类型都会丢失前一个<code>Action</code>的请求参数，请求属性以及处理的结果。</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="动态结果"><a href="#动态结果" class="headerlink" title="动态结果"></a>动态结果</h3><ul>
+<li>动态结果的含义是指在指定实际视图资源使用了表达式语法。<h3 id="Action属性值决定物理视图资源"><a href="#Action属性值决定物理视图资源" class="headerlink" title="Action属性值决定物理视图资源"></a><code>Action</code>属性值决定物理视图资源</h3></li>
+<li>配置<code>&lt;result ../&gt;</code>元素时，不仅可以使用<code>${N}</code>表达式来指定实际视图资源，还可以使用${属性名}方法来指定物理视图资源。</li>
+<li>案例<blockquote>
+<ul>
+<li>业务处理类：MyAction.java</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.crazyit.app.action;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.opensymphony.xwork2.ActionSupport;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAction</span> <span class="keyword">extends</span> <span class="title">ActionSupport</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">	<span class="keyword">private</span> String target;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getTarget</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> target;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTarget</span><span class="params">(String target)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.target = target;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		addActionMessage(<span class="string">"恭喜您，您已经成功转向!"</span>);</span><br><span class="line">		<span class="keyword">return</span> SUCCESS;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>配置文件 struts.xml</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">struts</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constant</span> <span class="attr">name</span>=<span class="string">"struts.devMode"</span> <span class="attr">value</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">constant</span>&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">constant</span> <span class="attr">name</span>=<span class="string">"struts.enable.DynamicMethodInvocation"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constant</span> <span class="attr">name</span>=<span class="string">"struts.custom.i18n.resources"</span> <span class="attr">value</span>=<span class="string">"mess"</span>/&gt;</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">    <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"shop"</span> <span class="attr">namespace</span>=<span class="string">"/"</span> <span class="attr">extends</span>=<span class="string">"struts-default"</span> &gt;</span></span><br><span class="line">    	</span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"*"</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">result</span>&gt;</span>/WEB-INF/content/&#123;1&#125;.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"myAction"</span> <span class="attr">class</span>=<span class="string">"org.crazyit.app.action.MyAction"</span>&gt;</span></span><br><span class="line">       		 <span class="comment">&lt;!-- 配置结果集时，采用OGNL表达式来指定实际视图资源 --&gt;</span></span><br><span class="line">       	 	<span class="tag">&lt;<span class="name">result</span>&gt;</span>/WEB-INF/content/$&#123;target&#125;.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">package</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">struts</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>JSP页面 ok.jsp</li>
+</ul>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">   </span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;转向页面&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;form action=<span class="string">"myAction"</span> method=<span class="string">"post"</span>&gt;</span><br><span class="line">		转入的目标页面：&lt;input type=<span class="string">"text"</span> name=<span class="string">"target"</span>/&gt;&lt;br/&gt;</span><br><span class="line">		&lt;input type=<span class="string">"submit"</span> value=<span class="string">"转入"</span>/&gt;</span><br><span class="line">	&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>成功页面:welcome.jsp</li>
+</ul>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">"s"</span> uri=<span class="string">"/struts-tags"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;成功页面&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;s:actionmessage/&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="全局结果"><a href="#全局结果" class="headerlink" title="全局结果"></a>全局结果</h3><ul>
+<li>配置全局结果可以采用<code>&lt;global-result ../&gt;</code>标签完成。全局结果集多所有的<code>Action</code>有效。<h3 id="使用PreResultListener"><a href="#使用PreResultListener" class="headerlink" title="使用PreResultListener"></a>使用<code>PreResultListener</code></h3></li>
+<li><code>PreResultListener</code>是一个监听器接口，它可以在<code>Action</code>完成处理控制后，系统转入实际的物理视图之间被回调。</li>
+<li>添加<code>PreResultListener</code>监听器通过<code>Invocation</code>的<code>addPreResultListener()</code>方法完成。</li>
+<li>案例，在之前的项目中添加如下代码即可：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.crazyit.app.action;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.opensymphony.xwork2.Action;</span><br><span class="line"><span class="keyword">import</span> com.opensymphony.xwork2.ActionContext;</span><br><span class="line"><span class="keyword">import</span> com.opensymphony.xwork2.ActionInvocation;</span><br><span class="line"><span class="keyword">import</span> com.opensymphony.xwork2.ActionSupport;</span><br><span class="line"><span class="keyword">import</span> com.opensymphony.xwork2.interceptor.PreResultListener;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginRegisterAction</span> <span class="keyword">extends</span> <span class="title">ActionSupport</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">	<span class="comment">//封装用户请求参数的两个成员变量</span></span><br><span class="line">	<span class="keyword">private</span> String username;</span><br><span class="line">	<span class="keyword">private</span> String password;</span><br><span class="line">	<span class="comment">//封装处理结果的tip成员变量</span></span><br><span class="line">	<span class="keyword">private</span> String tip;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> username;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.username = username;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> password;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.password = password;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getTip</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> tip;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTip</span><span class="params">(String tip)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.tip = tip;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//Action包含的注册控制逻辑</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">regist</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"------regist------"</span>);</span><br><span class="line">		ActionContext.getContext().getSession().put(<span class="string">"user"</span>, getUsername());</span><br><span class="line">		setTip(<span class="string">"恭喜您,"</span>+getUsername()+<span class="string">"，您已经注册成功"</span>);</span><br><span class="line">		<span class="keyword">return</span> Action.SUCCESS;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//Action包含的登录业务逻辑</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"------login------"</span>);</span><br><span class="line">		<span class="comment">//添加PreResultListener接口监听器</span></span><br><span class="line">		ActionInvocation invocation=ActionContext.getContext().getActionInvocation();</span><br><span class="line">		invocation.addPreResultListener(<span class="keyword">new</span> PreResultListener() &#123;</span><br><span class="line">			</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeResult</span><span class="params">(ActionInvocation invocation, String resultCode)</span> </span>&#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">				System.out.println(<span class="string">"返回的逻辑视图名字为："</span>+resultCode);</span><br><span class="line">				<span class="comment">//在返回Result之前加入一个额外的数据</span></span><br><span class="line">				invocation.getInvocationContext().put(<span class="string">"extra"</span>, <span class="keyword">new</span> java.util.Date()+<span class="string">"由"</span>+resultCode+<span class="string">"逻辑视图名转入"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(getUsername().equals(<span class="string">"crazyit.org"</span>) &amp;&amp; getPassword().equals(<span class="string">"leegang"</span>)) &#123;</span><br><span class="line">			ActionContext.getContext().getSession().put(<span class="string">"user"</span>, getUsername());</span><br><span class="line">			setTip(<span class="string">"欢迎,"</span>+getUsername()+<span class="string">"，您已经登录成功"</span>);</span><br><span class="line">			<span class="keyword">return</span> Action.SUCCESS;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> Action.ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h2 id="配置Struts2的异常处理"><a href="#配置Struts2的异常处理" class="headerlink" title="配置Struts2的异常处理"></a>配置<code>Struts2</code>的异常处理</h2><h3 id="Struts2的异常处理机制"><a href="#Struts2的异常处理机制" class="headerlink" title="Struts2的异常处理机制"></a><code>Struts2</code>的异常处理机制</h3><ul>
+<li>为了使用<code>Struts2</code>的异常处理机制，必须打开<code>Struts2</code>的异常映射功能,开启异常映射功能需要一个拦截器。下面是<code>struts-default.xml</code>文件中开启异常映射功能的配置文件。<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">interceptors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">interceptor</span> <span class="attr">name</span>=<span class="string">"exception"</span> <span class="attr">class</span>=<span class="string">"com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor"</span>&gt;</span><span class="tag">&lt;/<span class="name">interceptor</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--Struts2默认的拦截器栈--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">interceprot-stack</span> <span class="attr">name</span>=<span class="string">"defaultStack"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"exception"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">interceptor-stack</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">interceptors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="声明式异常捕获"><a href="#声明式异常捕获" class="headerlink" title="声明式异常捕获"></a>声明式异常捕获</h3><ul>
+<li><code>Struts2</code>的异常处理机制是通过在<code>struts.xml</code>文件中配置<code>&lt;exception-mapping ../&gt;</code>元素完成的。配置该文件时，需要指定如下两个属性：<blockquote>
+<ul>
+<li><code>exception</code>：此属性指定该异常映射所映射所设置的异常类型。</li>
+<li><code>result</code>：此属性指定<code>Action</code>出现异常时，系统返回<code>result</code>属性值对应的逻辑视图名。</li>
+</ul>
+</blockquote>
+</li>
+<li>根据<code>&lt;exception-mapping&gt;</code>出现位置的不同，异常映射又可以分为如下两种：<blockquote>
+<ul>
+<li>局部异常映射：将<code>&lt;exception-mapping&gt;</code>作为<code>Action</code>的子元素配置。</li>
+<li>全局异常映射：将<code>&lt;exception-mapping&gt;</code>作为<code>&lt;global-exception-mappings&gt;</code>的子元素配置。</li>
+</ul>
+</blockquote>
+</li>
+<li>案例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.crazyit.app.exception;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyException</span> <span class="keyword">extends</span> <span class="title">Exception</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyException</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyException</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(msg);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.crazyit.app.exception;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.opensymphony.xwork2.ActionSupport;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginAction</span> <span class="keyword">extends</span> <span class="title">ActionSupport</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">	<span class="comment">//封装请求参数的username和password</span></span><br><span class="line">	<span class="keyword">private</span> String username;</span><br><span class="line">	<span class="keyword">private</span> String password;</span><br><span class="line">	<span class="keyword">private</span> String tip;</span><br><span class="line">	...</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"exception"</span>);</span><br><span class="line">		<span class="keyword">if</span>(getUsername().equalsIgnoreCase(<span class="string">"user"</span>)) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> MyException(<span class="string">"自定义异常"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(getUsername().equalsIgnoreCase(<span class="string">"sql"</span>)) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> java.sql.SQLException(<span class="string">"用户名不能为sql"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(getUsername().equals(<span class="string">"crazyit.org"</span>) &amp;&amp; getPassword().equals(<span class="string">"leegang"</span>)) &#123;</span><br><span class="line">			<span class="keyword">return</span> SUCCESS;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">&lt;!-- 配置全局结果集 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">global-results</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"sql"</span>&gt;</span>/WEB-INF/content/exception.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"root"</span>&gt;</span>/WEB-INF/content/exception.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">global-results</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 配置全局异常映射 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">global-exception-mappings</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exception-mapping</span> <span class="attr">result</span>=<span class="string">"sql"</span> <span class="attr">exception</span>=<span class="string">"java.sql.SQLException"</span>&gt;</span><span class="tag">&lt;/<span class="name">exception-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exception-mapping</span> <span class="attr">result</span>=<span class="string">"root"</span> <span class="attr">exception</span>=<span class="string">"java.lang.Exception"</span>&gt;</span><span class="tag">&lt;/<span class="name">exception-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">global-exception-mappings</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"*"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span>&gt;</span>/WEB-INF/content/&#123;1&#125;.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"login"</span> <span class="attr">class</span>=<span class="string">"org.crazyit.app.action.LoginAction02"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 处理结果返回为error,则对应于 /WEB-INF/content/error.jsp视图资源 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"error"</span>&gt;</span> /WEB-INF/content/error.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 处理结果返回为success,则对应于 /WEB-INF/content/welcome.jsp视图资源 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"success"</span>&gt;</span> /WEB-INF/content/welcome.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"login02"</span> <span class="attr">class</span>=<span class="string">"org.crazyit.app.exception.LoginAction"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 定义局部异常映射 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exception-mapping</span> <span class="attr">result</span>=<span class="string">"my"</span> <span class="attr">exception</span>=<span class="string">"org.crazyit.app.exception.MyException"</span>&gt;</span><span class="tag">&lt;/<span class="name">exception-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"my"</span>&gt;</span>/my.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 处理结果返回为error,则对应于 /WEB-INF/content/error.jsp视图资源 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"error"</span>&gt;</span> /WEB-INF/content/error.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 处理结果返回为success,则对应于 /WEB-INF/content/welcome.jsp视图资源 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"success"</span>&gt;</span> /WEB-INF/content/welcome.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">allowed-methods</span>&gt;</span>regist<span class="tag">&lt;/<span class="name">allowed-methods</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="输出异常信息"><a href="#输出异常信息" class="headerlink" title="输出异常信息"></a>输出异常信息</h3><ul>
+<li>为了在异常页面中显示异常信息，可以使用<code>Struts2</code>的如下标签来输出异常信息<blockquote>
+<ul>
+<li><code>&lt;s:property value=&quot;exception&quot;/&gt;</code>：输出异常对象本身。</li>
+<li><code>&lt;s:property value=&quot;exceptionStack&quot;/&gt;</code>：输出异常堆本身。</li>
+</ul>
+</blockquote>
+</li>
+<li>还可以使用<code>&lt;s:property value=&quot;exception.message&quot;/&gt;</code>来输出异常<code>message</code>信息。</li>
+</ul>
+<hr>
+<h2 id="Convention插件与约定支持"><a href="#Convention插件与约定支持" class="headerlink" title="Convention插件与约定支持"></a><code>Convention</code>插件与<code>约定</code>支持</h2><h3 id="Action的搜索和映射约定"><a href="#Action的搜索和映射约定" class="headerlink" title="Action的搜索和映射约定"></a>Action的搜索和映射约定</h3><ul>
+<li><code>convention</code>会把如下两种<code>Java</code>类当成<code>Action</code>类。<blockquote>
+<ul>
+<li>所有实现了<code>com.opensymphony.xwork2.Action</code>的<code>Java</code>类</li>
+<li>所有类名以<code>Action</code>结尾的<code>Java</code>类。</li>
+</ul>
+</blockquote>
+<h3 id="按约定映射Result"><a href="#按约定映射Result" class="headerlink" title="按约定映射Result"></a>按约定映射Result</h3><h3 id="Action链的约定"><a href="#Action链的约定" class="headerlink" title="Action链的约定"></a>Action链的约定</h3><h3 id="自动重加载映射"><a href="#自动重加载映射" class="headerlink" title="自动重加载映射"></a>自动重加载映射</h3></li>
+<li><code>Convention</code>完全支持自动重载映射，只要为<code>Struts2</code>配置如下两个常量即可<blockquote>
+<ul>
+<li>配置<code>Struts2</code>处于开发者模式：<code>&lt;constant name=&quot;struts.devMode&quot; value=&quot;true&quot;&gt;&lt;/constant&gt;</code></li>
+<li>配置<code>Convention</code>插件自动重加载映射：<code>&lt;constant name=&quot;struts.convention.classes.reloaad&quot; value=&quot;true&quot;&gt;&lt;/constant&gt;</code></li>
+</ul>
+</blockquote>
+<h3 id="Convention插件的相关常量"><a href="#Convention插件的相关常量" class="headerlink" title="Convention插件的相关常量"></a>Convention插件的相关常量</h3><h3 id="Convention插件的相关注解"><a href="#Convention插件的相关注解" class="headerlink" title="Convention插件的相关注解"></a>Convention插件的相关注解</h3></li>
+</ul>
+<hr>
+<h2 id="使用Struts2的国际化"><a href="#使用Struts2的国际化" class="headerlink" title="使用Struts2的国际化"></a>使用Struts2的国际化</h2><ol>
+<li>Struts2的国际化可以按照如下步骤进行：<blockquote>
+<ul>
+<li>让系统加载国际化资源文件。加载国家化资源文件有两种方式:<blockquote>
+<ul>
+<li>自动加载：Action范围的国际化资源文件，包范围的国家化资源文件由系统自动加载。</li>
+<li>手动加载：JSP范围的国际化资源文件、全局范围的国际化资源文件，分别使用标签、配置常量的方式来手动加载。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>输出国际化。Struts2输出国家化的消息同样有两种方式：<blockquote>
+<blockquote>
+<ul>
+<li>在视图页面上输出国家化消息，需要使用Struts2的标签库。</li>
+<li>在<code>Action</code>类中输出国际化消息，需要使用<code>ActionSupport</code>的<code>getText()</code>方法来完成。</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3 id="视图页面的国际化"><a href="#视图页面的国际化" class="headerlink" title="视图页面的国际化"></a>视图页面的国际化</h3></li>
+</ol>
+<ul>
+<li>在Jsp页面中指定国际化资源需要借助Struts2的另外一个标签：<code>&lt;s:i18n&gt;</code></li>
+<li>案例实现:<blockquote>
+<ul>
+<li>定义两个国际化资源文件，其路径分别为：<code>/JSPResources/src/viewResources/loginForm_en_US</code>与<code>/JSPResources/src/viewResources/loginForm_zh_CN.properties</code></li>
+<li>两个包的内容分别为：</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># loginForm_en_US.properties</span><br><span class="line">loginPage=JSP Message:Login Page</span><br><span class="line">user=JSP Message:User Name</span><br><span class="line">pass=JSP Message:User Pass</span><br><span class="line">login=JSP Message:Login</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># loginForm_zh_CN.properties</span><br><span class="line">loginPage=JSP Message:Login Page</span><br><span class="line">user=JSP Message:User Name</span><br><span class="line">pass=JSP Message:User Pass</span><br><span class="line">login=JSP Message:Login</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>定义一个JSP页面，并在其中使用国际化资源文件，其路径为：<code>/JSPResources/WebContent/WEB-INF/content/success.jsp</code></li>
+</ul>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">"s"</span> uri=<span class="string">"/struts-tags"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;!-- 加载baseName为viewResource包下的baseName为loginForm的国际化资源文件 --&gt;</span><br><span class="line">&lt;s:i18n name=<span class="string">"viewResources.loginForm"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">		&lt;!-- 使用text标签来输出国际化信息 --&gt;</span><br><span class="line">		&lt;title&gt;&lt;s:text name="loginPage"&gt;&lt;/s:text&gt;&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;s:form action=<span class="string">"login"</span>&gt;</span><br><span class="line">			&lt;!-- 在表单页面中，使用key属性来输出国际化信息 --&gt;</span><br><span class="line">			&lt;s:textfield name=<span class="string">"username"</span> key=<span class="string">"user"</span> /&gt;</span><br><span class="line">			&lt;s:textfield name=<span class="string">"password"</span> key=<span class="string">"pass"</span> /&gt;</span><br><span class="line">			&lt;s:submit key=<span class="string">"login"</span>/&gt;</span><br><span class="line">		&lt;/s:form&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;/s:i18n&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>定义配置文件<code>struts.xml</code>来访问页面</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE struts PUBLIC</span></span><br><span class="line"><span class="meta">        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"</span></span><br><span class="line"><span class="meta">        "http://struts.apache.org/dtds/struts-2.5.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">struts</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constant</span> <span class="attr">name</span>=<span class="string">"struts.devMode"</span> <span class="attr">value</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">constant</span>&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">constant</span> <span class="attr">name</span>=<span class="string">"struts.enable.DynamicMethodInvocation"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"shop"</span> <span class="attr">namespace</span>=<span class="string">"/"</span> <span class="attr">extends</span>=<span class="string">"struts-default"</span> &gt;</span></span><br><span class="line">    	</span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"*"</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">result</span>&gt;</span>/WEB-INF/content/&#123;1&#125;.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"login"</span>&gt;</span></span><br><span class="line">       	 	<span class="tag">&lt;<span class="name">result</span>&gt;</span>/WEB-INF/content/success.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">package</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">struts</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>启动服务器，在页面查看效果. </li>
+</ul>
+</blockquote>
+<p><img src="https://i.loli.net/2019/09/26/6F3WfxAaLRvb9Xu.png" alt="效果图.PNG"></p>
+<h3 id="Action的国际化"><a href="#Action的国际化" class="headerlink" title="Action的国际化"></a>Action的国际化</h3><ul>
+<li>为<code>Action</code>单独指定国际化资源文件的方法是：在<code>Action</code>类文件所在的路径下建立多个文件名为<code>ActionName_language_country.properties</code>.</li>
+<li><code>Struts2</code>的国际资源文件是由系统自动加载。</li>
+</ul>
+<h3 id="使用包范围的国际化资源"><a href="#使用包范围的国际化资源" class="headerlink" title="使用包范围的国际化资源"></a>使用包范围的国际化资源</h3><ul>
+<li>包范围的国际化资源可以被该包下的所有Action使用。</li>
+<li>包范围的国际化资源文件的文件名：<code>package_&lt;language&gt;_&lt;country&gt;.properties</code><h3 id="使用全局国际化资源"><a href="#使用全局国际化资源" class="headerlink" title="使用全局国际化资源"></a>使用全局国际化资源</h3></li>
+<li>不管是在<code>struts.xml</code>文件中配置常量，还是在<code>struts.properties</code>文件中配置常量，只需要配置<code>struts.custom.i18n.resources</code>常量即可加载全局国际化资源文件。<h3 id="输出带占位符的国际化消息"><a href="#输出带占位符的国际化消息" class="headerlink" title="输出带占位符的国际化消息"></a>输出带占位符的国际化消息</h3></li>
+<li>国际化消息可能包含占位符，这些占位符必须使用参数来填充。<h3 id="加载资源文件的顺序"><a href="#加载资源文件的顺序" class="headerlink" title="加载资源文件的顺序"></a>加载资源文件的顺序</h3></li>
+</ul>
+<hr>
+<h2 id="使用Struts2的标签库"><a href="#使用Struts2的标签库" class="headerlink" title="使用Struts2的标签库"></a>使用<code>Struts2</code>的标签库</h2><h3 id="Struts2标签库概述"><a href="#Struts2标签库概述" class="headerlink" title="Struts2标签库概述"></a>Struts2标签库概述</h3><ul>
+<li><code>Struts2</code>的标签都定义在<code>URI</code>为<code>/struts-tags</code>的空间下。</li>
+<li>从大范围上看，可以将<code>Struts2</code>标签分成如下两类：<blockquote>
+<ul>
+<li><code>UI</code>(<code>User Interface</code>，用户界面)标签：主要用于生成<code>HTML</code>元素的标签。</li>
+<li>非<code>UI</code>标签：主要用于数据访问、逻辑控制等的标签。   </li>
+</ul>
+</blockquote>
+</li>
+<li>对于<code>UI</code>标签，可以分为如下两类：<blockquote>
+<ul>
+<li>标签标签：主要用于生成<code>HTML</code>页面的<code>form</code>元素，以及普通表单元素的标签。</li>
+<li>非表单标签：主要用于生成页面上的树、<code>Tab</code>页等标签。</li>
+</ul>
+</blockquote>
+</li>
+<li>对于非<code>UI</code>标签，也可以分为如下两类：<blockquote>
+<ul>
+<li>流程控制标签：主要包含用于生成分支、循环等流程控制的标签。</li>
+<li>数据访问标签：主要包含用于输出<code>ValueStack</code>中的值，完成国际化等功能的标签。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2019/09/27/RZOMBSxdKJ7rDv2.png" alt="struts2_tag.png"></p>
+<h3 id="使用Struts2标签"><a href="#使用Struts2标签" class="headerlink" title="使用Struts2标签"></a>使用Struts2标签</h3><ul>
+<li><code>Struts2</code>的标签库定义文件存放在<code>struts2-core.2.5.20.jar</code>包下的<code>struts-tags.tld</code>文件</li>
+<li>在<code>JSP</code>页面中使用<code>Struts2</code>标签的步骤<blockquote>
+<ul>
+<li>在<code>JSP</code>页面中导入<code>Struts2</code>的标签库，例如：<code>&lt;%@ taglib prefix=&quot;s&quot; uri=&quot;/struts-tags&quot; %&gt;</code>；其中<code>prefix</code>指定标签的前缀，<code>uri</code>指定使用哪个核心标签库。</li>
+<li>在<code>JSP</code>页面中使用相关标签：例如：<code>&lt;s:text name=&quot;hello&quot;/&gt;</code> 。</li>
+</ul>
+</blockquote>
+<h3 id="Struts2的OGNL表达式语言"><a href="#Struts2的OGNL表达式语言" class="headerlink" title="Struts2的OGNL表达式语言"></a><code>Struts2</code>的<code>OGNL</code>表达式语言</h3></li>
+<li>OGNL(Object-Graph Navigation Language：图像导航语言)</li>
+<li>OGNL,如果需要访问的对象属于根对象，则可以直接访问该属性，如果不是则需要使用一个前缀<code>#</code></li>
+<li>开发中，可以在页面中添加<code>&lt;s:debug/&gt;</code>标签，来查看属性是为<code>value stack</code>还是<code>stack context</code><h3 id="OGNL中的集合操作"><a href="#OGNL中的集合操作" class="headerlink" title="OGNL中的集合操作"></a>OGNL中的集合操作</h3></li>
+<li>很多时候，可能需要一个集合对象（例如<code>List</code>对象，或者<code>Map</code>对象），使用<code>OGNL</code>表达式可以直接创建集合对象。</li>
+<li>直接创建<code>List</code>集合的语法：{e1,e2,e3}</li>
+<li>直接创建<code>Map</code>集合的语法：#{key1:value1,key2:value2}</li>
+<li>对于集合，<code>OGNL</code>提供了两个运算符：<code>in</code>和<code>not in</code></li>
+<li>除此之外，OGNL还允许通过某个规则取得集合的子集。取得集合的子集时有如下三个操作：<blockquote>
+<ul>
+<li><code>?</code>: 取出所有符合选择逻辑的元素。</li>
+<li><code>^</code>: 取出符合选择逻辑的第一个元素。</li>
+<li><code>$</code>: 取出符合选择逻辑的最后一个元素。</li>
+</ul>
+</blockquote>
+<h3 id="访问静态成员"><a href="#访问静态成员" class="headerlink" title="访问静态成员"></a>访问静态成员</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">constant</span> <span class="attr">name</span>=<span class="string">"struts.ognl.allowStaticMethodAccess"</span> <span class="attr">value</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">constant</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">访问静态方法：&lt;s:property value=<span class="string">"@org.crazyit.struts2.action.DemoAction@s()"</span>/&gt;&lt;br&gt;</span><br><span class="line">访问静态属性：&lt;s:property value=<span class="string">"@org.crazyit.struts2.action.DemoAction@str"</span>/&gt;&lt;br&gt;</span><br><span class="line">生成一个伪随机数:&lt;s:property value=<span class="string">"@java.lang.Math@random()"</span>/&gt;&lt;br&gt;</span><br><span class="line">圆周率的值:&lt;s:property value=<span class="string">"@java.lang.Math@PI"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a><code>Lambda</code>表达式</h3><ul>
+<li>Lambda表达式支持:<code>&lt;s:property value=&quot;#fib =: [#this == 0?0:#this==1?1:#fib(#this-2)+#fib(#this-1)],#fib(11)&quot;/&gt;</code><h3 id="控制标签"><a href="#控制标签" class="headerlink" title="控制标签"></a>控制标签</h3></li>
+<li>控制标签有9个</li>
+</ul>
+<ol>
+<li><code>if</code>：用于控制选择输出的标签。</li>
+<li><code>elseIf</code>/<code>elseif</code>：与<code>if</code>标签结合使用，用于控制选择输出的标签。</li>
+<li><code>else</code>：与<code>if</code>标签结合使用，用于控制选择输出的标签。</li>
+<li><code>append</code>：用于将多个集合拼接成一个新的集合。</li>
+<li><code>generator</code>：它是一个字符串解析器，用于讲一个字符串解析成一个集合。</li>
+<li><code>iterator</code>：这是一个迭代器，用于将集合迭代输出。</li>
+<li><code>merge</code>：用于将多个集合合拼成一个新的集合。但与append的拼接方法有所不同。</li>
+<li><code>sort</code>：这个标签用于对集合进行排序。</li>
+<li><code>subset</code>：这个标签用于截取集合的部分元素，形成新的子集合。</li>
+</ol>
+<ul>
+<li><code>if</code>/<code>elseif</code>/<code>else</code>标签<blockquote>
+<ul>
+<li>三个标签结合的语法格式如下：</li>
+</ul>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;s:<span class="keyword">if</span> test=<span class="string">"表达式"</span>&gt;</span><br><span class="line">	标签体</span><br><span class="line">&lt;/s:if&gt;</span><br><span class="line">&lt;s:elseif test=<span class="string">"表达式"</span>&gt;</span><br><span class="line">	标签体</span><br><span class="line">&lt;/s:elseif&gt;</span><br><span class="line">...</span><br><span class="line">&lt;s:<span class="keyword">else</span>&gt;</span><br><span class="line">	标签体</span><br><span class="line">&lt;/s:else&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>案列实现:</li>
+</ul>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">"s"</span> uri=<span class="string">"/struts-tags"</span> %&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;分支控制&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;!-- 向Stack Context中定义一个属性age,并取值为 <span class="number">29</span> --&gt;</span><br><span class="line">	&lt;s:set var="age" value="29"&gt;&lt;/s:set&gt;</span><br><span class="line">	&lt;!-- 如果Stack Context中的age属性大于<span class="number">60</span> --&gt;</span><br><span class="line">	&lt;s:<span class="keyword">if</span> test=<span class="string">"#age&gt;60"</span>&gt;</span><br><span class="line">		老年人</span><br><span class="line">	&lt;/s:if&gt;</span><br><span class="line">	&lt;!-- 如果Stack Context中的age属性大于<span class="number">35</span> --&gt;</span><br><span class="line">	&lt;s:elseif test=<span class="string">"#age&gt;35"</span>&gt;</span><br><span class="line">		中年人</span><br><span class="line">	&lt;/s:elseif&gt;</span><br><span class="line">	&lt;!-- 如果Stack Context中的age属性大于<span class="number">15</span> --&gt;</span><br><span class="line">	&lt;s:elseif test=<span class="string">"#age&gt;15"</span>&gt;</span><br><span class="line">		青年人</span><br><span class="line">	&lt;/s:elseif&gt;</span><br><span class="line">	&lt;s:<span class="keyword">else</span>&gt;</span><br><span class="line">		少年人</span><br><span class="line">	&lt;/s:else&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>iterator</code>标签</p>
+<blockquote>
+<ul>
+<li>主要用于对集合进行迭代。</li>
+<li>案例实现</li>
+</ul>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">"s"</span> uri=<span class="string">"/struts-tags"</span> %&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;iterator标签&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;table border=<span class="string">"1"</span> width=<span class="string">"300"</span>&gt;</span><br><span class="line">	</span><br><span class="line">		&lt;s:iterator value=<span class="string">"&#123;'疯狂java讲义','轻量级Java EE企业应用实战','疯狂IOS讲义'&#125;"</span> <span class="keyword">var</span>=<span class="string">"name"</span>&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;th&gt;&lt;s:property value="#st.count"/&gt;&lt;s:property value="name"/&gt;&lt;/th&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line">		&lt;/s:iterator&gt;</span><br><span class="line">	&lt;/table&gt;</span><br><span class="line">	&lt;!-- 迭代输出list集合 --&gt;</span><br><span class="line">	&lt;table border=<span class="string">"1"</span> width=<span class="string">"300"</span>&gt; </span><br><span class="line">		&lt;s:iterator value=<span class="string">"&#123;'疯狂java讲义','轻量级Java EE企业应用实战','疯狂IOS讲义'&#125;"</span> <span class="keyword">var</span>=<span class="string">"name"</span> status=<span class="string">"st"</span>&gt;</span><br><span class="line">			&lt;tr &lt;s:if test="#st.odd"&gt;style="background-color:#bbbbbb" &lt;/s:if&gt;&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;s:property value=<span class="string">"name"</span>/&gt;</span><br><span class="line">				&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line">		&lt;/s:iterator&gt;</span><br><span class="line">	&lt;/table&gt;</span><br><span class="line">	&lt;!-- 对Map集合进行迭代 --&gt;</span><br><span class="line">	&lt;table border=<span class="string">"1"</span> width=<span class="string">"300"</span>&gt;</span><br><span class="line">		&lt;tr&gt;</span><br><span class="line">			&lt;th&gt;书名&lt;/th&gt;</span><br><span class="line">			&lt;th&gt;作者&lt;/th&gt;</span><br><span class="line">		&lt;/tr&gt;</span><br><span class="line">		&lt;s:iterator value=<span class="string">"#&#123;'疯狂java讲义':'李刚','轻量级Java EE企业应用实战':'李刚','疯狂IOS讲义':'李刚'&#125;"</span> <span class="keyword">var</span>=<span class="string">"name"</span> status=<span class="string">"st"</span>&gt;</span><br><span class="line">			&lt;!--根据当前迭代的元素的索引是否为奇数来决定是否使用背景颜色  --&gt;</span><br><span class="line">			&lt;tr &lt;s:if test="#st.odd"&gt;style="background-color:#bbbbbb" &lt;/s:if&gt;&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;!-- 数据Map对象里Entry的key --&gt;</span><br><span class="line">					&lt;s:property value=<span class="string">"key"</span>/&gt;</span><br><span class="line">				&lt;/td&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;!-- 数据Map对象里Entry的value --&gt;</span><br><span class="line">					&lt;s:property value=<span class="string">"value"</span>/&gt;</span><br><span class="line">				&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line">		&lt;/s:iterator&gt;</span><br><span class="line">	&lt;/table&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>append</code>标签</p>
+<blockquote>
+<ul>
+<li><code>append</code>：用于将多个集合拼接成一个新的集合。</li>
+<li>案例实现</li>
+</ul>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">"s"</span> uri=<span class="string">"/struts-tags"</span> %&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;append标签&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;!-- 使用append标签将两个集合拼接成新的集合，新集合的名字是newList，新集合放入到Stack Context --&gt;</span><br><span class="line">	&lt;s:append <span class="keyword">var</span>=<span class="string">"newList"</span>&gt; </span><br><span class="line">		&lt;s:param value="&#123;'疯狂java讲义','轻量级Java EE企业应用实战','疯狂IOS讲义'&#125;"&gt;&lt;/s:param&gt;</span><br><span class="line">		&lt;s:param value="&#123;'http://www.baidu.com','cpws.github.io','qqqqyy.github.io'&#125;"&gt;&lt;/s:param&gt;</span><br><span class="line">	&lt;/s:append&gt;</span><br><span class="line">	&lt;table border=<span class="string">"1"</span> width=<span class="string">"400"</span>&gt;</span><br><span class="line">		&lt;s:iterator value=<span class="string">"#newList"</span> <span class="keyword">var</span>=<span class="string">"name"</span> status=<span class="string">"index"</span>&gt;</span><br><span class="line">			&lt;tr &lt;s:if test="#index.even"&gt;style="background-color:#4dffff"&lt;/s:if&gt;&gt;</span><br><span class="line">				&lt;td&gt;&lt;s:property value="name"/&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line">		&lt;/s:iterator&gt;</span><br><span class="line">	&lt;/table&gt;</span><br><span class="line">	&lt;!-- 使用append标签将List集合和Map结合拼接成新的集合，新集合的名字是newList，新集合放入到Stack Context --&gt;</span><br><span class="line">	&lt;s:append <span class="keyword">var</span>=<span class="string">"dd"</span>&gt; </span><br><span class="line">		&lt;s:param value="#&#123;'疯狂java讲义':'李刚','轻量级Java EE企业应用实战':'李刚','疯狂IOS讲义':'李刚'&#125;"&gt;&lt;/s:param&gt;</span><br><span class="line">		&lt;s:param value="#&#123;'http://www.baidu.com','cpws.github.io','qqqqyy.github.io'&#125;"&gt;&lt;/s:param&gt;</span><br><span class="line">	&lt;/s:append&gt;</span><br><span class="line">	&lt;!-- 使用迭代器进行迭代 --&gt;</span><br><span class="line">	&lt;table border=<span class="string">"1"</span> width=<span class="string">"400"</span>&gt;</span><br><span class="line">		&lt;s:iterator value=<span class="string">"#dd"</span> <span class="keyword">var</span>=<span class="string">"name"</span> status=<span class="string">"st"</span>&gt;</span><br><span class="line">			&lt;tr &lt;s:if test="#st.even"&gt;style="background-color:#4dffff"&lt;/s:if&gt;&gt;</span><br><span class="line">				&lt;td&gt;&lt;s:property value="key"/&gt;&lt;/td&gt;</span><br><span class="line">				&lt;td&gt;&lt;s:property value="value"/&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line">		&lt;/s:iterator&gt;</span><br><span class="line">	&lt;/table&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>generator</code>标签</p>
+<blockquote>
+<ul>
+<li><code>generator</code>：它是一个字符串解析器，用于讲一个字符串解析成一个集合.</li>
+</ul>
+<ul>
+<li>案例实现：</li>
+</ul>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">"s"</span> uri=<span class="string">"/struts-tags"</span> %&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;generator标签&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;table border=<span class="string">"1"</span> width=<span class="string">"300"</span>&gt;</span><br><span class="line">		&lt;!-- 使用generator标签将指定字符串解析成iterator集合 --&gt;</span><br><span class="line">		&lt;!-- 在generator标签内，得到的List集合位于valuestack顶端 --&gt;</span><br><span class="line">		&lt;s:generator separator=<span class="string">","</span> val=<span class="string">" '疯狂Java讲义,疯狂Java EE企业应用实战,疯狂IOS讲义' "</span>&gt;</span><br><span class="line">			&lt;!-- 没有指定迭代哪个集合，直接迭代栈顶的集合 --&gt;</span><br><span class="line">			&lt;s:iterator status=<span class="string">"st"</span>&gt;</span><br><span class="line">				&lt;tr &lt;s:if test="#st.odd"&gt;style="background-color:#bbbbbb" &lt;/s:if&gt;&gt;</span><br><span class="line">					&lt;td&gt;&lt;s:property/&gt;&lt;/td&gt;</span><br><span class="line">				&lt;/tr&gt;</span><br><span class="line">			&lt;/s:iterator&gt;</span><br><span class="line">		&lt;/s:generator&gt;</span><br><span class="line">	&lt;/table&gt;</span><br><span class="line">	&lt;table border=<span class="string">"1"</span> width=<span class="string">"300"</span>&gt;</span><br><span class="line">		&lt;!-- 使用generator标签将指定字符串解析成iterator集合 指定了count和<span class="keyword">var</span> --&gt;</span><br><span class="line">		&lt;!-- 在generator标签内，得到的List集合位于valuestack顶端 --&gt;</span><br><span class="line">		&lt;s:generator separator=<span class="string">","</span> val=<span class="string">" '疯狂Java讲义,疯狂Java EE企业应用实战,疯狂IOS讲义' "</span> count=<span class="string">"2"</span> <span class="keyword">var</span>=<span class="string">"books"</span>&gt;</span><br><span class="line">			&lt;!-- 没有指定迭代哪个集合，直接迭代栈顶的集合 --&gt;</span><br><span class="line">			&lt;!-- 并且把值存入到 stack context中的books集合 --&gt;</span><br><span class="line">			&lt;s:iterator status=<span class="string">"st"</span>&gt;</span><br><span class="line">				&lt;tr &lt;s:if test="#st.odd"&gt;style="background-color:#bbbbbb" &lt;/s:if&gt;&gt;</span><br><span class="line">					&lt;td&gt;&lt;s:property/&gt;&lt;/td&gt;</span><br><span class="line">				&lt;/tr&gt;</span><br><span class="line">			&lt;/s:iterator&gt;</span><br><span class="line">		&lt;/s:generator&gt;</span><br><span class="line">	&lt;/table&gt;</span><br><span class="line">	$&#123;requestScope.books&#125;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>注意：如果在标签定义了<code>var</code>属性，则该集合将会被存入到<code>Stack Context</code>中，在该标签外部可以访问该标签，否则，该集合会创建一个临时文件存放在<code>Value Stack</code>，可以直接被访问，但是只能在标签中被使用。 </li>
+</ul>
+<ul>
+<li><code>merge</code>标签</li>
+</ul>
+<ul>
+<li><code>merge</code>：用于将多个集合合拼成一个新的集合。但与append的拼接方法有所不同。</li>
+</ul>
+</blockquote>
 
       
     </div>
