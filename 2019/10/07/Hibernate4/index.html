@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Hibernate4 | Prossible&#39;s Blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第一讲 Hibernate简介  Hibernate是一个轻量级、ORM的框架。完成数据的持久化。是对jdbc的封装，简化jdbc操作。使用Hibernate后，不需要编写Sql语句，是一个全自动的持久化框架。使用Hibernate后，可以跨数据库平台。提高开发效率。 持久化：就是数据从瞬时状态变为持久状态的过程。 ORM：Object Relational Mapping，对象关系映射.使得操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hibernate4">
+<meta property="og:url" content="https://CPWS.github.io/2019/10/07/Hibernate4/index.html">
+<meta property="og:site_name" content="Prossible&#39;s Blog">
+<meta property="og:description" content="第一讲 Hibernate简介  Hibernate是一个轻量级、ORM的框架。完成数据的持久化。是对jdbc的封装，简化jdbc操作。使用Hibernate后，不需要编写Sql语句，是一个全自动的持久化框架。使用Hibernate后，可以跨数据库平台。提高开发效率。 持久化：就是数据从瞬时状态变为持久状态的过程。 ORM：Object Relational Mapping，对象关系映射.使得操作">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.loli.net/2019/09/21/qpvZhDCb1Su94N7.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/21/9UW7MrbPX5Jofv4.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/07/SprYIvAjzEs85cl.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/07/lYKRpMnGDsXT3Fr.png">
+<meta property="og:updated_time" content="2019-10-08T07:28:45.318Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hibernate4">
+<meta name="twitter:description" content="第一讲 Hibernate简介  Hibernate是一个轻量级、ORM的框架。完成数据的持久化。是对jdbc的封装，简化jdbc操作。使用Hibernate后，不需要编写Sql语句，是一个全自动的持久化框架。使用Hibernate后，可以跨数据库平台。提高开发效率。 持久化：就是数据从瞬时状态变为持久状态的过程。 ORM：Object Relational Mapping，对象关系映射.使得操作">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/21/qpvZhDCb1Su94N7.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/CPWS.github.io/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">zhuli</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/CPWS.github.io/">主页</a></li>
+				        
+							<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">zhuli</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">zhuli</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/CPWS.github.io/">主页</a></li>
+		        
+					<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Hibernate4" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/CPWS.github.io/2019/10/07/Hibernate4/" class="article-date">
+  	<time datetime="2019-10-07T02:16:21.000Z" itemprop="datePublished">2019-10-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hibernate4
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一讲-Hibernate简介"><a href="#第一讲-Hibernate简介" class="headerlink" title="第一讲 Hibernate简介"></a>第一讲 <code>Hibernate</code>简介</h2><hr>
+<ul>
+<li><code>Hibernate</code>是一个轻量级、<code>ORM</code>的框架。完成数据的持久化。是对<code>jdbc</code>的封装，简化<code>jdbc</code>操作。使用<code>Hibernate</code>后，不需要编写<code>Sql</code>语句，是一个全自动的持久化框架。使用<code>Hibernate</code>后，可以跨数据库平台。提高开发效率。</li>
+<li>持久化：就是数据从瞬时状态变为持久状态的过程。</li>
+<li><code>ORM</code>：<code>Object Relational Mapping</code>，对象关系映射.使得操作关系可以像操作对象一样方便。<br><img src="https://i.loli.net/2019/09/21/qpvZhDCb1Su94N7.png" alt="Hibernate_orm.PNG">  </li>
+<li>结构体系<br><img src="https://i.loli.net/2019/09/21/9UW7MrbPX5Jofv4.png" alt="结构体系.PNG"></li>
+</ul>
+<hr>
+<h2 id="第二讲-helloworld"><a href="#第二讲-helloworld" class="headerlink" title="第二讲 helloworld"></a>第二讲 <code>helloworld</code></h2><ul>
+<li>使用<code>hibernate</code>进行<code>helloworld</code>程序开发，步骤：</li>
+</ul>
+<ol>
+<li><p>新建<code>Java</code>项目</p>
+</li>
+<li><p>导入<code>hibernate</code> jar包</p>
+</li>
+<li><p>新建数据库表</p>
+</li>
+<li><p>新建<code>pojo</code>对象</p>
+</li>
+<li><p>编写<code>User.hbm.xml</code> </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-mapping PUBLIC </span></span><br><span class="line"><span class="meta">    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"</span></span><br><span class="line"><span class="meta">    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"com.zhuchuli.vo.User"</span> <span class="attr">table</span>=<span class="string">"t_user"</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 主键映射 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">column</span>=<span class="string">"id"</span> <span class="attr">type</span>=<span class="string">"int"</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!-- 主键生成策略 --&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"native"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">column</span>=<span class="string">"name"</span> <span class="attr">type</span>=<span class="string">"java.lang.String"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">column</span>=<span class="string">"age"</span> <span class="attr">type</span>=<span class="string">"int"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>src</code>包下新建<code>hibernate.cfg.xml</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-configuration PUBLIC</span></span><br><span class="line"><span class="meta">	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"</span></span><br><span class="line"><span class="meta">	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-configuration</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">session-factory</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.driver_class"</span>&gt;</span>com.mysql.cj.jdbc.Driver<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.url"</span>&gt;</span>jdbc:mysql://localhost:3306/hibernate4?serverTimezone=UTC<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.username"</span>&gt;</span>root<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.password"</span>&gt;</span>123456<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 指定数据库的方言 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dialect"</span>&gt;</span>org.hibernate.dialect.MySQLDialect<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">mapping</span> <span class="attr">resource</span>=<span class="string">"com/zhuchuli/vo/User.hbm.xml"</span>/&gt;</span> </span><br><span class="line">	<span class="tag">&lt;/<span class="name">session-factory</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhuchuli.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.hibernate.Session;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.SessionFactory;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.boot.registry.StandardServiceRegistryBuilder;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.cfg.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.service.ServiceRegistry;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.zhuchuli.vo.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HiberatorTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//1.读取hibrator.cfg.xml配置文件</span></span><br><span class="line">		Configuration cfg=<span class="keyword">new</span> Configuration().configure();</span><br><span class="line">		<span class="comment">//2.创建服务注册</span></span><br><span class="line">		ServiceRegistry registery=<span class="keyword">new</span> StandardServiceRegistryBuilder()</span><br><span class="line">									.applySettings(cfg.getProperties())</span><br><span class="line">									.build();</span><br><span class="line">		<span class="comment">//3.新建sessionFactory对象</span></span><br><span class="line">		SessionFactory factory=cfg.buildSessionFactory(registery);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//4.创建session对象</span></span><br><span class="line">		Session session=factory.openSession();</span><br><span class="line">		<span class="comment">//5.获取数据</span></span><br><span class="line">		User user=(User) session.get(User.class,<span class="number">1</span>);</span><br><span class="line">		System.out.println(user);</span><br><span class="line">		<span class="comment">//6.释放资源</span></span><br><span class="line">		session.close();</span><br><span class="line">		factory.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="第三讲-配置文件讲解"><a href="#第三讲-配置文件讲解" class="headerlink" title="第三讲 配置文件讲解"></a>第三讲 配置文件讲解</h2><ul>
+<li><p><code>hibernate.cfg.xml</code>是<code>hibernate</code>的主配置文件,<code>Configuration</code>读取的也是该对象。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-configuration PUBLIC</span></span><br><span class="line"><span class="meta">	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"</span></span><br><span class="line"><span class="meta">	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-configuration</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">session-factory</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">			数据库连接信息</span></span><br><span class="line"><span class="comment">			根据不同的数据库，要配置不同参数信息。</span></span><br><span class="line"><span class="comment">		 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.driver_class"</span>&gt;</span>com.mysql.cj.jdbc.Driver<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.url"</span>&gt;</span>jdbc:mysql://localhost:3306/hibernate4?serverTimezone=UTC<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.username"</span>&gt;</span>root<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.password"</span>&gt;</span>123456<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 通用配置 --&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 指定数据库的方言 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dialect"</span>&gt;</span>org.hibernate.dialect.MySQLDialect<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 打印sql语句 --&gt;</span> </span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"show_sql"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 格式化sql语句 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"format_sql"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 映射文件信息 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">mapping</span> <span class="attr">resource</span>=<span class="string">"com/zhuchuli/vo/User.hbm.xml"</span>/&gt;</span> </span><br><span class="line">	<span class="tag">&lt;/<span class="name">session-factory</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>映射文件：<code>Xxx-hbm.xml</code></p>
+<blockquote>
+<ul>
+<li>非关系型数据库：<code>MongoDB</code>、<code>HBase</code>、<code>redis</code></li>
+<li>《组成原理》《编译原理》</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-mapping PUBLIC </span></span><br><span class="line"><span class="meta">    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"</span></span><br><span class="line"><span class="meta">    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- package用于指定类所在的包，如果不指定，那么在指定class的name时，需要指定完全限定名 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span> <span class="attr">package</span>=<span class="string">"com.zhuchuli.vo"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">		class指定类的映射信息</span></span><br><span class="line"><span class="comment">		name指定类，如果没有指定package时需要使用完全限定名</span></span><br><span class="line"><span class="comment">		table指定类对应的数据库的数据表名，如果不指定，默认和类型相同。</span></span><br><span class="line"><span class="comment">		schema:指定模式</span></span><br><span class="line"><span class="comment">	 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"User"</span> <span class="attr">table</span>=<span class="string">"t_user"</span> <span class="attr">schema</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">			主键映射</span></span><br><span class="line"><span class="comment">			在hibernate中，类所对应的表必须要有主键</span></span><br><span class="line"><span class="comment">			name:为类所的属性名</span></span><br><span class="line"><span class="comment">			column:是属性名所对应的表的字段名称，类型是属性的类型</span></span><br><span class="line"><span class="comment">			column默认很属性名一致，类型默认和属性的类型一致。</span></span><br><span class="line"><span class="comment">			length 指定长度</span></span><br><span class="line"><span class="comment">		 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">column</span>=<span class="string">"id"</span> <span class="attr">type</span>=<span class="string">"int"</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">				主键生成策略</span></span><br><span class="line"><span class="comment">				</span></span><br><span class="line"><span class="comment">				Oracle数据库 自增生成策略</span></span><br><span class="line"><span class="comment">				 &lt;generator class="sequence"&gt;</span></span><br><span class="line"><span class="comment">				 	&lt;param name="sequence"&gt;user_seq&lt;/param&gt;</span></span><br><span class="line"><span class="comment">				 &lt;/generator&gt;</span></span><br><span class="line"><span class="comment">				 UUID：生成的字符串唯一</span></span><br><span class="line"><span class="comment">				 hilo：使用一个高/低位算法高效生成long，short或int类型的标识符</span></span><br><span class="line"><span class="comment">				 assign:自己输入主键</span></span><br><span class="line"><span class="comment">				 forign：</span></span><br><span class="line"><span class="comment">				 </span></span><br><span class="line"><span class="comment">			 --&gt;</span></span><br><span class="line">			</span><br><span class="line">			<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"native"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- property 指定属性的映射 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">column</span>=<span class="string">"name"</span> <span class="attr">type</span>=<span class="string">"java.lang.String"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">column</span>=<span class="string">"age"</span> <span class="attr">type</span>=<span class="string">"int"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="第四讲-工具类及hibernate-crud操作"><a href="#第四讲-工具类及hibernate-crud操作" class="headerlink" title="第四讲 工具类及hibernate crud操作"></a>第四讲 工具类及hibernate crud操作</h2><ul>
+<li><p>工具类Util</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhuchuli.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.hibernate.Session;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.SessionFactory;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.boot.registry.StandardServiceRegistryBuilder;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.cfg.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.service.ServiceRegistry;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HibernateUtil</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Configuration cfg=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> ServiceRegistry registery=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> SessionFactory factory=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> ThreadLocal&lt;Session&gt; sessionLocal=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">		cfg=<span class="keyword">new</span> Configuration().configure();</span><br><span class="line">		registery=<span class="keyword">new</span> StandardServiceRegistryBuilder()</span><br><span class="line">				 .applySettings(cfg.getProperties())</span><br><span class="line">				 .build();</span><br><span class="line">		<span class="comment">/***</span></span><br><span class="line"><span class="comment">		 * sessionFactory是一个重量级对象，在一个应用中只需一个即可。是一个</span></span><br><span class="line"><span class="comment">		 * 进程级别对象，可以在集群中使用。</span></span><br><span class="line"><span class="comment">		 * 操作完后一般不会释放资源。</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		factory=cfg.buildSessionFactory(registery);</span><br><span class="line">		sessionLocal=<span class="keyword">new</span> ThreadLocal&lt;Session&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Session <span class="title">getSession</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>( sessionLocal.get()!=<span class="keyword">null</span> &amp;&amp; !sessionLocal.get().isOpen()) &#123;</span><br><span class="line">			sessionLocal.set(<span class="keyword">null</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(sessionLocal.get() == <span class="keyword">null</span>) &#123;</span><br><span class="line">			sessionLocal.set(factory.openSession());</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sessionLocal.get();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//释放资源</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(sessionLocal.get()!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			sessionLocal.get().close();</span><br><span class="line">			sessionLocal.set(<span class="keyword">null</span>);</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>crud操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhuchuli.hibernate.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.hibernate.Session;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.Transaction;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.zhuchuli.util.HibernateUtil;</span><br><span class="line"><span class="keyword">import</span> com.zhuchuli.vo.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HibernateTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//删除 先查后删除。</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Session session=<span class="keyword">null</span>;</span><br><span class="line">		Transaction tx=<span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//获取Session对象</span></span><br><span class="line">			session= HibernateUtil.getSession();</span><br><span class="line">			<span class="comment">//获取事务并且开启事务</span></span><br><span class="line">			tx= session.beginTransaction();</span><br><span class="line">			User user=(User) session.get(User.class, <span class="number">4</span>);</span><br><span class="line">			<span class="comment">//删除</span></span><br><span class="line">			session.delete(user);</span><br><span class="line">			<span class="comment">//提交事务</span></span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">if</span>(tx!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			HibernateUtil.close();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//修改数据 先查在修改最后再删除</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Session session=<span class="keyword">null</span>;</span><br><span class="line">		Transaction tx=<span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//获取Session对象</span></span><br><span class="line">			session= HibernateUtil.getSession();</span><br><span class="line">			<span class="comment">//获取事务并且开启事务</span></span><br><span class="line">			tx= session.beginTransaction();</span><br><span class="line">			User user=(User) session.get(User.class, <span class="number">4</span>);</span><br><span class="line">			System.out.println(user);</span><br><span class="line">			user.setName(<span class="string">"小六六"</span>);</span><br><span class="line">			<span class="comment">//修改</span></span><br><span class="line">			session.save(user);</span><br><span class="line">			<span class="comment">//提交事务</span></span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">if</span>(tx!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			HibernateUtil.close();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="comment">//增加数据</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Session session=<span class="keyword">null</span>;</span><br><span class="line">		Transaction tx=<span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//获取Session对象</span></span><br><span class="line">			session= HibernateUtil.getSession();</span><br><span class="line">			<span class="comment">//获取事务并且开启事务</span></span><br><span class="line">			tx= session.beginTransaction();</span><br><span class="line">			<span class="comment">/* 下面两句话等同上面一句话</span></span><br><span class="line"><span class="comment">			Transaction tx=session.getTransaction();</span></span><br><span class="line"><span class="comment">			tx.begin();</span></span><br><span class="line"><span class="comment">			*/</span></span><br><span class="line">			User user = <span class="keyword">new</span> User();</span><br><span class="line">			user.setName(<span class="string">"刘德华"</span>);</span><br><span class="line">			user.setAge(<span class="number">53</span>);</span><br><span class="line">			<span class="comment">//保存数据</span></span><br><span class="line">			session.save(user);</span><br><span class="line">			<span class="comment">//提交事务</span></span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">if</span>(tx!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			HibernateUtil.close();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="第五讲"><a href="#第五讲" class="headerlink" title="第五讲"></a>第五讲</h2><ul>
+<li>软件工程步骤：<blockquote>
+<ul>
+<li>需要分析、概要分析、详细分析、编程、测试、发布</li>
+</ul>
+</blockquote>
+</li>
+<li>测试:<blockquote>
+<ul>
+<li>黑盒测试：工人测试。</li>
+<li>白盒测试：Junit，需要编码实现</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhuchuli.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.hibernate.Session;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.Transaction;</span><br><span class="line"><span class="keyword">import</span> org.junit.After;</span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.zhuchuli.util.HibernateUtil;</span><br><span class="line"><span class="keyword">import</span> com.zhuchuli.vo.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HibernateTest</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Session session=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">private</span> Transaction tx=<span class="keyword">null</span>;</span><br><span class="line">	<span class="meta">@Before</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//获取Session对象</span></span><br><span class="line">			session = HibernateUtil.getSession();</span><br><span class="line">			<span class="comment">//获取事务并且开启事务</span></span><br><span class="line">			tx = session.beginTransaction();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@After</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">tear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		HibernateUtil.close();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSave</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			User user = <span class="keyword">new</span> User();</span><br><span class="line">			user.setName(<span class="string">"张学友"</span>);</span><br><span class="line">			user.setAge(<span class="number">53</span>);</span><br><span class="line">			<span class="comment">//保存数据</span></span><br><span class="line">			session.save(user);</span><br><span class="line">			<span class="comment">//提交事务</span></span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">if</span>(tx!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="第六讲-对象生命周期"><a href="#第六讲-对象生命周期" class="headerlink" title="第六讲 对象生命周期"></a>第六讲 对象生命周期</h2><ol>
+<li>对象生命周期图</li>
+</ol>
+<p><img src="https://i.loli.net/2019/10/07/SprYIvAjzEs85cl.png" alt="对象生命周期.png"></p>
+<ol start="2">
+<li>两种路线<blockquote>
+<ul>
+<li><code>new</code> —&gt; 瞬时状态 —&gt; save() —&gt; 持久状态 —&gt; close() —&gt; 游离状态。 </li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试对象生命周期：第一条线路</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSession1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	User user=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="comment">//user处于瞬时状态</span></span><br><span class="line">		user = <span class="keyword">new</span> User();</span><br><span class="line">		user.setName(<span class="string">"kkk"</span>);</span><br><span class="line">		user.setAge(<span class="number">40</span>);</span><br><span class="line">		<span class="comment">//user处于持久状态</span></span><br><span class="line">		<span class="comment">//对象处于持久状态时被session管理</span></span><br><span class="line">		session.save(user);</span><br><span class="line">		<span class="comment">//对象处于持久状态时，提交事务前会将session中对象与数据库中的记录进行脏数据检查，如果不一致则进行数据同步。</span></span><br><span class="line">		<span class="comment">//user.setAge(23);//此时会自动调用update()</span></span><br><span class="line">		<span class="comment">//提交事务</span></span><br><span class="line">		tx.commit();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span>(tx!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			tx.rollback();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//请除指定对象 ----&gt; session不再管理user</span></span><br><span class="line">	<span class="comment">//user此时处于游离状态，可能会把垃圾回收站回收。</span></span><br><span class="line">	session.evict(user);</span><br><span class="line">	<span class="comment">//close关闭session</span></span><br><span class="line">	session.close();</span><br><span class="line">	<span class="comment">//clear清楚session所有对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>Get —&gt; 持久状态 —&gt; clear —&gt; 游离状态 —&gt; update() —&gt; 持久状态 –&gt; delete() —&gt; 瞬时状态</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试对象生命周期：第二条线路</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSession2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	User user=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="comment">//user对象被session管理，处于持久状态</span></span><br><span class="line">		user=(User) session.get(User.class, <span class="number">1</span>);</span><br><span class="line">		<span class="comment">//调用clear后，session不在管理user，user处理游离状态</span></span><br><span class="line">		session.clear();</span><br><span class="line">		user.setName(<span class="string">"ddd"</span>);<span class="comment">//此时处于游离状态，所有数据库的数据不会发生改变</span></span><br><span class="line">		session.update(user);<span class="comment">//重回持久状态,user对象被session管理.</span></span><br><span class="line">		session.delete(user);<span class="comment">//删除后user对象处于瞬时状态。</span></span><br><span class="line">		tx.commit();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>总结</p>
+<blockquote>
+<ul>
+<li>瞬时状态 session没有，数据库没有</li>
+<li>持久状态 session有，数据库有,在该状态下会进行脏数据的读取</li>
+<li>游离状态 session没有，数据库有</li>
+</ul>
+</blockquote>
+<h2 id="第七讲-hibernate与struts2框架的整合"><a href="#第七讲-hibernate与struts2框架的整合" class="headerlink" title="第七讲 hibernate与struts2框架的整合"></a>第七讲 hibernate与struts2框架的整合</h2><h2 id="第八讲-关联映射之单向多对一"><a href="#第八讲-关联映射之单向多对一" class="headerlink" title="第八讲 关联映射之单向多对一"></a>第八讲 关联映射之单向多对一</h2></li>
+<li><p><code>SchemaExport</code>工具类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment">* 将对象信息 转换为 关系信息</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCreateDB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Configuration cfg=<span class="keyword">new</span> Configuration().configure();</span><br><span class="line">	<span class="comment">//使得hibernate映射信息转化为ddl(数据库定义语言)</span></span><br><span class="line">	SchemaExport se = <span class="keyword">new</span> SchemaExport(cfg);</span><br><span class="line">	<span class="comment">//第一参数：是否打印ddl语句</span></span><br><span class="line">	<span class="comment">//第二个参数：是否将ddl到数据库执行</span></span><br><span class="line">	se.create(<span class="keyword">true</span>, <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通用配置实现hbm to ddl</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">	hbm2ddl.auto：该属性用于配置 是否将映射信息转换为关系信息</span></span><br><span class="line"><span class="comment">	create：每次执行都会删除表再创建表</span></span><br><span class="line"><span class="comment">	update：先检查数据库中表是否存在，如果不存在则先创建表，通常使用update</span></span><br><span class="line"><span class="comment">	create-drop：</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hbm2ddl.auto"</span>&gt;</span>create<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>类与类之间的关系</p>
+<blockquote>
+<ul>
+<li>依赖 –&gt; 关联 –&gt; 组合 –&gt; 聚合</li>
+</ul>
+</blockquote>
+</li>
+<li><p>学生和班级的信息是一个多对一的关系</p>
+<blockquote>
+<ul>
+<li>表结构<br><img src="https://i.loli.net/2019/10/07/lYKRpMnGDsXT3Fr.png" alt="关联.PNG"></li>
+<li>类结构：</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhuchuli.vo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 学生类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 朱楚利</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">	<span class="keyword">private</span> String sex;</span><br><span class="line">	<span class="comment">//学生所对应的班级</span></span><br><span class="line">	<span class="keyword">private</span> Cluss cluss;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getSex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> sex;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSex</span><span class="params">(String sex)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.sex = sex;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Cluss <span class="title">getCluss</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> cluss;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCluss</span><span class="params">(Cluss cluss)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.cluss = cluss;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhuchuli.vo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 班级类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 朱楚利</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cluss</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> String address;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getAddress</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> address;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAddress</span><span class="params">(String address)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.address = address;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>映射文件<blockquote>
+<ul>
+<li>班级映射文件:Cluss_hbm.xml</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span> <span class="attr">package</span>=<span class="string">"com.zhuchuli.vo"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"Cluss"</span> <span class="attr">table</span>=<span class="string">"t_class"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"native"</span>&gt;</span><span class="tag">&lt;/<span class="name">generator</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"address"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/CPWS.github.io/2019/09/29/深入使用struts2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深入使用struts2</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="Hibernate4" data-title="Hibernate4" data-url="https://CPWS.github.io/CPWS.github.io/2019/10/07/Hibernate4/"  data-images="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" data-content="Hibernate4">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 zhuli
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/CPWS.github.io/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/CPWS.github.io/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
