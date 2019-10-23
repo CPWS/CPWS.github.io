@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>spring4 | Prossible&#39;s Blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Spring框架简介 主要发明者：Rod Johnson 轮子理论推崇者：  轮子理论：不用重复发明轮子。 IT行业：直接使用写好的代码。    Spring框架宗旨：不重新发明技术，让原有技术使用起来更加方便。 Spring的极大核心功能  Ioc/DI：控制反转/依赖注入 Aop：面向切面编程 声明式事务    Spring框架的runtime  test:Spring框架提供的测试功能 Co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring4">
+<meta property="og:url" content="https://CPWS.github.io/2019/10/23/spring4/index.html">
+<meta property="og:site_name" content="Prossible&#39;s Blog">
+<meta property="og:description" content="Spring框架简介 主要发明者：Rod Johnson 轮子理论推崇者：  轮子理论：不用重复发明轮子。 IT行业：直接使用写好的代码。    Spring框架宗旨：不重新发明技术，让原有技术使用起来更加方便。 Spring的极大核心功能  Ioc/DI：控制反转/依赖注入 Aop：面向切面编程 声明式事务    Spring框架的runtime  test:Spring框架提供的测试功能 Co">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.loli.net/2019/10/23/SrK7vQueOlyMNRT.png">
+<meta property="og:updated_time" content="2019-10-23T13:10:16.925Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring4">
+<meta name="twitter:description" content="Spring框架简介 主要发明者：Rod Johnson 轮子理论推崇者：  轮子理论：不用重复发明轮子。 IT行业：直接使用写好的代码。    Spring框架宗旨：不重新发明技术，让原有技术使用起来更加方便。 Spring的极大核心功能  Ioc/DI：控制反转/依赖注入 Aop：面向切面编程 声明式事务    Spring框架的runtime  test:Spring框架提供的测试功能 Co">
+<meta name="twitter:image" content="https://i.loli.net/2019/10/23/SrK7vQueOlyMNRT.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/CPWS.github.io/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">zhuli</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/CPWS.github.io/">主页</a></li>
+				        
+							<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">zhuli</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">zhuli</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/CPWS.github.io/">主页</a></li>
+		        
+					<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-spring4" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/CPWS.github.io/2019/10/23/spring4/" class="article-date">
+  	<time datetime="2019-10-23T11:39:01.000Z" itemprop="datePublished">2019-10-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      spring4
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Spring框架简介"><a href="#Spring框架简介" class="headerlink" title="Spring框架简介"></a>Spring框架简介</h2><ol>
+<li>主要发明者：Rod Johnson</li>
+<li>轮子理论推崇者：<blockquote>
+<ul>
+<li>轮子理论：不用重复发明轮子。</li>
+<li>IT行业：直接使用写好的代码。</li>
+</ul>
+</blockquote>
+</li>
+<li>Spring框架宗旨：不重新发明技术，让原有技术使用起来更加方便。</li>
+<li>Spring的极大核心功能<blockquote>
+<ul>
+<li>Ioc/DI：控制反转/依赖注入</li>
+<li>Aop：面向切面编程</li>
+<li>声明式事务</li>
+</ul>
+</blockquote>
+</li>
+<li>Spring框架的runtime<blockquote>
+<ul>
+<li>test:Spring框架提供的测试功能</li>
+<li>Core Container容器：核心容器。Spring启动基本的条件<blockquote>
+<ul>
+<li>Beans：Spring负责创建类对象并管理对象。</li>
+<li>Core：核心类库。</li>
+<li>Context：上下文参数，获取外部资源或者管理注解。</li>
+<li>SpEl：expression.jar</li>
+</ul>
+</blockquote>
+</li>
+<li>AOP:实现aop功能需要依赖</li>
+<li>Aspects：切面AOP依赖的包</li>
+<li>Data Access/Integration：spring封装数据访问层相关内容<blockquote>
+<ul>
+<li>jdbc：spring对jdbc封装后的代码。</li>
+<li>ORM：封装持久层框架的代码；如Hibernate</li>
+</ul>
+</blockquote>
+</li>
+<li>transaction：对应spring-tx.jar 声明式事务</li>
+<li>WEB：需要spring完成Web相关功能时需要<blockquote>
+<ul>
+<li>例如：由tomcat加载spring配置文件需要有<code>spring-web</code>包</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<p><img src="https://i.loli.net/2019/10/23/SrK7vQueOlyMNRT.png" alt="1571831446_1_.png"></p>
+<ol start="6">
+<li>Spring框架中重要概念：<blockquote>
+<ul>
+<li>容器(container)：spring当做一个大容器</li>
+<li>BeanFactory接口：老版本。<blockquote>
+<ul>
+<li>新版本中ApplicationContext接口BeanFactory子接口。BeanFactory的功能在ApplicationContext中都有。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>从Spring3开始把Spring框架的功能拆分成多个.jar</li>
+</ol>
+<hr>
+<h2 id="SpringIoc简介："><a href="#SpringIoc简介：" class="headerlink" title="SpringIoc简介："></a>SpringIoc简介：</h2><ol>
+<li>中文名称：控制反转</li>
+<li>英文名称：（Inversion of Control）</li>
+<li>Ioc是什么？<blockquote>
+<ul>
+<li>Ioc完成的事情是原先由程序主动通过new实例化对象事情，转交给Spring负责。</li>
+<li>控制反转中的控制指的是：控制类的对象。</li>
+<li>控制反转中的反转指的是：转交给Spring负责。</li>
+<li>Ioc最大的作用：<code>解耦</code>。</li>
+<li>程序员不需要去管理对象。解除了对象管理和程序员之间的耦合。</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<hr>
+<p>## </p>
+<hr>
+<h2 id><a href="#" class="headerlink" title="## "></a>## </h2>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/CPWS.github.io/2019/10/18/SSM/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">&#39;SSM&#39;</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="spring4" data-title="spring4" data-url="https://CPWS.github.io/CPWS.github.io/2019/10/23/spring4/"  data-images="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" data-content="spring4">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 zhuli
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/CPWS.github.io/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/CPWS.github.io/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
