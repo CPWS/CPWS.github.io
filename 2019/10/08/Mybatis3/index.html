@@ -1,250 +1,210 @@
-
-
 <!DOCTYPE html>
-<html lang>
-<!--begin head-->
+<html>
 <head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
-<!--begin title-->
+  <meta charset="utf-8">
+  
+  <title>Mybatis3 | Prossible&#39;s Blog</title>
 
-<title>
-    
-    Mybatis3 |
-    
-    Prossible&#39;s Blog</title>
-<!--end title-->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<!--begin mete-->
+  <!-- keywords -->
+  
 
-<meta name="author" content="zhuli">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数据库命令 创建数据库并制定编码 1Create database 数据库名 default character set utf8  创建表 123Create table 表名(    列明 类型  约束 auto_increment comment &apos;备注&apos;)     命名规范 项目名：没有要求，不起中文 包：公司域名倒写 持久层：dao,persist,mapper 实体层：entity，m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mybatis3">
+<meta property="og:url" content="https://CPWS.github.io/2019/10/08/Mybatis3/index.html">
+<meta property="og:site_name" content="Prossible&#39;s Blog">
+<meta property="og:description" content="数据库命令 创建数据库并制定编码 1Create database 数据库名 default character set utf8  创建表 123Create table 表名(    列明 类型  约束 auto_increment comment &apos;备注&apos;)     命名规范 项目名：没有要求，不起中文 包：公司域名倒写 持久层：dao,persist,mapper 实体层：entity，m">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.loli.net/2019/10/09/ultwxJpfCjALhr6.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/09/edzYJMxDN5CbiXZ.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/13/i4OBHXfMobshU2a.png">
+<meta property="og:updated_time" content="2019-10-15T05:52:10.319Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mybatis3">
+<meta name="twitter:description" content="数据库命令 创建数据库并制定编码 1Create database 数据库名 default character set utf8  创建表 123Create table 表名(    列明 类型  约束 auto_increment comment &apos;备注&apos;)     命名规范 项目名：没有要求，不起中文 包：公司域名倒写 持久层：dao,persist,mapper 实体层：entity，m">
+<meta name="twitter:image" content="https://i.loli.net/2019/10/09/ultwxJpfCjALhr6.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/CPWS.github.io/css/style.css">
+  
+  
 
-<!--end mete-->
-<!--begin keywords-->
-<meta name="keywords" content="Mybatis3">
-<!--end keywords-->
-<!--begin rss-->
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 
-<link rel="alternate" href="/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			
+		</a>
 
-<!--end rss-->
-<!--begin favicon-->
+		<hgroup>
+		  <h1 class="header-author"><a href="/">zhuli</a></h1>
+		</hgroup>
 
-<link rel="icon" href="/favicon.ico">
+		
 
-<!--end favicon-->
-<!--begin style-->
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
 
-<!-- stylesheets list from config.yml -->
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/CPWS.github.io/">主页</a></li>
+				        
+							<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
 
-<link rel="stylesheet" href="/css/hannah.css">
-
-
-<!--end style-->
-</head>
-<!--end head-->
-<!--begin body-->
-<body class="container-fluid">
-
-<!--begin menu-->
-<div class="hannah-menu">
-    <i class="fh fh-ravelry fa-2x btn fixed-menu animated bounce" id="btn_menu" aria-hidden="true"></i>
-    <div class="menu-outer container-fluid hide animated" id="div_menu">
-        <div class="row" style="margin-bottom: 5px;">
-            
-            <div class="col-md-offset-2 col-md-3 col-xs-4 text-center left-social">
-                
-                <a target="_blank" href="https://github.com/objectyan" title="GitHub"><i class="fh fh-github"></i></a>
-                
-                <style>
-                    .left-social {
-                        height: 132px;
-                        line-height: 132px;
-                        font-size: 66px;
-                    }
-
-                    .left-social * {
-                        color: #f1ce8e;
-                    }
-
-                    @media (max-width: 767px) {
-                        .left-social {
-                            line-height: 132px;
-                            font-size: 33px;
-                        }
-                    }
-                </style>
-            </div>
-            <!--begin handImg-->
-            <div class="col-md-2 col-xs-4 text-center">
-                
-            </div>
-            <!--end handImg-->
-            <div class="col-md-3 col-xs-4 text-center right-social">
-                
-                <style>
-                    .right-social {
-                        height: 132px;
-                        line-height: 132px;
-                        font-size: 66px;
-                    }
-
-                    @media (max-width: 767px) {
-                        .right-social {
-                            line-height: 132px;
-                            font-size: 33px;
-                        }
-                    }
-
-                    .right-social * {
-                        color: #f1ce8e;
-                    }
-                </style>
-            </div>
-        </div>
-        <div class="row">
-            <div class="menu-content col-md-8 col-md-push-2 col-xs-12 ">
-                <dl class="menu-content-item">
-                    <dt class="menu-content-title">
-                        <i class="fh fh-bars" aria-hidden="true"></i> Menu
-                    </dt>
-                    <dd class="menu-content-content">
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/" class="btn btn-block">
-                                
-                                <i class="fh fh-ravelry"></i>
-                                Home
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/categories" class="btn btn-block">
-                                
-                                <i class="fh fh-cubes"></i>
-                                Category
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/tags" class="btn btn-block">
-                                
-                                <i class="fh fh-tags"></i>
-                                Tag
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/archives" class="btn btn-block">
-                                
-                                <i class="fh fh-archive"></i>
-                                Archives
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/about" class="btn btn-block">
-                                
-                                <i class="fh fh-about"></i>
-                                About
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/doc" class="btn btn-block">
-                                
-                                <i class="fh fh-document"></i>
-                                Doc
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/plug" class="btn btn-block">
-                                
-                                <i class="fh fh-plug"></i>
-                                Plug
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/sitemap" class="btn btn-block">
-                                
-                                <i class="fh fh-sitemap"></i>
-                                SiteMap
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/atom.xml" class="btn btn-block">
-                                <i class="fh fh-rss" aria-hidden="true"></i> RSS
-                            </a>
-                        </div>
-                    </dd>
-                </dl>
-            </div>
-        </div>
-        <div class="row">
-            <div class="menu-content col-md-8 col-md-offset-2 col-xs-12 ">
-                <dl class="col-md-6 col-xs-6 menu-content-item">
-                    <dt class="menu-content-title">
-                        <i class="fh fh-cubes" aria-hidden="true"></i> Category
-                    </dt>
-                    <dd class="menu-content-content animated zoomIn">
-                        
-                    </dd>
-                </dl>
-                <dl class="col-md-6 col-xs-6 menu-content-item">
-                    <dt class="menu-content-title">
-                        <i class="fh fh-tag" aria-hidden="true"></i> Tags
-                    </dt>
-                    <dd class="menu-content-content animated zoomIn">
-                        
-                    </dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-</div>
-<!--end menu-->
-
-<div class="row hannah-body">
-    <div class="col-md-8 col-md-push-2 col-xs-12">
-        <!--begin breadcrumb-->
-        <div class="bread-crumb">
-    <ul class="bread-crumb-menu animated rubberBand">
-        <li><a href="/CPWS.github.io/"><i class="fh fh-ravelry" aria-hidden="true"></i> Home</a></li>
-        
-        <li>
-            
-            <i class="fh fh-newspaper-o" aria-hidden="true"></i>
-            
-            Mybatis3
-        </li>
-        
-    </ul>
-    <div class="bread-crumb-search">
-        <div class="search">
-    <i class="fh fh-search icon-search"></i>
-    <input placeholder="Search ..." onkeyup="searchFunc(this,event,'/CPWS.github.io/search.xml')" class="input-search animated fadeInRight">
-    <div class="search-result animated fadeInRight">
-        <a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/26/hibernate5/">hibernate5</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/23/spring4/">spring4</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/18/SSM/">'SSM'</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/14/文档study/">文档study'</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/08/Mybatis3/">Mybatis3</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/07/Hibernate4/">Hibernate4</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/29/深入使用struts2/">深入使用struts2</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/25/Java邮箱接口/">Java邮箱接口</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/17/Struts2-5/">Struts2.5</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/10/Struts2/">Struts2</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/09/Log4j与Junit测试/">Log4j与Junit测试</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/08/正则表达式/">正则表达式</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/02/注解与反射/">注解与反射</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/06/28/文件上传/">文件上传</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/06/28/解决中文乱码/">解决中文乱码</a>
-    </div>
+				
+			</div>
+		</div>
+	</header>				
 </div>
     </div>
-</div>
-        <!--end breadcrumb-->
-        <article class="post animated rollIn">
-    <h1 class="post-title">Mybatis3</h1>
-    <div class="post-subtitle">
-        
-        <time datetime="2019-10-08T11:25:53.000Z" class="item">
-            <i class="fh fh-calendar" aria-hidden="true"></i>&nbsp;&nbsp;2019-10-08
-        </time>
-        
-        
-        
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">zhuli</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">zhuli</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/CPWS.github.io/">主页</a></li>
+		        
+					<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Mybatis3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/CPWS.github.io/2019/10/08/Mybatis3/" class="article-date">
+  	<time datetime="2019-10-08T11:25:53.000Z" itemprop="datePublished">2019-10-08</time>
+</a>
     </div>
+  
+  <div class="article-inner">
     
-    <h2 id="数据库命令"><a href="#数据库命令" class="headerlink" title="数据库命令"></a>数据库命令</h2><ol>
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mybatis3
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据库命令"><a href="#数据库命令" class="headerlink" title="数据库命令"></a>数据库命令</h2><ol>
 <li><p>创建数据库并制定编码</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Create</span> <span class="keyword">database</span> 数据库名 <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8</span><br></pre></td></tr></table></figure>
 </li>
@@ -1114,77 +1074,109 @@
 </ul>
 </blockquote>
 
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/CPWS.github.io/2019/10/14/文档study/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          文档study&#39;
+        
+      </div>
+    </a>
+  
+  
+    <a href="/CPWS.github.io/2019/10/07/Hibernate4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hibernate4</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-<ol class="animated rollIn hannah-toc"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#数据库命令"><span class="animated rollIn hannah-toc-text">数据库命令</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#命名规范"><span class="animated rollIn hannah-toc-text">命名规范</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#MVC开发模式"><span class="animated rollIn hannah-toc-text">MVC开发模式</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#jsp-Servlet完成查询和新增"><span class="animated rollIn hannah-toc-text">jsp+Servlet完成查询和新增</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#框架是什么？"><span class="animated rollIn hannah-toc-text">框架是什么？</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#Mybatis简介"><span class="animated rollIn hannah-toc-text">Mybatis简介</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#Mybatis-环境搭建"><span class="animated rollIn hannah-toc-text">Mybatis 环境搭建</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#环境搭建讲解"><span class="animated rollIn hannah-toc-text">环境搭建讲解</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#数据库连接池"><span class="animated rollIn hannah-toc-text">数据库连接池</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#三种查询方式"><span class="animated rollIn hannah-toc-text">三种查询方式</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#Log4j复习"><span class="animated rollIn hannah-toc-text">Log4j复习</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#lt-settings-gt-标签"><span class="animated rollIn hannah-toc-text">&lt;settings&gt;标签</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#parameterType-属性"><span class="animated rollIn hannah-toc-text">parameterType 属性</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#mybatis-实现mysql分页查询"><span class="animated rollIn hannah-toc-text">mybatis 实现mysql分页查询</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#别名"><span class="animated rollIn hannah-toc-text">别名</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#MyBatis实现新增"><span class="animated rollIn hannah-toc-text">MyBatis实现新增</span></a></li></ol></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#Mybatis接口绑定方案及多参数传递"><span class="animated rollIn hannah-toc-text">Mybatis接口绑定方案及多参数传递</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#动态SQL"><span class="animated rollIn hannah-toc-text">动态SQL</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#ThreadLocal-OpenSessionInView"><span class="animated rollIn hannah-toc-text">ThreadLocal+OpenSessionInView</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#缓存"><span class="animated rollIn hannah-toc-text">缓存</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#多表查询分类"><span class="animated rollIn hannah-toc-text">多表查询分类</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#lt-resultMap-gt-标签"><span class="animated rollIn hannah-toc-text">&lt;resultMap&gt;标签</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#使用resultMap实现关联单个对象-N-1方式"><span class="animated rollIn hannah-toc-text">使用resultMap实现关联单个对象(N+1方式)</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#使用-lt-resultMap-gt-查询关联集合对象（N-1）"><span class="animated rollIn hannah-toc-text">使用&lt;resultMap&gt;查询关联集合对象（N+1）</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#使用-lt-resultMap-gt-实现加载集合数据（联合查询方式）"><span class="animated rollIn hannah-toc-text">使用&lt;resultMap&gt;实现加载集合数据（联合查询方式）</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#AutoMapping-结合别名实现多表查询"><span class="animated rollIn hannah-toc-text">AutoMapping 结合别名实现多表查询</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#Mybatis运行原理"><span class="animated rollIn hannah-toc-text">Mybatis运行原理</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#Spring全家桶"><span class="animated rollIn hannah-toc-text">Spring全家桶</span></a></li></ol>
-<div class="animated bounceInDown paginations">
-    <div class="col-md-8 col-md-push-2 col-xs-12">
-        <nav>
-            
-            <a href="/CPWS.github.io/2019/10/14/文档study/" class="prev col-md-2 col-xs-4 text-left">&larr; Prev</a>
-            
-            <span class="page-content col-md-8  col-xs-4 text-center">
-                
-            </span>
-            
-            <a href="/CPWS.github.io/2019/10/07/Hibernate4/" class="next col-md-2 col-xs-4 text-right">Next &rarr;</a>
-            
-        </nav>
-        <div>
-            <div class="col-md-6 col-xs-6 text-left">
-                
-                文档study'
-                
-            </div>
-            <div class="col-md-6 col-xs-6 text-right">
-                
-                Hibernate4
-                
-            </div>
+
+
+<div class="ds-share share" data-thread-key="Mybatis3" data-title="Mybatis3" data-url="https://CPWS.github.io/CPWS.github.io/2019/10/08/Mybatis3/"  data-images="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" data-content="Mybatis3">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 zhuli
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
         </div>
     </div>
-</div>
-
-        <!--begin comments-->
-        
-<div class="comments" id="comments">
-    
-
-</div>
-
-
-        <!--end comments-->
-    </div>
-</div>
-
-<!--begin footer-->
-<footer id="footer" class="footer animated fadeInUp hide">
-    <p><i class="copy">&copy;</i> 2019 <a href="https://CPWS.github.io">zhuli</a> All Right Reserved.</p>
-    <p>Powered by <a href="http://hexo.io">Hexo</a>. Theme by <a href="https://github.com/objectyan/hexo-theme-hannah">hannah</a></p>
+  </div>
 </footer>
-<!--end footer-->
+    </div>
+    
+  <link rel="stylesheet" href="/CPWS.github.io/fancybox/jquery.fancybox.css">
 
 
-<!-- scripts list from theme config.yml -->
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/CPWS.github.io/js/main.js"></script>
 
-<script src="/js/hannah.js"></script>
-
-<script src="/js/canvas-nest.js"></script>
 
 
-<!--begin analytics-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
 
-<script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?8fb2a05be303b36faebf141d7317de43";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
 </script>
 
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
 
-<!--end analytics-->
+
+  </div>
 </body>
-<!--end body-->
 </html>

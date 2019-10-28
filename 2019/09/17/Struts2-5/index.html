@@ -1,250 +1,212 @@
-
-
 <!DOCTYPE html>
-<html lang>
-<!--begin head-->
+<html>
 <head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
-<!--begin title-->
+  <meta charset="utf-8">
+  
+  <title>Struts2.5 | Prossible&#39;s Blog</title>
 
-<title>
-    
-    Struts2.5 |
-    
-    Prossible&#39;s Blog</title>
-<!--end title-->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<!--begin mete-->
+  <!-- keywords -->
+  
 
-<meta name="author" content="zhuli">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Struts2的下载和安装 为Web应用增加的Struts支持 下载和安装Struts2的步骤如下:   登录https://struts.apache.org/download.cgi#struts2520站点，下载Struts2的最新包2.5.20。   进入Struts2的解压目录的lib目录下，将一些相关的jar包导入到Web用于的/web-inf/lib路径下。  编写Web应用的web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Struts2.5">
+<meta property="og:url" content="https://CPWS.github.io/2019/09/17/Struts2-5/index.html">
+<meta property="og:site_name" content="Prossible&#39;s Blog">
+<meta property="og:description" content="Struts2的下载和安装 为Web应用增加的Struts支持 下载和安装Struts2的步骤如下:   登录https://struts.apache.org/download.cgi#struts2520站点，下载Struts2的最新包2.5.20。   进入Struts2的解压目录的lib目录下，将一些相关的jar包导入到Web用于的/web-inf/lib路径下。  编写Web应用的web">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.loli.net/2019/09/19/LfxoSuNEtpTCB1q.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/21/YPtVnDedqMWkEJ7.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/22/uBra3fH8XPh9cUJ.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/26/6F3WfxAaLRvb9Xu.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/27/RZOMBSxdKJ7rDv2.png">
+<meta property="og:updated_time" content="2019-09-29T11:18:30.866Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Struts2.5">
+<meta name="twitter:description" content="Struts2的下载和安装 为Web应用增加的Struts支持 下载和安装Struts2的步骤如下:   登录https://struts.apache.org/download.cgi#struts2520站点，下载Struts2的最新包2.5.20。   进入Struts2的解压目录的lib目录下，将一些相关的jar包导入到Web用于的/web-inf/lib路径下。  编写Web应用的web">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/19/LfxoSuNEtpTCB1q.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/CPWS.github.io/css/style.css">
+  
+  
 
-<!--end mete-->
-<!--begin keywords-->
-<meta name="keywords" content="Struts2.5">
-<!--end keywords-->
-<!--begin rss-->
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 
-<link rel="alternate" href="/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			
+		</a>
 
-<!--end rss-->
-<!--begin favicon-->
+		<hgroup>
+		  <h1 class="header-author"><a href="/">zhuli</a></h1>
+		</hgroup>
 
-<link rel="icon" href="/favicon.ico">
+		
 
-<!--end favicon-->
-<!--begin style-->
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
 
-<!-- stylesheets list from config.yml -->
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/CPWS.github.io/">主页</a></li>
+				        
+							<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
 
-<link rel="stylesheet" href="/css/hannah.css">
-
-
-<!--end style-->
-</head>
-<!--end head-->
-<!--begin body-->
-<body class="container-fluid">
-
-<!--begin menu-->
-<div class="hannah-menu">
-    <i class="fh fh-ravelry fa-2x btn fixed-menu animated bounce" id="btn_menu" aria-hidden="true"></i>
-    <div class="menu-outer container-fluid hide animated" id="div_menu">
-        <div class="row" style="margin-bottom: 5px;">
-            
-            <div class="col-md-offset-2 col-md-3 col-xs-4 text-center left-social">
-                
-                <a target="_blank" href="https://github.com/objectyan" title="GitHub"><i class="fh fh-github"></i></a>
-                
-                <style>
-                    .left-social {
-                        height: 132px;
-                        line-height: 132px;
-                        font-size: 66px;
-                    }
-
-                    .left-social * {
-                        color: #f1ce8e;
-                    }
-
-                    @media (max-width: 767px) {
-                        .left-social {
-                            line-height: 132px;
-                            font-size: 33px;
-                        }
-                    }
-                </style>
-            </div>
-            <!--begin handImg-->
-            <div class="col-md-2 col-xs-4 text-center">
-                
-            </div>
-            <!--end handImg-->
-            <div class="col-md-3 col-xs-4 text-center right-social">
-                
-                <style>
-                    .right-social {
-                        height: 132px;
-                        line-height: 132px;
-                        font-size: 66px;
-                    }
-
-                    @media (max-width: 767px) {
-                        .right-social {
-                            line-height: 132px;
-                            font-size: 33px;
-                        }
-                    }
-
-                    .right-social * {
-                        color: #f1ce8e;
-                    }
-                </style>
-            </div>
-        </div>
-        <div class="row">
-            <div class="menu-content col-md-8 col-md-push-2 col-xs-12 ">
-                <dl class="menu-content-item">
-                    <dt class="menu-content-title">
-                        <i class="fh fh-bars" aria-hidden="true"></i> Menu
-                    </dt>
-                    <dd class="menu-content-content">
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/" class="btn btn-block">
-                                
-                                <i class="fh fh-ravelry"></i>
-                                Home
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/categories" class="btn btn-block">
-                                
-                                <i class="fh fh-cubes"></i>
-                                Category
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/tags" class="btn btn-block">
-                                
-                                <i class="fh fh-tags"></i>
-                                Tag
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/archives" class="btn btn-block">
-                                
-                                <i class="fh fh-archive"></i>
-                                Archives
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/about" class="btn btn-block">
-                                
-                                <i class="fh fh-about"></i>
-                                About
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/doc" class="btn btn-block">
-                                
-                                <i class="fh fh-document"></i>
-                                Doc
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/plug" class="btn btn-block">
-                                
-                                <i class="fh fh-plug"></i>
-                                Plug
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/sitemap" class="btn btn-block">
-                                
-                                <i class="fh fh-sitemap"></i>
-                                SiteMap
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/atom.xml" class="btn btn-block">
-                                <i class="fh fh-rss" aria-hidden="true"></i> RSS
-                            </a>
-                        </div>
-                    </dd>
-                </dl>
-            </div>
-        </div>
-        <div class="row">
-            <div class="menu-content col-md-8 col-md-offset-2 col-xs-12 ">
-                <dl class="col-md-6 col-xs-6 menu-content-item">
-                    <dt class="menu-content-title">
-                        <i class="fh fh-cubes" aria-hidden="true"></i> Category
-                    </dt>
-                    <dd class="menu-content-content animated zoomIn">
-                        
-                    </dd>
-                </dl>
-                <dl class="col-md-6 col-xs-6 menu-content-item">
-                    <dt class="menu-content-title">
-                        <i class="fh fh-tag" aria-hidden="true"></i> Tags
-                    </dt>
-                    <dd class="menu-content-content animated zoomIn">
-                        
-                    </dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-</div>
-<!--end menu-->
-
-<div class="row hannah-body">
-    <div class="col-md-8 col-md-push-2 col-xs-12">
-        <!--begin breadcrumb-->
-        <div class="bread-crumb">
-    <ul class="bread-crumb-menu animated rubberBand">
-        <li><a href="/CPWS.github.io/"><i class="fh fh-ravelry" aria-hidden="true"></i> Home</a></li>
-        
-        <li>
-            
-            <i class="fh fh-newspaper-o" aria-hidden="true"></i>
-            
-            Struts2.5
-        </li>
-        
-    </ul>
-    <div class="bread-crumb-search">
-        <div class="search">
-    <i class="fh fh-search icon-search"></i>
-    <input placeholder="Search ..." onkeyup="searchFunc(this,event,'/CPWS.github.io/search.xml')" class="input-search animated fadeInRight">
-    <div class="search-result animated fadeInRight">
-        <a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/26/hibernate5/">hibernate5</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/23/spring4/">spring4</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/18/SSM/">'SSM'</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/14/文档study/">文档study'</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/08/Mybatis3/">Mybatis3</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/07/Hibernate4/">Hibernate4</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/29/深入使用struts2/">深入使用struts2</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/25/Java邮箱接口/">Java邮箱接口</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/17/Struts2-5/">Struts2.5</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/10/Struts2/">Struts2</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/09/Log4j与Junit测试/">Log4j与Junit测试</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/08/正则表达式/">正则表达式</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/02/注解与反射/">注解与反射</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/06/28/文件上传/">文件上传</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/06/28/解决中文乱码/">解决中文乱码</a>
-    </div>
+				
+			</div>
+		</div>
+	</header>				
 </div>
     </div>
-</div>
-        <!--end breadcrumb-->
-        <article class="post animated rollIn">
-    <h1 class="post-title">Struts2.5</h1>
-    <div class="post-subtitle">
-        
-        <time datetime="2019-09-17T08:17:50.000Z" class="item">
-            <i class="fh fh-calendar" aria-hidden="true"></i>&nbsp;&nbsp;2019-09-17
-        </time>
-        
-        
-        
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">zhuli</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">zhuli</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/CPWS.github.io/">主页</a></li>
+		        
+					<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Struts2-5" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/CPWS.github.io/2019/09/17/Struts2-5/" class="article-date">
+  	<time datetime="2019-09-17T08:17:50.000Z" itemprop="datePublished">2019-09-17</time>
+</a>
     </div>
+  
+  <div class="article-inner">
     
-    <h2 id="Struts2的下载和安装"><a href="#Struts2的下载和安装" class="headerlink" title="Struts2的下载和安装"></a>Struts2的下载和安装</h2><hr>
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Struts2.5
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Struts2的下载和安装"><a href="#Struts2的下载和安装" class="headerlink" title="Struts2的下载和安装"></a>Struts2的下载和安装</h2><hr>
 <h3 id="为Web应用增加的Struts支持"><a href="#为Web应用增加的Struts支持" class="headerlink" title="为Web应用增加的Struts支持"></a>为<code>Web</code>应用增加的<code>Struts</code>支持</h3><ul>
 <li>下载和安装Struts2的步骤如下:</li>
 </ul>
@@ -1176,77 +1138,109 @@
 </li>
 </ul>
 
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/CPWS.github.io/2019/09/25/Java邮箱接口/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Java邮箱接口
+        
+      </div>
+    </a>
+  
+  
+    <a href="/CPWS.github.io/2019/09/10/Struts2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Struts2</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-<ol class="animated rollIn hannah-toc"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#Struts2的下载和安装"><span class="animated rollIn hannah-toc-text">Struts2的下载和安装</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#为Web应用增加的Struts支持"><span class="animated rollIn hannah-toc-text">为Web应用增加的Struts支持</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#在Eclipse使用Struts2"><span class="animated rollIn hannah-toc-text">在Eclipse使用Struts2</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#增加登录处理"><span class="animated rollIn hannah-toc-text">增加登录处理</span></a></li></ol></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#Struts2的流程"><span class="animated rollIn hannah-toc-text">Struts2的流程</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Struts2应用的开发步骤"><span class="animated rollIn hannah-toc-text">Struts2应用的开发步骤</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Struts2的运行流程"><span class="animated rollIn hannah-toc-text">Struts2的运行流程</span></a></li></ol></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#Struts2的常规配置"><span class="animated rollIn hannah-toc-text">Struts2的常规配置</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#常量配置"><span class="animated rollIn hannah-toc-text">常量配置</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#包含其他配置文件"><span class="animated rollIn hannah-toc-text">包含其他配置文件</span></a></li></ol></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#实现Action"><span class="animated rollIn hannah-toc-text">实现Action</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Action接口和ActionSupport基类"><span class="animated rollIn hannah-toc-text">Action接口和ActionSupport基类</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Action访问ServletAPI"><span class="animated rollIn hannah-toc-text">Action访问ServletAPI</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Action直接访问ServletAPI"><span class="animated rollIn hannah-toc-text">Action直接访问ServletAPI</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#ServletActionContext访问ServletAPI"><span class="animated rollIn hannah-toc-text">ServletActionContext访问ServletAPI</span></a></li></ol></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#配置Action"><span class="animated rollIn hannah-toc-text">配置Action</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#包和命名空间"><span class="animated rollIn hannah-toc-text">包和命名空间</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Action的基本配置"><span class="animated rollIn hannah-toc-text">Action的基本配置</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#使用Action的动态方法调用"><span class="animated rollIn hannah-toc-text">使用Action的动态方法调用</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#指定Method属性及其通配符"><span class="animated rollIn hannah-toc-text">指定Method属性及其通配符</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#配置默认的Action与配置默认的处理类"><span class="animated rollIn hannah-toc-text">配置默认的Action与配置默认的处理类</span></a></li></ol></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#配置处理结果"><span class="animated rollIn hannah-toc-text">配置处理结果</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#理解处理结果"><span class="animated rollIn hannah-toc-text">理解处理结果</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#配置结果"><span class="animated rollIn hannah-toc-text">配置结果</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Struts2支持的结果类型"><span class="animated rollIn hannah-toc-text">Struts2支持的结果类型</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#动态结果"><span class="animated rollIn hannah-toc-text">动态结果</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Action属性值决定物理视图资源"><span class="animated rollIn hannah-toc-text">Action属性值决定物理视图资源</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#全局结果"><span class="animated rollIn hannah-toc-text">全局结果</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#使用PreResultListener"><span class="animated rollIn hannah-toc-text">使用PreResultListener</span></a></li></ol></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#配置Struts2的异常处理"><span class="animated rollIn hannah-toc-text">配置Struts2的异常处理</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Struts2的异常处理机制"><span class="animated rollIn hannah-toc-text">Struts2的异常处理机制</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#声明式异常捕获"><span class="animated rollIn hannah-toc-text">声明式异常捕获</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#输出异常信息"><span class="animated rollIn hannah-toc-text">输出异常信息</span></a></li></ol></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#Convention插件与约定支持"><span class="animated rollIn hannah-toc-text">Convention插件与约定支持</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Action的搜索和映射约定"><span class="animated rollIn hannah-toc-text">Action的搜索和映射约定</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#按约定映射Result"><span class="animated rollIn hannah-toc-text">按约定映射Result</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Action链的约定"><span class="animated rollIn hannah-toc-text">Action链的约定</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#自动重加载映射"><span class="animated rollIn hannah-toc-text">自动重加载映射</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Convention插件的相关常量"><span class="animated rollIn hannah-toc-text">Convention插件的相关常量</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Convention插件的相关注解"><span class="animated rollIn hannah-toc-text">Convention插件的相关注解</span></a></li></ol></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#使用Struts2的国际化"><span class="animated rollIn hannah-toc-text">使用Struts2的国际化</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#视图页面的国际化"><span class="animated rollIn hannah-toc-text">视图页面的国际化</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Action的国际化"><span class="animated rollIn hannah-toc-text">Action的国际化</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#使用包范围的国际化资源"><span class="animated rollIn hannah-toc-text">使用包范围的国际化资源</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#使用全局国际化资源"><span class="animated rollIn hannah-toc-text">使用全局国际化资源</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#输出带占位符的国际化消息"><span class="animated rollIn hannah-toc-text">输出带占位符的国际化消息</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#加载资源文件的顺序"><span class="animated rollIn hannah-toc-text">加载资源文件的顺序</span></a></li></ol></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#使用Struts2的标签库"><span class="animated rollIn hannah-toc-text">使用Struts2的标签库</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Struts2标签库概述"><span class="animated rollIn hannah-toc-text">Struts2标签库概述</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#使用Struts2标签"><span class="animated rollIn hannah-toc-text">使用Struts2标签</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Struts2的OGNL表达式语言"><span class="animated rollIn hannah-toc-text">Struts2的OGNL表达式语言</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#OGNL中的集合操作"><span class="animated rollIn hannah-toc-text">OGNL中的集合操作</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#访问静态成员"><span class="animated rollIn hannah-toc-text">访问静态成员</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Lambda表达式"><span class="animated rollIn hannah-toc-text">Lambda表达式</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#控制标签"><span class="animated rollIn hannah-toc-text">控制标签</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#数据标签"><span class="animated rollIn hannah-toc-text">数据标签</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#主题和模板"><span class="animated rollIn hannah-toc-text">主题和模板</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#自定义主题"><span class="animated rollIn hannah-toc-text">自定义主题</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#表单标签"><span class="animated rollIn hannah-toc-text">表单标签</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#非表单标签"><span class="animated rollIn hannah-toc-text">非表单标签</span></a></li></ol></li></ol>
-<div class="animated bounceInDown paginations">
-    <div class="col-md-8 col-md-push-2 col-xs-12">
-        <nav>
-            
-            <a href="/CPWS.github.io/2019/09/25/Java邮箱接口/" class="prev col-md-2 col-xs-4 text-left">&larr; Prev</a>
-            
-            <span class="page-content col-md-8  col-xs-4 text-center">
-                
-            </span>
-            
-            <a href="/CPWS.github.io/2019/09/10/Struts2/" class="next col-md-2 col-xs-4 text-right">Next &rarr;</a>
-            
-        </nav>
-        <div>
-            <div class="col-md-6 col-xs-6 text-left">
-                
-                Java邮箱接口
-                
-            </div>
-            <div class="col-md-6 col-xs-6 text-right">
-                
-                Struts2
-                
-            </div>
+
+
+<div class="ds-share share" data-thread-key="Struts2-5" data-title="Struts2.5" data-url="https://CPWS.github.io/CPWS.github.io/2019/09/17/Struts2-5/"  data-images="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" data-content="Struts2.5">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 zhuli
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
         </div>
     </div>
-</div>
-
-        <!--begin comments-->
-        
-<div class="comments" id="comments">
-    
-
-</div>
-
-
-        <!--end comments-->
-    </div>
-</div>
-
-<!--begin footer-->
-<footer id="footer" class="footer animated fadeInUp hide">
-    <p><i class="copy">&copy;</i> 2019 <a href="https://CPWS.github.io">zhuli</a> All Right Reserved.</p>
-    <p>Powered by <a href="http://hexo.io">Hexo</a>. Theme by <a href="https://github.com/objectyan/hexo-theme-hannah">hannah</a></p>
+  </div>
 </footer>
-<!--end footer-->
+    </div>
+    
+  <link rel="stylesheet" href="/CPWS.github.io/fancybox/jquery.fancybox.css">
 
 
-<!-- scripts list from theme config.yml -->
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/CPWS.github.io/js/main.js"></script>
 
-<script src="/js/hannah.js"></script>
-
-<script src="/js/canvas-nest.js"></script>
 
 
-<!--begin analytics-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
 
-<script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?8fb2a05be303b36faebf141d7317de43";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
 </script>
 
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
 
-<!--end analytics-->
+
+  </div>
 </body>
-<!--end body-->
 </html>

@@ -1,250 +1,206 @@
-
-
 <!DOCTYPE html>
-<html lang>
-<!--begin head-->
+<html>
 <head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
-<!--begin title-->
+  <meta charset="utf-8">
+  
+  <title>文件上传 | Prossible&#39;s Blog</title>
 
-<title>
-    
-    文件上传 |
-    
-    Prossible&#39;s Blog</title>
-<!--end title-->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<!--begin mete-->
+  <!-- keywords -->
+  
 
-<meta name="author" content="zhuli">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. 文件上传功能的实现上传和下载是Web应用开发需求中出现频率较高的词汇。在JSP应用开发过程中，编写“文件上传”功能代码主要有三种方式：   采用自编写的JavaBean组件 采用JspSmart公司自己编写的JspSmartUnload组件 采用O’Reilly公司的Cos组件   1.1 采用自编写的JavaBean组件  要编写一个实现文件上传功能的组件，首先需要先了解数据传输的原理，根">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件上传">
+<meta property="og:url" content="https://CPWS.github.io/2019/06/28/文件上传/index.html">
+<meta property="og:site_name" content="Prossible&#39;s Blog">
+<meta property="og:description" content="1. 文件上传功能的实现上传和下载是Web应用开发需求中出现频率较高的词汇。在JSP应用开发过程中，编写“文件上传”功能代码主要有三种方式：   采用自编写的JavaBean组件 采用JspSmart公司自己编写的JspSmartUnload组件 采用O’Reilly公司的Cos组件   1.1 采用自编写的JavaBean组件  要编写一个实现文件上传功能的组件，首先需要先了解数据传输的原理，根">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-03T09:17:14.711Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="文件上传">
+<meta name="twitter:description" content="1. 文件上传功能的实现上传和下载是Web应用开发需求中出现频率较高的词汇。在JSP应用开发过程中，编写“文件上传”功能代码主要有三种方式：   采用自编写的JavaBean组件 采用JspSmart公司自己编写的JspSmartUnload组件 采用O’Reilly公司的Cos组件   1.1 采用自编写的JavaBean组件  要编写一个实现文件上传功能的组件，首先需要先了解数据传输的原理，根">
+  
+    <link rel="alternative" href="/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/CPWS.github.io/css/style.css">
+  
+  
 
-<!--end mete-->
-<!--begin keywords-->
-<meta name="keywords" content="文件上传">
-<!--end keywords-->
-<!--begin rss-->
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 
-<link rel="alternate" href="/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			
+		</a>
 
-<!--end rss-->
-<!--begin favicon-->
+		<hgroup>
+		  <h1 class="header-author"><a href="/">zhuli</a></h1>
+		</hgroup>
 
-<link rel="icon" href="/favicon.ico">
+		
 
-<!--end favicon-->
-<!--begin style-->
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
 
-<!-- stylesheets list from config.yml -->
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/CPWS.github.io/">主页</a></li>
+				        
+							<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
 
-<link rel="stylesheet" href="/css/hannah.css">
-
-
-<!--end style-->
-</head>
-<!--end head-->
-<!--begin body-->
-<body class="container-fluid">
-
-<!--begin menu-->
-<div class="hannah-menu">
-    <i class="fh fh-ravelry fa-2x btn fixed-menu animated bounce" id="btn_menu" aria-hidden="true"></i>
-    <div class="menu-outer container-fluid hide animated" id="div_menu">
-        <div class="row" style="margin-bottom: 5px;">
-            
-            <div class="col-md-offset-2 col-md-3 col-xs-4 text-center left-social">
-                
-                <a target="_blank" href="https://github.com/objectyan" title="GitHub"><i class="fh fh-github"></i></a>
-                
-                <style>
-                    .left-social {
-                        height: 132px;
-                        line-height: 132px;
-                        font-size: 66px;
-                    }
-
-                    .left-social * {
-                        color: #f1ce8e;
-                    }
-
-                    @media (max-width: 767px) {
-                        .left-social {
-                            line-height: 132px;
-                            font-size: 33px;
-                        }
-                    }
-                </style>
-            </div>
-            <!--begin handImg-->
-            <div class="col-md-2 col-xs-4 text-center">
-                
-            </div>
-            <!--end handImg-->
-            <div class="col-md-3 col-xs-4 text-center right-social">
-                
-                <style>
-                    .right-social {
-                        height: 132px;
-                        line-height: 132px;
-                        font-size: 66px;
-                    }
-
-                    @media (max-width: 767px) {
-                        .right-social {
-                            line-height: 132px;
-                            font-size: 33px;
-                        }
-                    }
-
-                    .right-social * {
-                        color: #f1ce8e;
-                    }
-                </style>
-            </div>
-        </div>
-        <div class="row">
-            <div class="menu-content col-md-8 col-md-push-2 col-xs-12 ">
-                <dl class="menu-content-item">
-                    <dt class="menu-content-title">
-                        <i class="fh fh-bars" aria-hidden="true"></i> Menu
-                    </dt>
-                    <dd class="menu-content-content">
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/" class="btn btn-block">
-                                
-                                <i class="fh fh-ravelry"></i>
-                                Home
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/categories" class="btn btn-block">
-                                
-                                <i class="fh fh-cubes"></i>
-                                Category
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/tags" class="btn btn-block">
-                                
-                                <i class="fh fh-tags"></i>
-                                Tag
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/archives" class="btn btn-block">
-                                
-                                <i class="fh fh-archive"></i>
-                                Archives
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/about" class="btn btn-block">
-                                
-                                <i class="fh fh-about"></i>
-                                About
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/doc" class="btn btn-block">
-                                
-                                <i class="fh fh-document"></i>
-                                Doc
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/plug" class="btn btn-block">
-                                
-                                <i class="fh fh-plug"></i>
-                                Plug
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/sitemap" class="btn btn-block">
-                                
-                                <i class="fh fh-sitemap"></i>
-                                SiteMap
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/atom.xml" class="btn btn-block">
-                                <i class="fh fh-rss" aria-hidden="true"></i> RSS
-                            </a>
-                        </div>
-                    </dd>
-                </dl>
-            </div>
-        </div>
-        <div class="row">
-            <div class="menu-content col-md-8 col-md-offset-2 col-xs-12 ">
-                <dl class="col-md-6 col-xs-6 menu-content-item">
-                    <dt class="menu-content-title">
-                        <i class="fh fh-cubes" aria-hidden="true"></i> Category
-                    </dt>
-                    <dd class="menu-content-content animated zoomIn">
-                        
-                    </dd>
-                </dl>
-                <dl class="col-md-6 col-xs-6 menu-content-item">
-                    <dt class="menu-content-title">
-                        <i class="fh fh-tag" aria-hidden="true"></i> Tags
-                    </dt>
-                    <dd class="menu-content-content animated zoomIn">
-                        
-                    </dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-</div>
-<!--end menu-->
-
-<div class="row hannah-body">
-    <div class="col-md-8 col-md-push-2 col-xs-12">
-        <!--begin breadcrumb-->
-        <div class="bread-crumb">
-    <ul class="bread-crumb-menu animated rubberBand">
-        <li><a href="/CPWS.github.io/"><i class="fh fh-ravelry" aria-hidden="true"></i> Home</a></li>
-        
-        <li>
-            
-            <i class="fh fh-newspaper-o" aria-hidden="true"></i>
-            
-            文件上传
-        </li>
-        
-    </ul>
-    <div class="bread-crumb-search">
-        <div class="search">
-    <i class="fh fh-search icon-search"></i>
-    <input placeholder="Search ..." onkeyup="searchFunc(this,event,'/CPWS.github.io/search.xml')" class="input-search animated fadeInRight">
-    <div class="search-result animated fadeInRight">
-        <a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/26/hibernate5/">hibernate5</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/23/spring4/">spring4</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/18/SSM/">'SSM'</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/14/文档study/">文档study'</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/08/Mybatis3/">Mybatis3</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/07/Hibernate4/">Hibernate4</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/29/深入使用struts2/">深入使用struts2</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/25/Java邮箱接口/">Java邮箱接口</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/17/Struts2-5/">Struts2.5</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/10/Struts2/">Struts2</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/09/Log4j与Junit测试/">Log4j与Junit测试</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/08/正则表达式/">正则表达式</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/02/注解与反射/">注解与反射</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/06/28/文件上传/">文件上传</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/06/28/解决中文乱码/">解决中文乱码</a>
-    </div>
+				
+			</div>
+		</div>
+	</header>				
 </div>
     </div>
-</div>
-        <!--end breadcrumb-->
-        <article class="post animated rollIn">
-    <h1 class="post-title">文件上传</h1>
-    <div class="post-subtitle">
-        
-        <time datetime="2019-06-28T01:51:14.000Z" class="item">
-            <i class="fh fh-calendar" aria-hidden="true"></i>&nbsp;&nbsp;2019-06-28
-        </time>
-        
-        
-        
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">zhuli</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">zhuli</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/CPWS.github.io/">主页</a></li>
+		        
+					<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-文件上传" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/CPWS.github.io/2019/06/28/文件上传/" class="article-date">
+  	<time datetime="2019-06-28T01:51:14.000Z" itemprop="datePublished">2019-06-28</time>
+</a>
     </div>
+  
+  <div class="article-inner">
     
-    <h3 id="1-文件上传功能的实现"><a href="#1-文件上传功能的实现" class="headerlink" title="1. 文件上传功能的实现"></a>1. 文件上传功能的实现</h3><p><code>上传和下载</code>是<code>Web</code>应用开发需求中出现频率较高的词汇。在JSP应用开发过程中，编写“文件上传”功能代码主要有三种方式：</p>
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      文件上传
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-文件上传功能的实现"><a href="#1-文件上传功能的实现" class="headerlink" title="1. 文件上传功能的实现"></a>1. 文件上传功能的实现</h3><p><code>上传和下载</code>是<code>Web</code>应用开发需求中出现频率较高的词汇。在JSP应用开发过程中，编写“文件上传”功能代码主要有三种方式：</p>
 <blockquote>
 <ul>
 <li>采用自编写的<code>JavaBean</code>组件</li>
@@ -346,77 +302,109 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.io.File"</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"com.oreilly.servlet.MultipartRequest"</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.util.Enumeration"</span> %&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    <span class="comment">//文件上传后，保存在d:/JavaWebs</span></span><br><span class="line">    String saveDirectory=<span class="string">"d:"</span>+ File.separator+<span class="string">"JavaWebs"</span>;</span><br><span class="line">    <span class="comment">//每个文化最大500M,最多三个文件，所以...</span></span><br><span class="line">    <span class="keyword">int</span> maxPostSize=<span class="number">3</span>*<span class="number">500</span>*<span class="number">1024</span>*<span class="number">1024</span>;</span><br><span class="line">    <span class="comment">//response的编码为gd2312，同时采用缺省的文件名冲突解决策略，实现上传</span></span><br><span class="line">    MultipartRequest multi=<span class="keyword">new</span> MultipartRequest(request,saveDirectory,maxPostSize,<span class="string">"UTF-8"</span>);</span><br><span class="line">    <span class="comment">//输出反馈信息</span></span><br><span class="line">    Enumeration files=multi.getFileNames();</span><br><span class="line">    <span class="keyword">while</span> (files.hasMoreElements())&#123;</span><br><span class="line">        System.err.println(<span class="string">"ccc"</span>);</span><br><span class="line">        String name= (String) files.nextElement();</span><br><span class="line">        File f=multi.getFile(name);</span><br><span class="line">        <span class="keyword">if</span>(f!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            String fileName=multi.getFilesystemName(name);</span><br><span class="line">            String lastFileName=saveDirectory+<span class="string">"\\"</span>+fileName;</span><br><span class="line">            out.println(<span class="string">"上传的文件:"</span>+lastFileName);</span><br><span class="line">            out.println(<span class="string">"&lt;hr&gt;"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <h2 id="以上内容大部分都是参考一本书叫做《软件开发-JSP》，感谢作者"><a href="#以上内容大部分都是参考一本书叫做《软件开发-JSP》，感谢作者" class="headerlink" title="以上内容大部分都是参考一本书叫做《软件开发 JSP》，感谢作者!!!!"></a>以上内容大部分都是参考一本书叫做《软件开发 JSP》，感谢作者!!!!</h2>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/CPWS.github.io/2019/09/02/注解与反射/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          注解与反射
+        
+      </div>
+    </a>
+  
+  
+    <a href="/CPWS.github.io/2019/06/28/解决中文乱码/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">解决中文乱码</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-<ol class="animated rollIn hannah-toc"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#1-文件上传功能的实现"><span class="animated rollIn hannah-toc-text">1. 文件上传功能的实现</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-4"><a class="animated rollIn hannah-toc-link" href="#1-1-采用自编写的JavaBean组件"><span class="animated rollIn hannah-toc-text">1.1 采用自编写的JavaBean组件</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-4"><a class="animated rollIn hannah-toc-link" href="#1-2-JspSmartUpload上传组件"><span class="animated rollIn hannah-toc-text">1.2 JspSmartUpload上传组件</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-4"><a class="animated rollIn hannah-toc-link" href="#1-3-Cos上传组件-（Cloud-Object-Storage）"><span class="animated rollIn hannah-toc-text">1.3 Cos上传组件 （Cloud Object Storage）</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-5"><a class="animated rollIn hannah-toc-link" href="#2-3-1-在Cos组件中MultipartRequest类主要负责文件上传的处理"><span class="animated rollIn hannah-toc-text">2.3.1 在Cos组件中MultipartRequest类主要负责文件上传的处理</span></a></li></ol></li></ol></li></ol><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#以上内容大部分都是参考一本书叫做《软件开发-JSP》，感谢作者"><span class="animated rollIn hannah-toc-text">以上内容大部分都是参考一本书叫做《软件开发 JSP》，感谢作者!!!!</span></a>
-<div class="animated bounceInDown paginations">
-    <div class="col-md-8 col-md-push-2 col-xs-12">
-        <nav>
-            
-            <a href="/CPWS.github.io/2019/09/02/注解与反射/" class="prev col-md-2 col-xs-4 text-left">&larr; Prev</a>
-            
-            <span class="page-content col-md-8  col-xs-4 text-center">
-                
-            </span>
-            
-            <a href="/CPWS.github.io/2019/06/28/解决中文乱码/" class="next col-md-2 col-xs-4 text-right">Next &rarr;</a>
-            
-        </nav>
-        <div>
-            <div class="col-md-6 col-xs-6 text-left">
-                
-                注解与反射
-                
-            </div>
-            <div class="col-md-6 col-xs-6 text-right">
-                
-                解决中文乱码
-                
-            </div>
+
+
+<div class="ds-share share" data-thread-key="文件上传" data-title="文件上传" data-url="https://CPWS.github.io/CPWS.github.io/2019/06/28/文件上传/"  data-images="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" data-content="文件上传">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 zhuli
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
         </div>
     </div>
-</div>
-
-        <!--begin comments-->
-        
-<div class="comments" id="comments">
-    
-
-</div>
-
-
-        <!--end comments-->
-    </li></div>
-</div>
-
-<!--begin footer-->
-<footer id="footer" class="footer animated fadeInUp hide">
-    <p><i class="copy">&copy;</i> 2019 <a href="https://CPWS.github.io">zhuli</a> All Right Reserved.</p>
-    <p>Powered by <a href="http://hexo.io">Hexo</a>. Theme by <a href="https://github.com/objectyan/hexo-theme-hannah">hannah</a></p>
+  </div>
 </footer>
-<!--end footer-->
+    </div>
+    
+  <link rel="stylesheet" href="/CPWS.github.io/fancybox/jquery.fancybox.css">
 
 
-<!-- scripts list from theme config.yml -->
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/CPWS.github.io/js/main.js"></script>
 
-<script src="/js/hannah.js"></script>
-
-<script src="/js/canvas-nest.js"></script>
 
 
-<!--begin analytics-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
 
-<script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?8fb2a05be303b36faebf141d7317de43";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
 </script>
 
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
 
-<!--end analytics-->
+
+  </div>
 </body>
-<!--end body-->
 </html>

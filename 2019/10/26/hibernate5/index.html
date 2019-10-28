@@ -1,250 +1,209 @@
-
-
 <!DOCTYPE html>
-<html lang>
-<!--begin head-->
+<html>
 <head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
-<!--begin title-->
+  <meta charset="utf-8">
+  
+  <title>hibernate5 | Prossible&#39;s Blog</title>
 
-<title>
-    
-    hibernate5 |
-    
-    Prossible&#39;s Blog</title>
-<!--end title-->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<!--begin mete-->
+  <!-- keywords -->
+  
 
-<meta name="author" content="zhuli">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ORM和Hibernate对象/关系数据库映射（ORM） ORM可以称为面向对象编程语言和数据库之间的桥梁。 ORM：全称是：Object/Relation Mapping，即对象/关系数据库映射. 采用ORM框架之后，应用程序不再访问底层数据库，而是以面向对象的方法来操作持久化对象，而ORM框架则将这些面向对象的操作转换成底层的SQL操作。基本的映射方式 ORM基本映射有如下几条映射关系  数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hibernate5">
+<meta property="og:url" content="https://CPWS.github.io/2019/10/26/hibernate5/index.html">
+<meta property="og:site_name" content="Prossible&#39;s Blog">
+<meta property="og:description" content="ORM和Hibernate对象/关系数据库映射（ORM） ORM可以称为面向对象编程语言和数据库之间的桥梁。 ORM：全称是：Object/Relation Mapping，即对象/关系数据库映射. 采用ORM框架之后，应用程序不再访问底层数据库，而是以面向对象的方法来操作持久化对象，而ORM框架则将这些面向对象的操作转换成底层的SQL操作。基本的映射方式 ORM基本映射有如下几条映射关系  数据">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://cpws.github.io/2019/10/26/hibernate5/image/hibernateQs.PNG">
+<meta property="og:image" content="https://cpws.github.io/2019/10/26/hibernate5/image/hibernate-jar.PNG">
+<meta property="og:updated_time" content="2019-10-28T01:39:23.116Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hibernate5">
+<meta name="twitter:description" content="ORM和Hibernate对象/关系数据库映射（ORM） ORM可以称为面向对象编程语言和数据库之间的桥梁。 ORM：全称是：Object/Relation Mapping，即对象/关系数据库映射. 采用ORM框架之后，应用程序不再访问底层数据库，而是以面向对象的方法来操作持久化对象，而ORM框架则将这些面向对象的操作转换成底层的SQL操作。基本的映射方式 ORM基本映射有如下几条映射关系  数据">
+<meta name="twitter:image" content="https://cpws.github.io/2019/10/26/hibernate5/image/hibernateQs.PNG">
+  
+    <link rel="alternative" href="/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/CPWS.github.io/css/style.css">
+  
+  
 
-<!--end mete-->
-<!--begin keywords-->
-<meta name="keywords" content="hibernate5">
-<!--end keywords-->
-<!--begin rss-->
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 
-<link rel="alternate" href="/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			
+		</a>
 
-<!--end rss-->
-<!--begin favicon-->
+		<hgroup>
+		  <h1 class="header-author"><a href="/">zhuli</a></h1>
+		</hgroup>
 
-<link rel="icon" href="/favicon.ico">
+		
 
-<!--end favicon-->
-<!--begin style-->
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
 
-<!-- stylesheets list from config.yml -->
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/CPWS.github.io/">主页</a></li>
+				        
+							<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
 
-<link rel="stylesheet" href="/css/hannah.css">
-
-
-<!--end style-->
-</head>
-<!--end head-->
-<!--begin body-->
-<body class="container-fluid">
-
-<!--begin menu-->
-<div class="hannah-menu">
-    <i class="fh fh-ravelry fa-2x btn fixed-menu animated bounce" id="btn_menu" aria-hidden="true"></i>
-    <div class="menu-outer container-fluid hide animated" id="div_menu">
-        <div class="row" style="margin-bottom: 5px;">
-            
-            <div class="col-md-offset-2 col-md-3 col-xs-4 text-center left-social">
-                
-                <a target="_blank" href="https://github.com/objectyan" title="GitHub"><i class="fh fh-github"></i></a>
-                
-                <style>
-                    .left-social {
-                        height: 132px;
-                        line-height: 132px;
-                        font-size: 66px;
-                    }
-
-                    .left-social * {
-                        color: #f1ce8e;
-                    }
-
-                    @media (max-width: 767px) {
-                        .left-social {
-                            line-height: 132px;
-                            font-size: 33px;
-                        }
-                    }
-                </style>
-            </div>
-            <!--begin handImg-->
-            <div class="col-md-2 col-xs-4 text-center">
-                
-            </div>
-            <!--end handImg-->
-            <div class="col-md-3 col-xs-4 text-center right-social">
-                
-                <style>
-                    .right-social {
-                        height: 132px;
-                        line-height: 132px;
-                        font-size: 66px;
-                    }
-
-                    @media (max-width: 767px) {
-                        .right-social {
-                            line-height: 132px;
-                            font-size: 33px;
-                        }
-                    }
-
-                    .right-social * {
-                        color: #f1ce8e;
-                    }
-                </style>
-            </div>
-        </div>
-        <div class="row">
-            <div class="menu-content col-md-8 col-md-push-2 col-xs-12 ">
-                <dl class="menu-content-item">
-                    <dt class="menu-content-title">
-                        <i class="fh fh-bars" aria-hidden="true"></i> Menu
-                    </dt>
-                    <dd class="menu-content-content">
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/" class="btn btn-block">
-                                
-                                <i class="fh fh-ravelry"></i>
-                                Home
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/categories" class="btn btn-block">
-                                
-                                <i class="fh fh-cubes"></i>
-                                Category
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/tags" class="btn btn-block">
-                                
-                                <i class="fh fh-tags"></i>
-                                Tag
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/archives" class="btn btn-block">
-                                
-                                <i class="fh fh-archive"></i>
-                                Archives
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/about" class="btn btn-block">
-                                
-                                <i class="fh fh-about"></i>
-                                About
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/doc" class="btn btn-block">
-                                
-                                <i class="fh fh-document"></i>
-                                Doc
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/plug" class="btn btn-block">
-                                
-                                <i class="fh fh-plug"></i>
-                                Plug
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/sitemap" class="btn btn-block">
-                                
-                                <i class="fh fh-sitemap"></i>
-                                SiteMap
-                            </a>
-                        </div>
-                        
-                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
-                            <a href="/atom.xml" class="btn btn-block">
-                                <i class="fh fh-rss" aria-hidden="true"></i> RSS
-                            </a>
-                        </div>
-                    </dd>
-                </dl>
-            </div>
-        </div>
-        <div class="row">
-            <div class="menu-content col-md-8 col-md-offset-2 col-xs-12 ">
-                <dl class="col-md-6 col-xs-6 menu-content-item">
-                    <dt class="menu-content-title">
-                        <i class="fh fh-cubes" aria-hidden="true"></i> Category
-                    </dt>
-                    <dd class="menu-content-content animated zoomIn">
-                        
-                    </dd>
-                </dl>
-                <dl class="col-md-6 col-xs-6 menu-content-item">
-                    <dt class="menu-content-title">
-                        <i class="fh fh-tag" aria-hidden="true"></i> Tags
-                    </dt>
-                    <dd class="menu-content-content animated zoomIn">
-                        
-                    </dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-</div>
-<!--end menu-->
-
-<div class="row hannah-body">
-    <div class="col-md-8 col-md-push-2 col-xs-12">
-        <!--begin breadcrumb-->
-        <div class="bread-crumb">
-    <ul class="bread-crumb-menu animated rubberBand">
-        <li><a href="/CPWS.github.io/"><i class="fh fh-ravelry" aria-hidden="true"></i> Home</a></li>
-        
-        <li>
-            
-            <i class="fh fh-newspaper-o" aria-hidden="true"></i>
-            
-            hibernate5
-        </li>
-        
-    </ul>
-    <div class="bread-crumb-search">
-        <div class="search">
-    <i class="fh fh-search icon-search"></i>
-    <input placeholder="Search ..." onkeyup="searchFunc(this,event,'/CPWS.github.io/search.xml')" class="input-search animated fadeInRight">
-    <div class="search-result animated fadeInRight">
-        <a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/26/hibernate5/">hibernate5</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/23/spring4/">spring4</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/18/SSM/">'SSM'</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/14/文档study/">文档study'</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/08/Mybatis3/">Mybatis3</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/10/07/Hibernate4/">Hibernate4</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/29/深入使用struts2/">深入使用struts2</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/25/Java邮箱接口/">Java邮箱接口</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/17/Struts2-5/">Struts2.5</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/10/Struts2/">Struts2</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/09/Log4j与Junit测试/">Log4j与Junit测试</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/08/正则表达式/">正则表达式</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/09/02/注解与反射/">注解与反射</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/06/28/文件上传/">文件上传</a><a class="animated tada col-lg-12 search-result-item result-link" href="/CPWS.github.io/2019/06/28/解决中文乱码/">解决中文乱码</a>
-    </div>
+				
+			</div>
+		</div>
+	</header>				
 </div>
     </div>
-</div>
-        <!--end breadcrumb-->
-        <article class="post animated rollIn">
-    <h1 class="post-title">hibernate5</h1>
-    <div class="post-subtitle">
-        
-        <time datetime="2019-10-26T10:33:42.000Z" class="item">
-            <i class="fh fh-calendar" aria-hidden="true"></i>&nbsp;&nbsp;2019-10-26
-        </time>
-        
-        
-        
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">zhuli</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">zhuli</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/CPWS.github.io/">主页</a></li>
+		        
+					<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-hibernate5" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/CPWS.github.io/2019/10/26/hibernate5/" class="article-date">
+  	<time datetime="2019-10-26T10:33:42.000Z" itemprop="datePublished">2019-10-26</time>
+</a>
     </div>
+  
+  <div class="article-inner">
     
-    <h2 id="ORM和Hibernate"><a href="#ORM和Hibernate" class="headerlink" title="ORM和Hibernate"></a>ORM和Hibernate</h2><h3 id="对象-关系数据库映射（ORM）"><a href="#对象-关系数据库映射（ORM）" class="headerlink" title="对象/关系数据库映射（ORM）"></a>对象/关系数据库映射（ORM）</h3><ul>
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hibernate5
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ORM和Hibernate"><a href="#ORM和Hibernate" class="headerlink" title="ORM和Hibernate"></a>ORM和Hibernate</h2><h3 id="对象-关系数据库映射（ORM）"><a href="#对象-关系数据库映射（ORM）" class="headerlink" title="对象/关系数据库映射（ORM）"></a>对象/关系数据库映射（ORM）</h3><ul>
 <li>ORM可以称为面向对象编程语言和数据库之间的桥梁。</li>
 <li>ORM：全称是：Object/Relation Mapping，即对象/关系数据库映射.</li>
 <li>采用ORM框架之后，应用程序不再访问底层数据库，而是以面向对象的方法来操作持久化对象，而ORM框架则将这些面向对象的操作转换成底层的SQL操作。<h3 id="基本的映射方式"><a href="#基本的映射方式" class="headerlink" title="基本的映射方式"></a>基本的映射方式</h3></li>
@@ -530,73 +489,100 @@
 </ul>
 <h3 id="当然Hibernate配置文件中的配置属性还有很多，可以参考hibernate官方参考文档。"><a href="#当然Hibernate配置文件中的配置属性还有很多，可以参考hibernate官方参考文档。" class="headerlink" title="当然Hibernate配置文件中的配置属性还有很多，可以参考hibernate官方参考文档。"></a>当然Hibernate配置文件中的配置属性还有很多，可以参考hibernate官方参考文档。</h3><hr>
 <h2 id="深入理解持久化对象"><a href="#深入理解持久化对象" class="headerlink" title="深入理解持久化对象"></a>深入理解持久化对象</h2>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/CPWS.github.io/2019/10/23/spring4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">spring4</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-<ol class="animated rollIn hannah-toc"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#ORM和Hibernate"><span class="animated rollIn hannah-toc-text">ORM和Hibernate</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#对象-关系数据库映射（ORM）"><span class="animated rollIn hannah-toc-text">对象/关系数据库映射（ORM）</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#基本的映射方式"><span class="animated rollIn hannah-toc-text">基本的映射方式</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#流行的ORM框架简介"><span class="animated rollIn hannah-toc-text">流行的ORM框架简介</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Hibernate概述"><span class="animated rollIn hannah-toc-text">Hibernate概述</span></a></li></ol></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#Hibernate入门"><span class="animated rollIn hannah-toc-text">Hibernate入门</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#hibernate的下载和安装"><span class="animated rollIn hannah-toc-text">hibernate的下载和安装</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Hibernate的数据库操作"><span class="animated rollIn hannah-toc-text">Hibernate的数据库操作</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#在Eclipse中使用Hibernate"><span class="animated rollIn hannah-toc-text">在Eclipse中使用Hibernate</span></a></li></ol></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#Hibernate的体系结构"><span class="animated rollIn hannah-toc-text">Hibernate的体系结构</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#深入Hibernate配置文件"><span class="animated rollIn hannah-toc-text">深入Hibernate配置文件</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#创建Configuration对象"><span class="animated rollIn hannah-toc-text">创建Configuration对象</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#hibernate-properties文件与hibernate-cfg-xml文件"><span class="animated rollIn hannah-toc-text">hibernate.properties文件与hibernate.cfg.xml文件</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#JDBC连接属性"><span class="animated rollIn hannah-toc-text">JDBC连接属性</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#数据库方言"><span class="animated rollIn hannah-toc-text">数据库方言</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#JNDI数据源的连接属性"><span class="animated rollIn hannah-toc-text">JNDI数据源的连接属性</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#Hibernate事务属性"><span class="animated rollIn hannah-toc-text">Hibernate事务属性</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#二级缓存相关属性"><span class="animated rollIn hannah-toc-text">二级缓存相关属性</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#外连接抓取属性"><span class="animated rollIn hannah-toc-text">外连接抓取属性</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#其他常用的配置属性"><span class="animated rollIn hannah-toc-text">其他常用的配置属性</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#当然Hibernate配置文件中的配置属性还有很多，可以参考hibernate官方参考文档。"><span class="animated rollIn hannah-toc-text">当然Hibernate配置文件中的配置属性还有很多，可以参考hibernate官方参考文档。</span></a></li></ol></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#深入理解持久化对象"><span class="animated rollIn hannah-toc-text">深入理解持久化对象</span></a></li></ol>
-<div class="animated bounceInDown paginations">
-    <div class="col-md-8 col-md-push-2 col-xs-12">
-        <nav>
-            
-            <span class="page-content col-md-8 col-md-offset-2 col-xs-offset-4 col-xs-4 text-center">
-                
-            </span>
-            
-            <a href="/CPWS.github.io/2019/10/23/spring4/" class="next col-md-2 col-xs-4 text-right">Next &rarr;</a>
-            
-        </nav>
-        <div>
-            <div class="col-md-6 col-xs-6 text-left">
-                
-            </div>
-            <div class="col-md-6 col-xs-6 text-right">
-                
-                spring4
-                
-            </div>
+
+
+<div class="ds-share share" data-thread-key="hibernate5" data-title="hibernate5" data-url="https://CPWS.github.io/CPWS.github.io/2019/10/26/hibernate5/"  data-images="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" data-content="hibernate5">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 zhuli
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
         </div>
     </div>
-</div>
-
-        <!--begin comments-->
-        
-<div class="comments" id="comments">
-    
-
-</div>
-
-
-        <!--end comments-->
-    </div>
-</div>
-
-<!--begin footer-->
-<footer id="footer" class="footer animated fadeInUp hide">
-    <p><i class="copy">&copy;</i> 2019 <a href="https://CPWS.github.io">zhuli</a> All Right Reserved.</p>
-    <p>Powered by <a href="http://hexo.io">Hexo</a>. Theme by <a href="https://github.com/objectyan/hexo-theme-hannah">hannah</a></p>
+  </div>
 </footer>
-<!--end footer-->
+    </div>
+    
+  <link rel="stylesheet" href="/CPWS.github.io/fancybox/jquery.fancybox.css">
 
 
-<!-- scripts list from theme config.yml -->
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/CPWS.github.io/js/main.js"></script>
 
-<script src="/js/hannah.js"></script>
-
-<script src="/js/canvas-nest.js"></script>
 
 
-<!--begin analytics-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
 
-<script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?8fb2a05be303b36faebf141d7317de43";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
 </script>
 
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
 
-<!--end analytics-->
+
+  </div>
 </body>
-<!--end body-->
 </html>
