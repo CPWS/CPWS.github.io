@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/10/25/M4rlQG2dq3REzPH.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/25/micsfUBRbygqHpv.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/25/yY4eWH5TEpXAGI1.png">
-<meta property="og:updated_time" content="2019-10-28T10:17:04.071Z">
+<meta property="og:updated_time" content="2019-10-31T10:57:32.368Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring4">
 <meta name="twitter:description" content="Spring框架简介 主要发明者：Rod Johnson 轮子理论推崇者：  轮子理论：不用重复发明轮子。 IT行业：直接使用写好的代码。    Spring框架宗旨：不重新发明技术，让原有技术使用起来更加方便。 Spring的极大核心功能  Ioc/DI：控制反转/依赖注入 Aop：面向切面编程 声明式事务    Spring框架的runtime  test:Spring框架提供的测试功能 Co">
@@ -819,7 +819,260 @@
 <li>总结：静态代理模式代码的可重用性差。</li>
 </ul>
 </blockquote>
+<h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3></li>
+<li>为了解决静态代理频繁编写代理功能的缺点。</li>
+<li>分类：<blockquote>
+<ul>
+<li>JDK提供的</li>
+<li>CGLIB</li>
+</ul>
+</blockquote>
 <h3 id="JDK动态代理"><a href="#JDK动态代理" class="headerlink" title="JDK动态代理"></a>JDK动态代理</h3></li>
+<li>和CGLIB动态代理的比较<blockquote>
+<ul>
+<li>JDK自带,不需要导入第三方jar包</li>
+<li>缺点：真实对象必须实现接口;利用反射机制，效率不高;</li>
+</ul>
+</blockquote>
+<h3 id="CGLIB动态代理"><a href="#CGLIB动态代理" class="headerlink" title="CGLIB动态代理"></a>CGLIB动态代理</h3></li>
+<li>优点：基于字节码操作，生成真实对象的子类。<blockquote>
+<ul>
+<li>效率比JDK动态代理高</li>
+<li>不需要实现接口</li>
+</ul>
+</blockquote>
+</li>
+<li>缺点，需要导入jar包. </li>
+<li>使用SpringAOP时，只要出现Proxy和真实对象转换异常<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">    true:使用CGLIB动态代理</span></span><br><span class="line"><span class="comment">    false：使用JDK动态代理</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:aspectj-autoproxy</span> <span class="attr">proxy-target-class</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">aop:aspectj-autoproxy</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="自动驻入"><a href="#自动驻入" class="headerlink" title="自动驻入"></a>自动驻入</h3><ul>
+<li>在spring配置文件中对象名和<code>ref=&quot;id&quot;</code>id名相同时使用自动注入，可以不配置property</li>
+<li>两种配置方法 <blockquote>
+<ul>
+<li>在<code>&lt;bean&gt;</code>中通过<code>autowire=&quot;&quot;</code>配置，只对<code>&lt;bean&gt;</code>生效。</li>
+<li>在<code>&lt;beans&gt;</code>中通过<code>default-autowire=&quot;&quot;</code>配置，表当当前文件中所有<code>&lt;bean&gt;</code>都是全局配置内容。</li>
+</ul>
+</blockquote>
+</li>
+<li>autowire可取值<blockquote>
+<ul>
+<li>default:默认值，根据全局<code>default-autowire=&quot;&quot;</code>值。默认全局和局部都没有配置情况下。相当于no.</li>
+<li>no：默认全局和局部都没有配置情况下。</li>
+<li>byName：通过名称自动注入，在spring容器中找类id</li>
+<li>byType：根据类型注入。<blockquote>
+<ul>
+<li>Spring容器中不可以出现两个相同类型的<code>&lt;bean/&gt;</code></li>
+</ul>
+</blockquote>
+</li>
+<li>construtor:根据构造方法注入<blockquote>
+<ul>
+<li>提供对应参数的构造方法(构造方法参数中包含注入对象那个)</li>
+<li>底层使用byName，构造方法参数名和其他<code>&lt;bean&gt;</code>的id相同。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h3 id="spring中加载properties文件"><a href="#spring中加载properties文件" class="headerlink" title="spring中加载properties文件"></a>spring中加载properties文件</h3></li>
+</ul>
+<ol>
+<li><p>在src下新建xxx.properties文件</p>
+</li>
+<li><p>在spring的配置文件中添加<code>xmlns:context</code>，在下面添加</p>
+<blockquote>
+<ul>
+<li>如果需要加载多个配置文件，需要用逗号隔开</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">"classpath:db.properties"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加属性配置文件记载，并且在<code>&lt;beans&gt;</code>中开启自动注入注意的地方</p>
+<blockquote>
+<ul>
+<li>sqlSessionFactoryBean中的id不能叫sqlSessionFactory</li>
+<li>修改:把原来通过ref引用替换成value赋值，自动注入只能影响ref，不能影响value赋值</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置扫描器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.mybatis.spring.mapper.MapperScannerConfigurer"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"basePackage"</span> <span class="attr">value</span>=<span class="string">"com.gdaib.mapper"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;property name="sqlSessionFactory" ref="factory"&gt;&lt;/property&gt; --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sqlSessionFactoryBeanName"</span> <span class="attr">value</span>=<span class="string">"factory"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在被spring管理的类中通过<code>@value(&quot;${key}&quot;)</code>取出properties中的值</p>
+<blockquote>
+<ul>
+<li>添加注解扫描</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">&lt;!-- 扫描注解 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>在类中添加<blockquote>
+<ul>
+<li>key和变量名可以不相同</li>
+<li>变量类型任意，只要保证key对应点的value能转换成这个类型就可以。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value</span>(<span class="string">"$&#123;key&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> String test;</span><br></pre></td></tr></table></figure>
+
+<h3 id="scope属性"><a href="#scope属性" class="headerlink" title="scope属性"></a>scope属性</h3><ol>
+<li><code>&lt;bean&gt;</code>的属性</li>
+<li>作用：控制对象有效范围（单例，多例等）</li>
+<li><code>&lt;bean/&gt;</code> 标签对应的对象都是单例</li>
+<li>scope可取值<blockquote>
+<ul>
+<li>singleton：默认值，单例</li>
+<li>prototype:多例，每次获取重新实例化</li>
+<li>request:每次请求重新实例化</li>
+<li>session：每个会话对象内，对象是单例的。</li>
+<li>application：每个application范围内，对象是单例的。</li>
+<li>global session spring推出的一个对象，依赖于<code>spring-webmvc-portlet</code>，类似于session</li>
+</ul>
+</blockquote>
+<h3 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h3></li>
+<li>作用：在应用程序中保证最多只有一个实例</li>
+<li>好处：<blockquote>
+<ul>
+<li>提升运行效率。</li>
+<li>实现数据共享.实例：application对象</li>
+</ul>
+</blockquote>
+</li>
+<li>懒汉式<blockquote>
+<ul>
+<li>对象只有被调用，才会去创建对象</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.gdaib.singleton;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleTon</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> SingleTon singleTon;</span><br><span class="line">	<span class="comment">/***</span></span><br><span class="line"><span class="comment">	 * 方法名和类型相同</span></span><br><span class="line"><span class="comment">	 * 无返回值</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * 其他类不能实例化这个类</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">SingleTon</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	<span class="comment">/***</span></span><br><span class="line"><span class="comment">	 * 实例方法，实例方法必须通过对象调用</span></span><br><span class="line"><span class="comment">	 * 设置方法为静态方法</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleTon <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(singleTon==<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">//多线程访问下，可能出现线程安全</span></span><br><span class="line">			<span class="keyword">synchronized</span> (SingleTon.class) &#123;</span><br><span class="line">				<span class="keyword">if</span>(singleTon==<span class="keyword">null</span>) &#123;</span><br><span class="line">					singleTon=<span class="keyword">new</span> SingleTon();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> singleTon;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>由于添加了锁，所以导致执行效率较低。</li>
+</ul>
+<ol start="4">
+<li>饿汉式：解决了懒汉式中多线程可能出现多个对象和执行效率低的情况</li>
+</ol>
+<ul>
+<li>在类被加载时就被实例化</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.gdaib.singleton;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleTon</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> SingleTon singleTon=<span class="keyword">new</span> SingleTon();</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">SingleTon</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleTon <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> singleTon;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="声明式事务"><a href="#声明式事务" class="headerlink" title="声明式事务"></a>声明式事务</h3><ol>
+<li>编程式事务<blockquote>
+<ul>
+<li>由程序员编写事务控制代码。</li>
+<li>OpenSessionInView编程式事务。</li>
+</ul>
+</blockquote>
+</li>
+<li>声明式事务：<blockquote>
+<ul>
+<li>事务控制代码已由spring写好，程序员只需要声明出哪些方法需要进行事务控制和如何进行事务回滚。</li>
+</ul>
+</blockquote>
+</li>
+<li>声明式事务都是针对于ServiceImpl类的方法下</li>
+<li>事务管理器基于通知（advice）的。</li>
+<li>在spring中配置声明式事务<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 获取数据源 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DriverManagerDataSource"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span> <span class="attr">value</span>=<span class="string">"com.mysql.cj.jdbc.Driver"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"jdbc:mysql://localhost:3306/ssm?serverTimezone=UTC&amp;amp;characterEncoding=utf8"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"root"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"123456"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- spring-jdbc.jar --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"txManager"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 配置声明式事务 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tx:advice</span> <span class="attr">id</span>=<span class="string">"txAdvice"</span> <span class="attr">transaction-manager</span>=<span class="string">"txManager"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tx:attributes</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 哪些方法需要事务控制 --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 方法以ins开头事务管理 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"ins*"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"del*"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"upd*"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"*"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tx:attributes</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tx:advice</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:config</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 切点范围设置大一点 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">"execution(* com.gdaib.service.impl.*.*(..))"</span> <span class="attr">id</span>=<span class="string">"mypoint"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:advisor</span> <span class="attr">advice-ref</span>=<span class="string">"txAdvice"</span> <span class="attr">pointcut-ref</span>=<span class="string">"mypoint"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="声明式事务属性解释"><a href="#声明式事务属性解释" class="headerlink" title="声明式事务属性解释"></a>声明式事务属性解释</h3><ol>
+<li>name=””:哪些方法需要事务控制，支持通配符配置</li>
+<li>readonly=”boolean”：是否是只读事务<blockquote>
+<ul>
+<li>如果为true，告诉数据库此事务为只读事务。数据库优化，会对性能有一定的提升，所以只要是查询的方法，建议使用此属性值.</li>
+<li>如果为false(默认值)：事务需要提交的事务，建议新增，删除，修改</li>
+</ul>
+</blockquote>
+</li>
+<li>propagation：控制事务传播行为。<blockquote>
+<ul>
+<li>当一个具有事务控制的方法被另一个有事务控制的方法调用后，需要如何管理事务。（新建事务？在事务中执行？把事务挂起？报异常）</li>
+<li>REQUIRED:如果当前有事务，就在事务中执行，如果当前没有事务，则新建一个事务。</li>
+<li>SUPPORTS:如果当前有事务就在事务中执行，如果当前没有事务，就在非事务状态下执行。</li>
+<li>MANDATORY：必须在事务内部执行，如果当前有事务，就在事务中执行，如果没有事务就报错。</li>
+<li>REQUIRES_NEW:必须在事务中执行，如果当前没有事务，则新建事务，如果当前有事务，把当前事务挂起。</li>
+<li>NOT_SUPPORTED:必须在非事务下执行，如果当前没有事务，正常执行，如果当前有事务，把当前事务挂起。</li>
+<li>NEVER：必须在非事务状态下执行，如果当前没有事务，则正常执行，如果当前有事务，则报错。</li>
+<li>NESTED：必须在事务状态下执行，如果没有事务，新建事务，如果当前有事务，创建一个嵌套事务。</li>
+</ul>
+</blockquote>
+</li>
+<li>isolation=””：事务隔离级别<blockquote>
+<ul>
+<li>在多线程和并发访问下如何保证访问到的数据具有完整性。</li>
+<li>脏读：一个事务（A）读取到另一个事务(B)中未提交的数据，另一个事务中数据可能进行了改变，此时A事务读取的数据可能和数据库中的数据不一致的，此时认为数据是脏数据，读取脏数据过程叫做脏读。</li>
+<li>不可重复读<blockquote>
+<ul>
+<li>主要针对的是某行数据（行中某列）</li>
+<li>主要针对的操作是修改。</li>
+<li>两个读取在通一个事务内。</li>
+<li>当事务A第一次读取事务后，事务B对事务A读取的数据进行修改，事务A中再次读取的数据和之前读取的数据不一致，这个过程就叫做不可重复读。</li>
+</ul>
+</blockquote>
+</li>
+<li>幻读：<blockquote>
+<ul>
+<li>主要针对的操作是新增和删除</li>
+<li>两次事务的结果</li>
+<li>事务A按照特定条件查询出结果，事务B新增了一条符合条件的数据，事务A查询的数据和数据库中的数据不一致的，事务A好像出现了幻觉，这种情况称为幻读。</li>
+</ul>
+</blockquote>
+</li>
+<li>isolation的可能取值及作用：<blockquote>
+<ul>
+<li>DEFAULT：默认值，由底层数据库自动判断应该使用什么隔离级别。</li>
+<li>READ_UNCOMMITTED：可以读取未提交事务，可能出现脏读、不可重复读、幻读，但是效率最高。</li>
+<li>READ_COMMITTED:只能读取其他事务已经提交的数据，可以防止脏读，可能出现不可重复读和幻读。</li>
+<li>REPEATABLE_READ：读取的数据被添加锁，防止其他事务修改此数据，可以防止不可重复读、脏读，可能出现幻读。</li>
+<li>REPEATABLE_READ：排队操作，对整个表添加锁，一个事务在操作数据时，另一事物等待事务操作完成后才能操作这个表。这个操作，是最安全也是效率最低的。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h3 id="事务回滚"><a href="#事务回滚" class="headerlink" title="事务回滚"></a>事务回滚</h3></li>
+<li>rollback-for=”类异常的全限定路径”<blockquote>
+<ul>
+<li>当出现什么异常时需要进行事务回滚。 </li>
+<li>建议：给定该属性值。手动抛异常时一定要给定该属性值，即<code>throw new Exception()</code></li>
+</ul>
+</blockquote>
+</li>
+<li>no-rollback-for=””<blockquote>
+<ul>
+<li>当出现什么异常时不回滚事务。</li>
+</ul>
+</blockquote>
+<h3 id="Spring常用注解"><a href="#Spring常用注解" class="headerlink" title="Spring常用注解"></a>Spring常用注解</h3></li>
+<li><code>@Component</code>：创建类对象，相当于配置<code>&lt;bean/&gt;</code></li>
+<li><code>@Service</code>与<code>@Component</code>功能相同，<code>@Service</code>写在<code>ServiceImpl</code>上。</li>
+<li><code>@Repository</code>与<code>@Component</code>功能相同,该注解通常写在数据访问层上。</li>
+<li><code>@Controller</code>与<code>@Component</code>功能相同，该注解通常写在控制器上。</li>
+<li><code>@Resource</code>：Java中的注解；默认按照byName,建议把对象名称和属性名称写一样，如果没有名称对象，按照byType注入；不需要编写get和set方法。</li>
+<li><code>@Autowired</code>：Spring框架中的注解；默认按照byType注入。</li>
+<li><code>@Value</code>获取properties文件中的内容</li>
+<li><code>@Pointcut</code>：定义切点。</li>
+<li><code>@Aspect()</code>：定义切面类</li>
+<li><code>@Before()</code>：定义前置通知</li>
+<li><code>@After()</code>：定义后置通知</li>
+<li><code>@AfterReturning()</code>：定义后置通知，必须切点正确执行</li>
+<li><code>@Arround()</code>：环绕通知。<h3 id="ajax复习"><a href="#ajax复习" class="headerlink" title="ajax复习"></a><code>ajax</code>复习</h3></li>
+<li>$.ajax</li>
+<li>$.get、$.post</li>
+<li>$.getJson</li>
+<li>$.getScript</li>
+<li>ObjectMapper mapper=new ObjectMapper(); mapper.writeValueAsString(对象);把对象转化为JSON格式字符串。</li>
 </ol>
 <h4 id="Spring源码下载地址-https-github-com-spring-projects-spring-framework-tags-after-v4-2-5-RELEASE"><a href="#Spring源码下载地址-https-github-com-spring-projects-spring-framework-tags-after-v4-2-5-RELEASE" class="headerlink" title="Spring源码下载地址:https://github.com/spring-projects/spring-framework/tags?after=v4.2.5.RELEASE"></a>Spring源码下载地址:<code>https://github.com/spring-projects/spring-framework/tags?after=v4.2.5.RELEASE</code></h4><h4 id="Spring框架下载地址：https-repo-spring-io-release-org-springframework-spring"><a href="#Spring框架下载地址：https-repo-spring-io-release-org-springframework-spring" class="headerlink" title="Spring框架下载地址：https://repo.spring.io/release/org/springframework/spring/"></a>Spring框架下载地址：<code>https://repo.spring.io/release/org/springframework/spring/</code></h4><h4 id="Spring与Mybatis整合的jar包：https-blog-csdn-net-qiangqiang816-article-details-81541188"><a href="#Spring与Mybatis整合的jar包：https-blog-csdn-net-qiangqiang816-article-details-81541188" class="headerlink" title="Spring与Mybatis整合的jar包：https://blog.csdn.net/qiangqiang816/article/details/81541188"></a>Spring与Mybatis整合的jar包：<code>https://blog.csdn.net/qiangqiang816/article/details/81541188</code></h4><h4 id="Maven地址：https-mvnrepository-com"><a href="#Maven地址：https-mvnrepository-com" class="headerlink" title="Maven地址：https://mvnrepository.com/"></a>Maven地址：<code>https://mvnrepository.com/</code></h4>
       
