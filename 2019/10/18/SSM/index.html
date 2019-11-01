@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>SSM | Prossible&#39;s Blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第2章 Java设计模式Java反射技术 Java反射技术应用很广泛，它能够配置：类的完全限定名、方法和参数，完成对象的初始化，甚至反射某些方法。这样就可以大大增加Java的可配置性，SpringIoC的基本原理也是如此，当然SpringIoc的代码要复杂很多。 Java的反射内容繁多，包括对象构建、反射方法，、注解、参数、接口等。  对象的构建：包括有参的构建方法和无参数的构建方法。 在Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSM">
+<meta property="og:url" content="https://CPWS.github.io/2019/10/18/SSM/index.html">
+<meta property="og:site_name" content="Prossible&#39;s Blog">
+<meta property="og:description" content="第2章 Java设计模式Java反射技术 Java反射技术应用很广泛，它能够配置：类的完全限定名、方法和参数，完成对象的初始化，甚至反射某些方法。这样就可以大大增加Java的可配置性，SpringIoC的基本原理也是如此，当然SpringIoc的代码要复杂很多。 Java的反射内容繁多，包括对象构建、反射方法，、注解、参数、接口等。  对象的构建：包括有参的构建方法和无参数的构建方法。 在Java">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-11-01T12:02:41.310Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSM">
+<meta name="twitter:description" content="第2章 Java设计模式Java反射技术 Java反射技术应用很广泛，它能够配置：类的完全限定名、方法和参数，完成对象的初始化，甚至反射某些方法。这样就可以大大增加Java的可配置性，SpringIoC的基本原理也是如此，当然SpringIoc的代码要复杂很多。 Java的反射内容繁多，包括对象构建、反射方法，、注解、参数、接口等。  对象的构建：包括有参的构建方法和无参数的构建方法。 在Java">
+  
+    <link rel="alternative" href="/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/CPWS.github.io/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">zhuli</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/CPWS.github.io/">主页</a></li>
+				        
+							<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">zhuli</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">zhuli</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/CPWS.github.io/">主页</a></li>
+		        
+					<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-SSM" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/CPWS.github.io/2019/10/18/SSM/" class="article-date">
+  	<time datetime="2019-10-18T08:03:37.000Z" itemprop="datePublished">2019-10-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SSM
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第2章-Java设计模式"><a href="#第2章-Java设计模式" class="headerlink" title="第2章 Java设计模式"></a>第2章 Java设计模式</h2><h3 id="Java反射技术"><a href="#Java反射技术" class="headerlink" title="Java反射技术"></a>Java反射技术</h3><ul>
+<li><code>Java</code>反射技术应用很广泛，它能够配置：类的完全限定名、方法和参数，完成对象的初始化，甚至反射某些方法。这样就可以大大增加Java的可配置性，<code>SpringIoC</code>的基本原理也是如此，当然<code>SpringIoc</code>的代码要复杂很多。</li>
+<li>Java的反射内容繁多，包括对象构建、反射方法，、注解、参数、接口等。<blockquote>
+<ul>
+<li>对象的构建：包括有参的构建方法和无参数的构建方法。</li>
+<li>在Java中，放射是通过包<code>jacva.lang.reflect.*</code>来实现的。</li>
+</ul>
+</blockquote>
+</li>
+<li>通过反射构建对象<blockquote>
+<ul>
+<li>反射的优点是：只要配置就可以生成对象，可以解除耦合度，比较灵活。</li>
+<li>反射的缺点是：运行速度比较慢。</li>
+<li>案例实现：带无参数构造方法的实现：</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhuchuli.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *  反射</span></span><br><span class="line"><span class="comment"> *  带有无参的构造方法 + 反射方法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 1huangzewei</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReflectServiceImpl</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		System.err.println(<span class="string">"hello:"</span>+name);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/***</span></span><br><span class="line"><span class="comment">	 * 通过反射获取当前对象</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ReflectServiceImpl <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ReflectServiceImpl object=<span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">/**</span></span><br><span class="line"><span class="comment">			 * 给类加载器注册一个类 ReflectServiceImpl的全限定名，然后通过调用newInstance()方法初始化一个对象</span></span><br><span class="line"><span class="comment">			 */</span></span><br><span class="line">			object=(ReflectServiceImpl) Class.forName(<span class="string">"com.zhuchuli.demo.ReflectServiceImpl"</span>).getConstructor().newInstance();</span><br><span class="line">			</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> object;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		ReflectServiceImpl.getInstance().sayHello(<span class="string">"张三"</span>);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>案例实现：带有有参数构造方法的实现</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhuchuli.demo;</span><br><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *  反射</span></span><br><span class="line"><span class="comment"> *  带有有参的构造方法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 1huangzewei</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReflectServiceImpl2</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ReflectServiceImpl2</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.err.println(<span class="string">"hello:"</span>+name);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/***</span></span><br><span class="line"><span class="comment">	 * 通过反射获取当前对象</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ReflectServiceImpl2 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ReflectServiceImpl2 object=<span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">/**</span></span><br><span class="line"><span class="comment">			 * 给类加载器注册一个类 ReflectServiceImpl的全限定名，然后通过调用newInstance()方法初始化一个对象</span></span><br><span class="line"><span class="comment">			 */</span></span><br><span class="line">			object=(ReflectServiceImpl2) Class.forName(<span class="string">"com.zhuchuli.demo.ReflectServiceImpl2"</span>).getConstructor(String.class).newInstance(<span class="string">"李四"</span>);</span><br><span class="line">			</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> object;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		ReflectServiceImpl2.getInstance().sayHello();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>反射方法<blockquote>
+<ul>
+<li>案例实现</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhuchuli.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> *  反射</span></span><br><span class="line"><span class="comment"> *  带有无参的构造方法 + 反射方法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 1huangzewei</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReflectServiceImpl</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		System.err.println(<span class="string">"hello:"</span>+name);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/***</span></span><br><span class="line"><span class="comment">	 * 通过反射获取当前对象</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ReflectServiceImpl <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ReflectServiceImpl object=<span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">/**</span></span><br><span class="line"><span class="comment">			 * 给类加载器注册一个类 ReflectServiceImpl的全限定名，然后通过调用newInstance()方法初始化一个对象</span></span><br><span class="line"><span class="comment">			 */</span></span><br><span class="line">			object=(ReflectServiceImpl) Class.forName(<span class="string">"com.zhuchuli.demo.ReflectServiceImpl"</span>).getConstructor().newInstance();</span><br><span class="line">			</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> object;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">reflectMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Object returnObj=<span class="keyword">null</span>;</span><br><span class="line">		ReflectServiceImpl target=<span class="keyword">new</span> ReflectServiceImpl();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Method method=ReflectServiceImpl.class.getMethod(<span class="string">"sayHello"</span>, String.class);</span><br><span class="line">			method.invoke(target, <span class="string">"王五"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (NoSuchMethodException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> returnObj;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		ReflectServiceImpl.getInstance().reflectMethod();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="动态代理模式和责任链模式"><a href="#动态代理模式和责任链模式" class="headerlink" title="动态代理模式和责任链模式"></a>动态代理模式和责任链模式</h3><ul>
+<li><p>动态代理的意义在于生成一个占位（又称代理对象），来代理真实对象，从而控制真实对象的访问。</p>
+</li>
+<li><p>代理的作用：就是在访问真实对象之前或者之后加入一些对象的逻辑，或者根据其他规则控制是否使用真实对象。</p>
+</li>
+<li><p>代理必须分为两个步骤：</p>
+<blockquote>
+<ul>
+<li>代理对象和真实对象建立代理关系。</li>
+<li>实现代理对象的代理逻辑方法。 </li>
+</ul>
+</blockquote>
+</li>
+<li><p>JDK的动态代理</p>
+<blockquote>
+<ul>
+<li>JDK的动态代理是<code>java.lang.reflect.*</code>包提供的方式，它必须借助于一个接口才能产生代理对象，所以先定义接口。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>CGLIB动态代理</p>
+<blockquote>
+<ul>
+<li>它的优势在于不需要提供接口，只要一个非抽象类即能实现动态代理。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>拦截器：</p>
+<blockquote>
+<ul>
+<li>由于动态代理一般比较难理解，程序设计者会设计一个拦截器接口供开发者使用。开发者只需要知道拦截器接口的方法、含义和作用即可，不需要知道动态代理是怎么实现的。用JDK动态代理来实现一个拦截器逻辑，为此先定义拦截器接口Interceptor。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>责任链模式：</p>
+<blockquote>
+<ul>
+<li>上一点提到了设计者往往会使用拦截器去代替动态代理，然后将拦截器的接口提供给开发者，从而简化了开发者的开发难度，但是拦截器有很多个。</li>
+<li>当一个对象在一条链上被多个拦截器处理时，我们把这样的设计模式成为责任链模式，它用于一个对象在多个角色中传递的场景。</li>
+<li>责任链的优点在于我们可以在传递链上加入新的拦截器，增加拦截逻辑，其缺点是会增加代理和反射，而代理和反射的性能不高。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="观察者（Observer）模式"><a href="#观察者（Observer）模式" class="headerlink" title="观察者（Observer）模式"></a>观察者（Observer）模式</h3><ul>
+<li>观察者模式又称为发布订阅模式，是对象的行为模式。观察者定义了一种一对多的依赖关系，让多个对象观察者同时监听被观察者的状态，当被观察者的状态发生该改变时，会通知所有的被观察者，并让其自动更新。</li>
+<li>概述：</li>
+<li>实例：<blockquote>
+<ul>
+<li>观察者要同时存在观察者和被观察者双方，观察者可以有多个。在Java中，需要去继承<code>java.util.Observable</code>类，从而定义被观察者</li>
+<li>有了被观察者对象之后，还需要去编写观察者对象。想要编写观察者对象，还需要去实现<code>java.util.Observer</code>接口的<code>update</code>方法</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="工厂模式和抽象工厂模式"><a href="#工厂模式和抽象工厂模式" class="headerlink" title="工厂模式和抽象工厂模式"></a>工厂模式和抽象工厂模式</h3><h3 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h3>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/CPWS.github.io/2019/10/23/spring4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          spring4
+        
+      </div>
+    </a>
+  
+  
+    <a href="/CPWS.github.io/2019/10/14/文档study/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">文档study</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="SSM" data-title="SSM" data-url="https://CPWS.github.io/CPWS.github.io/2019/10/18/SSM/"  data-images="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" data-content="SSM">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 zhuli
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/CPWS.github.io/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/CPWS.github.io/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
