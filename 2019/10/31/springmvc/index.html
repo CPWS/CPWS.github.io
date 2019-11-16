@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/11/01/eU29QEmcgsFNhGl.png">
 <meta property="og:image" content="https://i.loli.net/2019/11/01/jxHwaKE7kypvTuB.png">
 <meta property="og:image" content="https://i.loli.net/2019/11/01/Ahy8GaqEbTnM72m.png">
-<meta property="og:updated_time" content="2019-11-01T11:47:37.409Z">
+<meta property="og:updated_time" content="2019-11-03T05:51:47.107Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="springmvc">
 <meta name="twitter:description" content="SpringMVC简介 SpringMVC中重要组件：  DispatcherServlet：前端控制器，接收所有请求（如果配置/则不包含jsp） HandlerMapping：解析请求格式，判断希望要执行哪个具体的方法。 HandlerAdapter：负责调用具体的方法。 ViewResolver：视图解析器。解析结果，准备跳转到具体的物理视图。    SpringMVC运行原理图。    Sp">
@@ -408,7 +408,238 @@
 </ul>
 </blockquote>
 <h3 id="SSM三大框架整合"><a href="#SSM三大框架整合" class="headerlink" title="SSM三大框架整合"></a>SSM三大框架整合</h3></li>
-<li>web.xml配置文件内容</li>
+</ol>
+<h3 id="JSP九大内置对象和四大作用域"><a href="#JSP九大内置对象和四大作用域" class="headerlink" title="JSP九大内置对象和四大作用域"></a>JSP九大内置对象和四大作用域</h3><ol>
+<li>九大内置对象</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>含义</th>
+<th>获取方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>request</td>
+<td>HttpServletRequest</td>
+<td>封装所有请求信息</td>
+<td>方法参数</td>
+</tr>
+<tr>
+<td>response</td>
+<td>HttpServletResponse</td>
+<td>封装所有响应信息</td>
+<td>方法参数</td>
+</tr>
+<tr>
+<td>session</td>
+<td>HttpSession</td>
+<td>封装所有会话信息</td>
+<td>req.getSession()</td>
+</tr>
+<tr>
+<td>application</td>
+<td>ServletContext</td>
+<td>所有信息</td>
+<td>getServletContext()<br>req.getServletContext()</td>
+</tr>
+<tr>
+<td>out</td>
+<td>PrintWriter</td>
+<td>输出对象</td>
+<td>response.getWriter()</td>
+</tr>
+<tr>
+<td>exception</td>
+<td>Exception</td>
+<td>异常对象</td>
+<td>…</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Object</td>
+<td>当前页面对象</td>
+<td>…</td>
+</tr>
+<tr>
+<td>pageContext</td>
+<td>PageContext</td>
+<td>获取其他对象</td>
+<td></td>
+</tr>
+<tr>
+<td>config</td>
+<td>ServletConfig</td>
+<td>配置信息</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li>四大作用域<blockquote>
+<ul>
+<li>page：在当前页面不会重新实例化.</li>
+<li>request：在一次请求中同一个对象，下次请求重新实例化一个request对象。</li>
+<li>session：一次会话；只要客户端Cookie传递的Jsessionid不变，Session不会重新实例化（不超过默认时间）<blockquote>
+<ul>
+<li>实际有效时间：浏览器关闭；cookie失效</li>
+</ul>
+</blockquote>
+</li>
+<li>application：只要toncat启动时才实例化，关闭时销毁该对象。</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h3 id="SpringMVC作用域传值的几种方式"><a href="#SpringMVC作用域传值的几种方式" class="headerlink" title="SpringMVC作用域传值的几种方式"></a>SpringMVC作用域传值的几种方式</h3><ol>
+<li><p>使用原生Servlet:在HandlerMethod方法参数中添加作用域.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoController</span> </span>&#123;</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"demo"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">demo1</span><span class="params">(HttpServletRequest req,HttpSession session)</span> </span>&#123;</span><br><span class="line">		req.setAttribute(<span class="string">"req"</span>, <span class="string">"req的值"</span>);</span><br><span class="line">		session.setAttribute(<span class="string">"session"</span>,<span class="string">"session的值"</span>);</span><br><span class="line">		req.getServletContext().setAttribute(<span class="string">"application"</span>, <span class="string">"application的值"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"/main.jsp"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用Map集合</p>
+<blockquote>
+<ul>
+<li>把map中内容放在request作用域中</li>
+<li>Spring会把map集合通过<code>BindingAwareModelMap</code>进行实例</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"demo02"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">demo2</span><span class="params">(Map&lt;String,Object&gt; map)</span> </span>&#123;</span><br><span class="line">    map.put(<span class="string">"map"</span>, <span class="string">"map的值"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"/main.jsp"</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用SpringMVC中Model接口</p>
+<blockquote>
+<ul>
+<li>把内容放入到request作用域中.</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"demo03"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">demo3</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">    model.addAttribute(<span class="string">"map"</span>, <span class="string">"map的值"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"/main.jsp"</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用SpringMVC中的ModelAndView</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"demo04"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> ModelAndView <span class="title">demo4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//参数，跳转视图</span></span><br><span class="line">    ModelAndView mav=<span class="keyword">new</span> ModelAndView(<span class="string">"/main.jsp"</span>);</span><br><span class="line">    mav.addObject(<span class="string">"mav"</span>,<span class="string">"mav的值"</span>);</span><br><span class="line">    <span class="keyword">return</span> mav;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h3><ol>
+<li>访问资源时响应头如果没有设置<code>Content-Disposition</code>，浏览器默认按照inline值进行处理<blockquote>
+<ul>
+<li>inline：能显示就显示，不能显示就下载。</li>
+</ul>
+</blockquote>
+</li>
+<li>只需要修改响应头中<code>Content-Disposition=&quot;attachment;filename=文件名&quot;</code><blockquote>
+<ul>
+<li>attachment 下载：以附件形式下载。</li>
+<li>filename=值就是下载时显示的下载文件名。</li>
+</ul>
+</blockquote>
+</li>
+<li>实现步骤：<blockquote>
+<ul>
+<li>导入apache的两个jar包。<code>commoms-io.jar</code>，<code>commons-fileupload.jar</code></li>
+<li>在jsp页面中添加下载路径，设置要下载文件。</li>
+<li>编写控制器类。<code>Content-Disposition</code></li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h3 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h3><ol>
+<li>基于apache的commons.fileupload.jar完成文件上传。</li>
+<li>MultiPartResolver作用：<blockquote>
+<ul>
+<li>把客户端上传的文件转换成MultiPartFile封装类</li>
+<li>通过MultiFile封装类获取文件类。</li>
+</ul>
+</blockquote>
+</li>
+<li>表单数据类型分类<blockquote>
+<ul>
+<li>在<code>&lt;form&gt;</code>的enctype属性控制表单类型</li>
+<li>默认值<code>application/x-www-form-urlencoded</code>，普通表单数据。（少量文件信息）</li>
+<li>text/plain:大文字量时使用的类型，邮件，论文</li>
+<li>multipart/form-data ：表单文件内容为二进制流。</li>
+</ul>
+</blockquote>
+</li>
+<li>实现步骤：<blockquote>
+<ul>
+<li>导入SpringMVC和Commons-fileupload、Commons-io几个jar</li>
+<li>编写JSP页面</li>
+</ul>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">"upload"</span> enctype=<span class="string">"multipart/form-data"</span> method=<span class="string">"post"</span>&gt;</span><br><span class="line">    姓名：&lt;input type=<span class="string">"text"</span> name=<span class="string">"name"</span>/&gt;&lt;br&gt; </span><br><span class="line">    文件：&lt;input type=<span class="string">"file"</span> name=<span class="string">"file"</span>/&gt;&lt;br&gt; </span><br><span class="line">    &lt;input type=<span class="string">"submit"</span> value=<span class="string">"提交"</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>写配置文件</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- MultipartResolver解析器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"multipartResolver"</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.multipart.commons.CommonsMultipartResolver"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 异常时跳转到特定页面 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"exceptionResolver"</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"exceptionMappings"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">props</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"异常类型"</span>&gt;</span>/error.jsp<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">props</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>编写控制器类</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"upload"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">upload</span><span class="params">(MultipartFile file,String name)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    System.out.println(name);</span><br><span class="line">    String fileName=file.getOriginalFilename();</span><br><span class="line">    String suffix = fileName.substring(fileName.lastIndexOf(<span class="string">"."</span>));</span><br><span class="line">    String uuid = UUID.randomUUID().toString();</span><br><span class="line">    FileUtils.copyInputStreamToFile(file.getInputStream(), <span class="keyword">new</span> File(<span class="string">"D:/"</span>+uuid+suffix));</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"/main.jsp"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义拦截器"><a href="#自定义拦截器" class="headerlink" title="自定义拦截器"></a>自定义拦截器</h3><ol>
+<li>跟过滤器比较像的技术</li>
+<li>发送请求时被拦截器拦截。在控制器的前后添加额外功能。<blockquote>
+<ul>
+<li>跟AOP区分开，AOP在特定方法前后扩充（对ServiceImpl）</li>
+<li>拦截器，请求的拦截，针对点是控制器的方法（对Controller）</li>
+</ul>
+</blockquote>
+</li>
+<li>SpringMVC</li>
+<li>实现自定义拦截器的步骤<blockquote>
+<ul>
+<li>新建类实现<code>HandlerInterceptor</code>接口</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.gdaib.interceptor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.HandlerInterceptor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.ModelAndView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoInterceptor</span> <span class="keyword">implements</span> <span class="title">HandlerInterceptor</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//记录在执行过程中出现的异常</span></span><br><span class="line">	<span class="comment">//可以把异常记录到日志中</span></span><br><span class="line">	<span class="comment">//jsp执行完成后执行</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterCompletion</span><span class="params">(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, Exception arg3)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"afterCompletion"</span>);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//控制器执行完成，进入到jsp页面之前执行</span></span><br><span class="line">	<span class="comment">//日志记录功能</span></span><br><span class="line">	<span class="comment">//敏感词语过滤</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postHandle</span><span class="params">(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, ModelAndView arg3)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"postHandle"</span>);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//在进入控制器之前拦截</span></span><br><span class="line">	<span class="comment">//如果返回false，阻止进入控制器</span></span><br><span class="line">	<span class="comment">//控制代码</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"preHandler"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>在Springmvc配置文件中进行配置</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">&lt;!-- 拦截器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 拦截所有 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"com.gdaib.interceptor.DemoInterceptor"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 只拦截请求路径为demo1 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">mvc:mapping</span> <span class="attr">path</span>=<span class="string">"/demo1"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"com.gdaib.interceptor.DemoInterceptor"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="拦截器栈"><a href="#拦截器栈" class="headerlink" title="拦截器栈"></a>拦截器栈</h3><ol>
+<li>多个拦截器同时生效时，组成了拦截器栈</li>
+<li>先进后出</li>
+<li>执行顺序和springmvc配置文件的配置顺序有关</li>
+<li>设置先配置拦截器A，再配置拦截器B，执行顺序为：<blockquote>
+<ul>
+<li>PreHandler(A) –&gt; PreHandler(B) –&gt; controller –&gt; PostHandler(B) –&gt; PostHandler(A) –&gt; afterCompletion(B) –&gt; afterCompletion(A)</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h3 id="登录验证"><a href="#登录验证" class="headerlink" title="登录验证"></a>登录验证</h3><ol>
+<li>使用springmvc拦截器实现登录验证<blockquote>
+<ul>
+<li>把页面放入到web-inf中<blockquote>
+<ul>
+<li>放入到web-inf中后必须通过控制器转发到页面</li>
+<li>springmvc拦截器拦截的是控制器，不能拦截jsp</li>
+</ul>
+</blockquote>
+</li>
+<li>通过拦截器拦截全部控制器，需要在拦截器内部放行login控制器</li>
+</ul>
+</blockquote>
+<h3 id="SpringMVC运行原理"><a href="#SpringMVC运行原理" class="headerlink" title="SpringMVC运行原理"></a>SpringMVC运行原理</h3></li>
+<li>文字解释<blockquote>
+<ul>
+<li>如果在web.xml中设置DispatcherServlet的<code>&lt;url-pattern&gt;</code>为<code>\</code>时，当用户发起请求，请求一个控制器时，会执行DispatcherServlet。由DispatchServlet调用HandlerMapping。具体调用哪个实现类需要根据项目环境，如果使用注解方式调用<code>DefaultAnnotationHandlerMapping</code>解析URL，解析后调用<code>HandlerAdapter</code>组件的<code>AnnotationMethodHandlerAdapter</code>调用<code>Controller</code>中的<code>HandlerMethod</code>，当<code>HandlerMethod</code>执行完后会返回<code>View</code>,会被<code>ViewResolver</code>进行视图解析，解析后执行对应的jsp文件，最终把运行结果响应给客户端.</li>
+</ul>
+</blockquote>
+</li>
 </ol>
 
       
