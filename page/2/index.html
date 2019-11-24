@@ -107,7 +107,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						
+						<a href="/CPWS.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/CPWS.github.io/tags/数据库系统概述/" style="font-size: 10px;">数据库系统概述</a>
 					</div>
 				</section>
 				
@@ -162,6 +162,983 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="mybatis-文档study" class="article article-type-mybatis" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/CPWS.github.io/2019/10/14/文档study/" class="article-date">
+  	<time datetime="2019-10-14T13:00:14.000Z" itemprop="datePublished">2019-10-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/CPWS.github.io/2019/10/14/文档study/">
+        文档study
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Mybatis3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/CPWS.github.io/2019/10/08/Mybatis3/" class="article-date">
+  	<time datetime="2019-10-08T11:25:53.000Z" itemprop="datePublished">2019-10-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/CPWS.github.io/2019/10/08/Mybatis3/">
+        Mybatis3
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据库命令"><a href="#数据库命令" class="headerlink" title="数据库命令"></a>数据库命令</h2><ol>
+<li><p>创建数据库并制定编码</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Create</span> <span class="keyword">database</span> 数据库名 <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Create</span> <span class="keyword">table</span> 表名(</span><br><span class="line">    列明 类型  约束 auto_increment <span class="keyword">comment</span> <span class="string">'备注'</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<hr>
+<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><ol>
+<li>项目名：没有要求，不起中文</li>
+<li>包：公司域名倒写</li>
+<li>持久层：dao,persist,<code>mapper</code></li>
+<li>实体层：entity，model，bean，javabean，<code>pojo</code></li>
+<li>业务逻辑：service，biz</li>
+<li>控制器层：controll,action,<code>servlet</code>,web</li>
+<li>过滤器：filter</li>
+<li>异常：exception</li>
+<li>监听器：listener</li>
+<li>注释</li>
+<li>类：大驼峰</li>
+<li>属性和方法：小驼峰</li>
+</ol>
+<hr>
+<h2 id="MVC开发模式"><a href="#MVC开发模式" class="headerlink" title="MVC开发模式"></a>MVC开发模式</h2><ol>
+<li>M:Model 模型，实体类、业务和dao</li>
+<li>V:View 视图，JSP</li>
+<li>C:Controller 控制器，servlet</li>
+<li>MVC应用场景：适合大型项目开发</li>
+</ol>
+<hr>
+<h2 id="jsp-Servlet完成查询和新增"><a href="#jsp-Servlet完成查询和新增" class="headerlink" title="jsp+Servlet完成查询和新增"></a>jsp+Servlet完成查询和新增</h2><h2 id="框架是什么？"><a href="#框架是什么？" class="headerlink" title="框架是什么？"></a>框架是什么？</h2><ol>
+<li>框架：软件的半成品。为解决问题制定的一套约束，在提供功能的基础上进行扩充。</li>
+<li>框架中一些不能被封装的代码（变量），需要使用框架这新建一个xml文件，在文件中添加变量的内容。<blockquote>
+<ul>
+<li>需要建立特定位置和特定名称的配置文件.</li>
+<li>需要使用xml解析技术和反射技术。</li>
+</ul>
+</blockquote>
+</li>
+<li>常用概念：<blockquote>
+<ul>
+<li>类库:提供的类没有封装一定逻辑。<blockquote>
+<ul>
+<li>举例：类库就是名言警句，写作文时引入名言警句。</li>
+</ul>
+</blockquote>
+</li>
+<li>框架：区别于类库，里面有一定的约束。<blockquote>
+<ul>
+<li>框架是填空题。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h2 id="Mybatis简介"><a href="#Mybatis简介" class="headerlink" title="Mybatis简介"></a>Mybatis简介</h2><blockquote>
+<ul>
+<li>Mybatis是一个开源免费框架。原名叫iBatis，2010在<code>google code</code>，2013年迁移到<code>github</code></li>
+<li>作用：数据访问层框架。<blockquote>
+<ul>
+<li>底层是对JDBC的封装</li>
+</ul>
+</blockquote>
+</li>
+<li><code>mybatis</code>优点之一<blockquote>
+<ul>
+<li>使用<code>Mybatis</code>不需要编写实现类,只需要编写需要执行的sql命令。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h2 id="Mybatis-环境搭建"><a href="#Mybatis-环境搭建" class="headerlink" title="Mybatis 环境搭建"></a>Mybatis 环境搭建</h2></li>
+<li>导入jar包</li>
+</ol>
+<p><img src="https://i.loli.net/2019/10/09/ultwxJpfCjALhr6.png" alt="1570603776_1_.png"></p>
+<blockquote>
+<ul>
+<li>asm.jar：Cglib依赖的包</li>
+<li>cglib.jar：动态代理的包</li>
+<li>commons-logging.jar、log4j.jar、slf4j.*.jar：日志包</li>
+<li>javaassist.jar：字节码解析包</li>
+<li>mybatis.jar：mybatis的核心包</li>
+</ul>
+<ol start="2">
+<li>在src下编写全局配置文件（JDBC四个变量）（mybatis.xml）</li>
+</ol>
+<ul>
+<li>没有名称配置和地址要求。</li>
+<li>在全局配置文件中引入dtd或schema</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE configuration</span></span><br><span class="line"><span class="meta">  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span></span><br><span class="line"><span class="meta">  "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- default引用 environment的id，当前使用的环境--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">"default"</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 声明可能使用的环境 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">"default"</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!-- 使用原生JDBC事务 --&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">"JDBC"</span>&gt;</span><span class="tag">&lt;/<span class="name">transactionManager</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!-- 数据库连接池 --&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"POOLED"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"com.mysql.cj.jdbc.Driver"</span>/&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"jdbc:mysql://localhost:3306/ssm?serverTimezone=UTC&amp;amp;characterEncoding=utf8"</span>/&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"root"</span>/&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"123456"</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">"com/zhuchuli/mapper/FlowerMapper.xml"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>新建以<code>mapper</code>结尾的包，在包下新建：实体类名+Mapper.xml（FlowerMapper.xml）</p>
+<blockquote>
+<ul>
+<li>文件作用：编写需要执行的sql语句。</li>
+<li>把xml文件理解成实现类。</li>
+<li>xml文件内容</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE mapper</span></span><br><span class="line"><span class="meta">  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"</span></span><br><span class="line"><span class="meta">  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- namespace：理解成实现类的完全限定名（报名+类名） --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"a.b"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- id:方法名 --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- parameterType:定义参数类型 --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- resultType:定义结果返回值类型 --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 如果方法返回是list，在resultType中写List的泛型，因为Mybatis对jdbc封装，一行一行读取数据 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selAll"</span> <span class="attr">resultType</span>=<span class="string">"com.zhuchuli.pojo.Flower"</span>&gt;</span></span><br><span class="line">		select * from flower</span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试结果（只有单独使用Mybatis时使用，最后SSM整合时下面代码不需要编写）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		InputStream is=<span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			is = Resources.getResourceAsStream(<span class="string">"mybatis.xml"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//使用工厂设计模式</span></span><br><span class="line">		SqlSessionFactory factory=<span class="keyword">new</span> SqlSessionFactoryBuilder().build(is);</span><br><span class="line">		<span class="comment">//生产SqlSession </span></span><br><span class="line">		SqlSession session=factory.openSession();</span><br><span class="line">		List&lt;Flower&gt; list=session.selectList(<span class="string">"a.b.selAll"</span>);</span><br><span class="line">		<span class="keyword">for</span> (Flower flower : list) &#123;</span><br><span class="line">			System.out.println(flower.toString());</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//释放资源</span></span><br><span class="line">		session.close();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>注意：当表列名与Java的属性名称不一致时，在进行数据库查询时可以指定通过起别名来实现。</li>
+</ul>
+</blockquote>
+<h2 id="环境搭建讲解"><a href="#环境搭建讲解" class="headerlink" title="环境搭建讲解"></a>环境搭建讲解</h2><ol>
+<li>全局配置文件讲解<blockquote>
+<ul>
+<li><code>&lt;transactionManager&gt;</code>： <code>type</code>属性可取值<blockquote>
+<ul>
+<li><code>JDBC</code>：事务管理使用<code>JDBC</code>原生事务管理方式。</li>
+<li><code>MANAGED</code>：把事务管理转交给其他容器。原生<code>JDBC</code>事务<code>setAutoMapping(false)</code></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><code>&lt;dataSource&gt;</code> : <code>type</code>属性可取值<blockquote>
+<ul>
+<li><code>UNPOOLED</code>：不使用数据库连接池，和直接使用JDBC一样。</li>
+<li><code>POOLED</code>：使用数据库连接池</li>
+<li><code>JNDI</code>（Java语言调用其他语言）：Java命令目录接口技术。</li>
+</ul>
+</blockquote>
+<h2 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h2></li>
+<li>在内存中开辟一块空间，存放多个数据库连接对象</li>
+<li>JDBC Tomcat Pool:直接由tomcat产生数据库连接池</li>
+<li>图示:</li>
+</ol>
+<p><img src="https://i.loli.net/2019/10/09/edzYJMxDN5CbiXZ.png" alt="1570617915_1_.png"></p>
+<ol start="4">
+<li>使用数据库连接池的目的：<blockquote>
+<ul>
+<li>在高频率访问数据库时，使用数据库连接池可以降低服务器系统压力，提升程序运行效率。</li>
+<li>小项目不适用数据库连接池</li>
+</ul>
+</blockquote>
+</li>
+<li>实现JDBC Tomcat Pool的步骤：<blockquote>
+<ul>
+<li>在META-INF包下添加Context.xml文件</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Resource</span></span></span><br><span class="line"><span class="tag">        <span class="attr">driverClassName</span>=<span class="string">"com.mysql.cj.jdbc.Driver"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">url</span>=<span class="string">"jdbc:mysql://localhost:3306/ssm"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">username</span>=<span class="string">"root"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">password</span>=<span class="string">"123456"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">maxActive</span>=<span class="string">"50"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">maxIdle</span>=<span class="string">"20"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">name</span>=<span class="string">"test"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">auth</span>=<span class="string">"Container"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">maxWait</span>=<span class="string">"10000"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">type</span>=<span class="string">"javax.sql.DataSource"</span></span></span><br><span class="line"><span class="tag">    /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>把项目发布到tomcat中，数据库连接池就产生了.</li>
+<li>可以使用Java的JNDI获取数据库连接池对象:<blockquote>
+<ul>
+<li>Context：上下文接口，Context.xml文件对象类型</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Context ctx=<span class="keyword">new</span> InitialContext();</span><br><span class="line">DataSource ds=ctx.lookup(<span class="string">"java:comp/env/test"</span>);</span><br><span class="line">Connection conn=ds.getConnection();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>当关闭数据库连接池对象时，把连接对象归还给数据库连接池，把状态改为idle状态。</li>
+</ul>
+</blockquote>
+<h2 id="三种查询方式"><a href="#三种查询方式" class="headerlink" title="三种查询方式"></a>三种查询方式</h2><ol>
+<li><p>selectList()：返回值List&lt;resultType属性控制&gt; ,适合于查询结果都需要遍历的需求。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Flower&gt; list=session.selectList(<span class="string">"a.b.selAll"</span>);</span><br><span class="line"><span class="keyword">for</span> (Flower flower : list) &#123;</span><br><span class="line">    System.out.println(flower.toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>selectOne()：返回Object，适用于返回结果只是变量或一行数据时</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count=session.selectOne(<span class="string">"a.b.selById"</span>);</span><br><span class="line">System.out.println(count);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>selectMap()返回值Map，适用于需求需要在查询结果中通过某列的值取到这行数据的值的需求。</p>
+<blockquote>
+<ul>
+<li>Map&lt;Object,Object&gt;：第一个Object的数据类型受到selectMap()第二参数影响，第二个Object的数据类型受到&lt;restultType属性值&gt;的控制。</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Object,Object&gt; map=session.selectMap(<span class="string">"a.b.c"</span>, <span class="string">"name"</span>);</span><br><span class="line">System.out.println(map);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Log4j复习"><a href="#Log4j复习" class="headerlink" title="Log4j复习"></a>Log4j复习</h2><ol>
+<li>由<code>apache</code>提出的开源免费日志处理的类库。</li>
+<li>为什么需要日志：<blockquote>
+<ul>
+<li>在项目中编写 <code>system.out.println();</code>输出到控制台，当项目发布到tomcat后，没有控制台（在命令行能看见），不容易观察一些输出结果。</li>
+<li>log4j的作用：不仅能把内容输出到控制台，还能把内容输出到文件中。便于观察结果。</li>
+</ul>
+</blockquote>
+</li>
+<li>使用步骤：<blockquote>
+<ul>
+<li>导入jar包</li>
+<li>在src下新建log4j.properties(路径和名称都不允许改变)</li>
+<li>ConversionPattern：写表达式</li>
+<li>log4j.appender.LOGFILE.File：写文件输出路径以及名称（日志文件的扩展名为<code>.log</code>）</li>
+</ul>
+</blockquote>
+</li>
+<li>Log4j输出级别：<blockquote>
+<ul>
+<li>Fatal(指明错误) &gt; error(错误) &gt; warm(警告) &gt; info(普通信息) &gt; debug(调试信息)</li>
+<li>在<code>log4j.properties</code>第一行控制输出级别。</li>
+<li>log4j.rootCategory=INFO</li>
+</ul>
+</blockquote>
+</li>
+<li>Log4j输出目的地<blockquote>
+<ul>
+<li>log4j.rootCategory=<code>CONSOLE</code>,<code>LOGFILE</code></li>
+</ul>
+</blockquote>
+</li>
+<li>pattern常用表达式<blockquote>
+<ul>
+<li>%C 输出类名</li>
+<li>%d 输出时间</li>
+<li>%L 输出行号</li>
+<li>%m 输出日志信息</li>
+<li>%n 换行</li>
+</ul>
+</blockquote>
+<h2 id="lt-settings-gt-标签"><a href="#lt-settings-gt-标签" class="headerlink" title="&lt;settings&gt;标签"></a><code>&lt;settings&gt;</code>标签</h2><blockquote>
+<ul>
+<li>在<code>mybatis</code>全局配置文件中<code>&lt;settings&gt;</code>标签控制<code>mybatis</code>全局开关。</li>
+<li>在<code>mybatis.xml</code>中开启log4j<blockquote>
+<ul>
+<li>必须保证有<code>jar</code>包</li>
+<li>在src目录下要有<code>log4j.properties</code>文件</li>
+<li>在mybatis.xml配置文件中添加如下代码</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- Mybatis开启日志功能 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"logImpl"</span> <span class="attr">value</span>=<span class="string">"LOG4J"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>log4j中可以指定内容的日志（控制某个局部内容的日志级别）<blockquote>
+<ul>
+<li>命名级别（包级别）：<mapper>namespace属性中除了最后一个类名<blockquote>
+<ul>
+<li>先在总体级别调成error不输出无用信息。</li>
+<li>在该配置文件中为特定包名设置输出级别为debug。</li>
+<li>例如： <code>namespace</code>=<code>&quot;com.zhuchuli.mapper.PeopleMapper&quot;</code>其中包级别为<code>com.zhuchuli.mapper</code>，需要在<code>log4j.properties</code>配置文件中配置如下代码：<code>log4j.rootCategory=ERROR, CONSOLE , LOGFILE</code>;<code>log4j.logger.com.zhuchuli.mapper=DEBUG</code></li>
+<li>目的：输出主要的日志信息。</li>
+</ul>
+</blockquote>
+</mapper></li>
+<li>类级别：与上面包级别差不多，此处不再赘述。</li>
+<li>方法级别：与上面包级别差不多，此处不再赘述。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h2 id="parameterType-属性"><a href="#parameterType-属性" class="headerlink" title="parameterType 属性"></a>parameterType 属性</h2><ol>
+<li><p>在XxxMapper.xml中<select></select>等标签的<code>parameterType</code>可以控制参数类型。</p>
+</li>
+<li><p>SqlSession的selectList()和selectOne()的第二个参数和selectMap()的第三个参数都表示方法的参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">People people=session.selectOne(<span class="string">"a.b.selById"</span>,<span class="number">2</span>);</span><br><span class="line">System.out.println(people);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>mapper.xml</code>文件中通过<code>#{}</code>获取参数</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selById"</span> <span class="attr">resultType</span>=<span class="string">"com.zhuchuli.pojo.People"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span>&gt;</span></span><br><span class="line">	select * from people where id=#&#123;0&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>parameterType指定参数类型</li>
+<li>#{}获取参数值，使用索引，从0开始，#{0}表示第一个参数。</li>
+<li>如果只有一个参数(基本数据类型或String)，mybatis对#{}里面的内容没有要求，只要写内容即可。</li>
+<li>如果参数是对象 #{属性名}</li>
+<li>如果参数时msap #{key}</li>
+<li>如果想要传递多个参数，可以使用map结构或对象</li>
+</ul>
+<ol start="4">
+<li>#{}与${}的区别：</li>
+</ol>
+<ul>
+<li>#{}获取参数的内容支持 索引获取，param1获取指定位置参数，并且SQL使用?占位符。</li>
+<li>${}字符串拼接不使用?，默认找${内容}的get/set方法，如果写数字，就是一个数字。</li>
+<li>如果在xml文件中出现”&lt;”,”&gt;”，双引号等特殊字符时，可以使用xml文件转义标签（XML自身）：<code>&lt;![CDATA[内容]]&gt;</code></li>
+</ul>
+</blockquote>
+<h2 id="mybatis-实现mysql分页查询"><a href="#mybatis-实现mysql分页查询" class="headerlink" title="mybatis 实现mysql分页查询"></a>mybatis 实现mysql分页查询</h2><blockquote>
+<ul>
+<li>？不允许在关键字前后进行数学运算，需要在代码中计算完成后传递到mapper.xml中</li>
+<li>在java代码中运算</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span> pageSize=<span class="number">2</span>;</span><br><span class="line"><span class="keyword">int</span> pageNumber=<span class="number">3</span>;</span><br><span class="line"><span class="comment">//如果希望传递多个参数，可以使用map或者对象</span></span><br><span class="line">Map&lt;String,Object&gt; map=<span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">map.put(<span class="string">"pageSize"</span>,pageSize);</span><br><span class="line">map.put(<span class="string">"pageNumber"</span>,(pageSize-<span class="number">1</span>)*pageNumber);</span><br><span class="line">List&lt;People&gt; people=session.selectList(<span class="string">"a.b.page"</span>,map);</span><br><span class="line">System.out.println(people);</span><br><span class="line">session.close();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>在mapper.xml文件中代码</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 分页查询 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"page"</span> <span class="attr">resultType</span>=<span class="string">"com.zhuchuli.pojo.People"</span> <span class="attr">parameterType</span>=<span class="string">"map"</span>&gt;</span></span><br><span class="line">	select * from people limit #&#123;pageSize&#125;,#&#123;pageNumber&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h2><blockquote>
+<ul>
+<li>系统内置别名：把类型全小写</li>
+<li>给某个类起别名： alias=”自定义”<blockquote>
+<ul>
+<li>mybatis.xml配置文件</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tyeAliases</span> <span class="attr">type</span>=<span class="string">"com.zhuchuli.pojo.People"</span> <span class="attr">alias</span>=<span class="string">"peo"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<ul>
+<li>mapper.xml</li>
+</ul>
+</blockquote>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"page"</span> <span class="attr">resultType</span>=<span class="string">"peo"</span> <span class="attr">parameterType</span>=<span class="string">"map"</span>&gt;</span></span><br><span class="line">	select * from people limit #&#123;pageStart&#125;,#&#123;pageSize&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>直接给某个包下所有类起别名， 别名为类名，区分大小写。<blockquote>
+<ul>
+<li>mybatis.xml配置</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"com.zhuchu.pojo"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<ul>
+<li>mapper.xml通过类名引用。</li>
+</ul>
+</blockquote>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"page"</span> <span class="attr">resultType</span>=<span class="string">"People"</span> <span class="attr">parameterType</span>=<span class="string">"map"</span>&gt;</span></span><br><span class="line">	select * from people limit #&#123;pageStart&#125;,#&#123;pageSize&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="MyBatis实现新增"><a href="#MyBatis实现新增" class="headerlink" title="MyBatis实现新增"></a>MyBatis实现新增</h3><ol>
+<li>概念复习<blockquote>
+<ul>
+<li>功能：从应用程序角度出发，软件具有哪些功能。</li>
+<li>事务: 从数据库角度出发，完成业务时需要执行的SQL集合，统称一个事务。</li>
+<li>业务: 完成功能时的逻辑。对应Service中一个方法</li>
+<li>事务回滚：如果在一个事务中某个sql执行事务，希望回归到事务的原点，保证数据库数据的完整性。</li>
+</ul>
+</blockquote>
+</li>
+<li>在Mybatis中默认关闭了JDBC自动提交的功能。<blockquote>
+<ul>
+<li>每一个SqlSession默认都是不自动提交事务。</li>
+<li>session.commit()提交事务。 </li>
+<li>openSession(true)：自动提交，setAutoCommit(true);</li>
+</ul>
+</blockquote>
+</li>
+<li>mybatis底层是JDBC的封装<blockquote>
+<ul>
+<li>JDBC中<code>executeUpdate()</code>执行新增，删除，修改的SQL，返回值int，表示受影响的行数</li>
+<li>mybatis中的<insert><delete><update>标签没有resultType属性，认为返回值int</update></delete></insert></li>
+</ul>
+</blockquote>
+</li>
+<li>在openSession()时Mybatis会创建SqlSession时同时创建一个Transaction(事务对象)，同时autoCommit为false<blockquote>
+<ul>
+<li>如果出现异常，应该session.roolback()进行事务回滚。</li>
+</ul>
+</blockquote>
+</li>
+<li>使用<insert><delete><update>进行数据库操作时，要添加事务提交处理.<h2 id="Mybatis接口绑定方案及多参数传递"><a href="#Mybatis接口绑定方案及多参数传递" class="headerlink" title="Mybatis接口绑定方案及多参数传递"></a>Mybatis接口绑定方案及多参数传递</h2></update></delete></insert></li>
+<li>作用：实现创建一个接口后把mapper.xml由mybatis生成接口的实现类，通常调用接口对象就可以获取mapper.xml中编写的sql。</li>
+<li>后面mybatis和spring整合时使用的是这个方案。</li>
+<li>实现步骤：<blockquote>
+<ul>
+<li>创建一个接口<blockquote>
+<ul>
+<li>接口包名和接口名与mapper.xml中的<mapper>namespace相同。</mapper></li>
+<li>接口中的方法名和mapper的id属性值相同。</li>
+</ul>
+</blockquote>
+</li>
+<li>在mybatis.xml中使用<package>标签来进行扫描接口和mapper.xml</package></li>
+</ul>
+</blockquote>
+</li>
+<li>代码实现步骤<blockquote>
+<ul>
+<li>在mybatis.xml的<mappers>中使用<package></package></mappers></li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"com.zhuchuli.mapper"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>在com.zhuchuli.mapper新建一个接口</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">LogMapper</span> </span>&#123;</span><br><span class="line">	<span class="function">List&lt;Log&gt; <span class="title">selAll</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="comment">/***</span></span><br><span class="line"><span class="comment">	 * mybatis把参数转换为map,<span class="doctag">@Param</span>("")当成key,后面的参数值当成value</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> accin</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> account</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="comment">//List&lt;Log&gt; setByAccInAccount(@Param("accin") String accin,@Param("account") String account);</span></span><br><span class="line">	<span class="function">List&lt;Log&gt; <span class="title">setByAccInAccount</span><span class="params">(String accin,String account)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>在com.zhuchuli.mapper新建一个LogMapper.xml文件 </li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.zhuchuli.mapper.LogMapper"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selAll"</span> <span class="attr">resultType</span>=<span class="string">"log"</span>&gt;</span></span><br><span class="line">		select * from log</span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 当多参数时，不需要写parameter --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"setByAccInAccount"</span> <span class="attr">resultType</span>=<span class="string">"log"</span>&gt;</span></span><br><span class="line">		select * from log where accin=#&#123;arg0&#125; and accout=#&#123;arg1&#125;</span><br><span class="line">		<span class="comment">&lt;!-- select * from log where accin=#&#123;param1&#125; and accout=#&#123;param2&#125; --&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>测试</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LogMapper logMapper = session.getMapper(LogMapper.class);</span><br><span class="line">List&lt;Log&gt; list=logMapper.selAll();</span><br><span class="line"><span class="keyword">for</span> (Log log : list) &#123;</span><br><span class="line">	System.out.println(log);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>注意：namespace必须和接口的完全限定路径一致，id值必须与接口中的方法名一致。</li>
+<li>如果接口中的方法为多个参数，可以省略parameter</li>
+</ul>
+<ol start="5">
+<li>多参数实现方法</li>
+</ol>
+<ul>
+<li>在接口中声明方法</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List&lt;Log&gt; <span class="title">setByAccInAccount</span><span class="params">(String accin,String account)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>在mapper.xml文件中添加，#{}可以使用[param0,param1,arg0,arg1]</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"setByAccInAccount"</span> <span class="attr">resultType</span>=<span class="string">"log"</span>&gt;</span></span><br><span class="line">	select * from log where accin=#&#123;arg0&#125; and accout=#&#123;arg1&#125;</span><br><span class="line">	<span class="comment">&lt;!-- select * from log where accin=#&#123;param1&#125; and accout=#&#123;param2&#125; --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>可以使用注解<blockquote>
+<ul>
+<li>在接口中声明方法 </li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment">	* mybatis把参数转换为map,<span class="doctag">@Param</span>("")当成key,后面的参数值当成value</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@param</span> accin</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@param</span> account</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"><span class="function">List&lt;Log&gt; <span class="title">setByAccInAccount</span><span class="params">(@Param(<span class="string">"accin"</span>)</span> String accin,@<span class="title">Param</span><span class="params">(<span class="string">"account"</span>)</span> String account)</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>在mapper.xml文件中添加。#{}里面的内容为@param(“内容”)参数中的内容</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from log where accin=#&#123;accin&#125; and accout=#&#123;accout&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="动态SQL"><a href="#动态SQL" class="headerlink" title="动态SQL"></a>动态SQL</h2><ul>
+<li><p>根据不同的条件需要执行不同的SQl命令，成为动态sql</p>
+</li>
+<li><p>Nybatis中动态sql在mapper.xml添加逻辑判断等</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 当多参数时，不需要写parameter --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"setByAccInAccount"</span> <span class="attr">resultType</span>=<span class="string">"log"</span>&gt;</span></span><br><span class="line">	select * from log where 1=1</span><br><span class="line">	<span class="comment">&lt;!-- OGNL表达式，直接写key或对象的属，不需要添加任何特殊字符 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"accin!=null and accin!='' "</span>&gt;</span></span><br><span class="line">		and accin=#&#123;param1&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"accout!=null and accout!=''"</span>&gt;</span></span><br><span class="line">		and accout=#&#123;param2&#125;		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><where>
+>* 当编写where标签时，如果内容中第一个是and，去掉第一个and。
+>* 如果where中有内容会生成where，如果没有内容不会生成where关键字。
+>* 比使用if标签少写了1=1
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"setByAccInAccount"</span> <span class="attr">resultType</span>=<span class="string">"log"</span>&gt;</span></span><br><span class="line">	select * from log</span><br><span class="line">	<span class="comment">&lt;!-- OGNL表达式，直接写key或对象的属，不需要添加任何特殊字符 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"accin!=null and accin!='' "</span>&gt;</span></span><br><span class="line">			and accin=#&#123;param1&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"accout!=null and accout!=''"</span>&gt;</span></span><br><span class="line">			and accout=#&#123;param2&#125;		</span><br><span class="line">		<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</where></li>
+<li><p><choose><when><otherwise></otherwise></when></choose></p>
+<blockquote>
+<ul>
+<li>只要有一个成立，其他的都不会执行。</li>
+<li>代码示例:如果accin和accout都不是Null或不是””，生成的sql中只有where accin=?</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"setByAccInAccount"</span> <span class="attr">resultType</span>=<span class="string">"log"</span>&gt;</span></span><br><span class="line">	select * from log</span><br><span class="line">	<span class="comment">&lt;!-- OGNL表达式，直接写key或对象的属，不需要添加任何特殊字符 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">choose</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">when</span> <span class="attr">test</span>=<span class="string">"accin!=null and accin!=''"</span>&gt;</span></span><br><span class="line">				and accin=#&#123;param1&#125;</span><br><span class="line">			<span class="tag">&lt;/<span class="name">when</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">when</span> <span class="attr">test</span>=<span class="string">"accout!=null and accout!=''"</span>&gt;</span></span><br><span class="line">				and accout=#&#123;param2&#125;	</span><br><span class="line">			<span class="tag">&lt;/<span class="name">when</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">choose</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><set>标签：用在修改SQL中set从句</set></p>
+<blockquote>
+<ul>
+<li>作用：去掉最后一个逗号</li>
+<li>如果<set>里面有内容生成set关键字，没有则不生成</set></li>
+<li>代码示例 : id=#{id} 防止<set>中没有内容。</set></li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">"upd"</span> <span class="attr">parameterType</span>=<span class="string">"log"</span>&gt;</span></span><br><span class="line">	update log </span><br><span class="line">	<span class="tag">&lt;<span class="name">set</span>&gt;</span></span><br><span class="line">		id=#&#123;id&#125;,</span><br><span class="line">		<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"accIn!=null and accIn!=''"</span>&gt;</span></span><br><span class="line">			accin=#&#123;accIn&#125;,</span><br><span class="line">		<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"accOut!=null and accOut!=''"</span>&gt;</span></span><br><span class="line">			accout=#&#123;occOut&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">	where id=#&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><trim> 
+>* prefix 在前面添加内容
+>* prefixOverrides：去掉前面内容
+>* suffix：在后面添加内容
+>* suffixOverrides 去掉后面内容
+>* 执行顺序：先去掉内容再添加内容</trim></li>
+<li><p><bind> 实现模糊查询 </bind></p>
+<blockquote>
+<ul>
+<li>作用：给参数重新赋值</li>
+<li>场景：模糊查询，在原内容前后添加内容</li>
+</ul>
+</blockquote>
+</li>
+<li><p><foreach>标签</foreach></p>
+<blockquote>
+<ul>
+<li>循环参数内容，还具备在内容前后添加内容，还具备加分隔符功能</li>
+<li>使用场景：in查询中，批量新增中(mybatis中foreach效率较低)</li>
+<li>示例<blockquote>
+<ul>
+<li>collection=””要遍历的集合 </li>
+<li>item:迭代变量，#{迭代变量名获取内容}</li>
+<li>open 循环后左侧要添加的内容</li>
+<li>close 循环后右侧要添加的内容</li>
+<li>separator 每次循环时，元素之间的分隔符</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selIn"</span> <span class="attr">parameterType</span>=<span class="string">"list"</span>&gt;</span></span><br><span class="line">	select * from log where id in </span><br><span class="line">	<span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"abc"</span> <span class="attr">close</span>=<span class="string">""</span> <span class="attr">open</span>=<span class="string">""</span> &gt;</span> </span><br><span class="line">		#&#123;abc&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>如果希望批量新增，sql命令</li>
+</ul>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">log</span> <span class="keyword">values</span>(<span class="keyword">default</span>,<span class="number">1</span>,<span class="number">2</span>),(<span class="keyword">default</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>openSession()必须指定 ExecutorType.BATCH</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SqlSession session=factory.openSession(ExecutorType.BATCH);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><sql> <include><blockquote>
+<ul>
+<li>某些sql片段，如果希望复用，可以使用<sql>定义这个片段</sql></li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sql</span> <span class="attr">id</span>=<span class="string">"mysql"</span>&gt;</span></span><br><span class="line">	id,accin,accout,money</span><br><span class="line"><span class="tag">&lt;/<span class="name">sql</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</include></sql></li>
+</ul>
+<blockquote>
+<ul>
+<li>在<code>&lt;select&gt;</code>、<code>&lt;delete&gt;</code>、<code>&lt;update&gt;</code>、<code>&lt;insert&gt;</code>中使用<include>标签引用</include></li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select <span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span>=<span class="string">"mysql"</span>&gt;</span> from log</span><br></pre></td></tr></table></figure>
+
+<h2 id="ThreadLocal-OpenSessionInView"><a href="#ThreadLocal-OpenSessionInView" class="headerlink" title="ThreadLocal+OpenSessionInView"></a>ThreadLocal+OpenSessionInView</h2><ul>
+<li>线程容器，给线程绑定一个Object内容，后只要线程不变，可以随时取出。</li>
+<li>改变内容，无法取出内容<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhuchuli.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		 ThreadLocal&lt;Integer&gt; threadLocal=<span class="keyword">new</span> ThreadLocal&lt;Integer&gt;();</span><br><span class="line">		threadLocal.set(<span class="number">13</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">new</span> Thread(()-&gt; &#123;</span><br><span class="line">			threadLocal.set(<span class="number">23</span>);</span><br><span class="line">			System.out.println(Thread.currentThread().getName()+<span class="string">"---&gt;"</span>+threadLocal.get());</span><br><span class="line">		&#125;).start();</span><br><span class="line">		</span><br><span class="line">		System.out.println(Thread.currentThread().getName()+<span class="string">"---&gt;"</span>+threadLocal.get());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><ol>
+<li>应用程序和数据库交互的过程是一个相对耗时的过程。</li>
+<li>缓存存在的意义：让应用程序减少对数据库的访问，提升程序运行效率。</li>
+<li>Mybatis中默认SqlSession缓存开启<blockquote>
+<ul>
+<li>同一个<code>SqlSession</code>对象调用同一个<code>&lt;select&gt;</code>时，只有第一次访问数据库，第一次之后把查询结果缓存到SqlSession缓存区(内存)中。</li>
+<li>缓存的对象是statement对象。（简单记忆：必须是用一个<code>&lt;select&gt;</code>）<blockquote>
+<ul>
+<li>在mybatis时一个<code>&lt;select&gt;</code>对应一个Statement对象.</li>
+</ul>
+</blockquote>
+</li>
+<li>有效范围必须是同一个SqlSession对象</li>
+</ul>
+</blockquote>
+</li>
+<li>缓存流程<blockquote>
+<ul>
+<li>先去缓存区中找是否存在statement。</li>
+<li>返回结果。</li>
+<li>如果没有缓存statement对象，去数据库获取数据。</li>
+<li>数据库返回查询结果.</li>
+<li>把查询结果放到对应的缓存区中。</li>
+</ul>
+</blockquote>
+</li>
+<li>SqlSessionFactory缓存<blockquote>
+<ul>
+<li>二级缓存</li>
+<li>有效范围：同一个factory内哪个SqlSession都可以获取。</li>
+<li>什么时候使用二级缓存：<blockquote>
+<ul>
+<li>当数据频繁被使用，很少被修改</li>
+</ul>
+</blockquote>
+</li>
+<li>使用二级缓存的步骤，在mapper.xml文件中添加 <code>&lt;cache readOnly=&quot;true&quot;&gt;&lt;/cache&gt;</code><blockquote>
+<ul>
+<li>如果不写 <code>readOnly=&quot;true&quot;</code>,需要把实体类实例化</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>当SqlSession对象close()时或commit()时会把SqlSession缓存的数据刷到SqlSessionFactory缓存区中。<h2 id="多表查询分类"><a href="#多表查询分类" class="headerlink" title="多表查询分类"></a>多表查询分类</h2></li>
+<li>Mybatis实现多表查询方式：<blockquote>
+<ul>
+<li>业务装备：对两个表编写单表查询语句，在业务(Service)把查询的两个结果进行关联.</li>
+<li>使用auto mapping特性，在实现两个表联合查询时通过别名完成映射</li>
+<li>使用<code>Mybatis</code>的<code>&lt;resultMap&gt;</code>标签进行实现。</li>
+</ul>
+</blockquote>
+</li>
+<li>多表查询时，类中包含另一类的对象的分类<blockquote>
+<ul>
+<li>单个对象</li>
+<li>多个对象</li>
+</ul>
+</blockquote>
+<h2 id="lt-resultMap-gt-标签"><a href="#lt-resultMap-gt-标签" class="headerlink" title="&lt;resultMap&gt;标签"></a><code>&lt;resultMap&gt;</code>标签</h2><blockquote>
+<ul>
+<li>该标签写在mapper.xml中，由程序员控制sql查询结果与实体类的映射关系。<blockquote>
+<ul>
+<li>默认Mybatis使用auto mapping特性.</li>
+</ul>
+</blockquote>
+</li>
+<li>使用<code>&lt;resultMap&gt;</code>标签时，<code>&lt;select&gt;</code>标签不写<code>resultType</code>属性，而是使用resultMap属性引用<code>&lt;resultMap&gt;</code>标签</li>
+</ul>
+</blockquote>
+</li>
+<li>使用resultMap实现单表映射关系<blockquote>
+<ul>
+<li>实体类</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhuchuli.pojo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id1;</span><br><span class="line">	<span class="keyword">private</span> String name1;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> id1;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId1</span><span class="params">(<span class="keyword">int</span> id1)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id1 = id1;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name1;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName1</span><span class="params">(String name1)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name1 = name1;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"Teacher [id1="</span> + id1 + <span class="string">", name1="</span> + name1 + <span class="string">"]"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>TeacherMap.xml</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.zhuchuli.mapper.TeacherMapper"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">"teacher"</span> <span class="attr">id</span>=<span class="string">"mymap"</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 主键使用id标签配置映射关系--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"id"</span> <span class="attr">property</span>=<span class="string">"id1"</span>/&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 其它使用result标签配置映射关系 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"name"</span> <span class="attr">property</span>=<span class="string">"name1"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selAll"</span> <span class="attr">resultMap</span>=<span class="string">"mymap"</span>&gt;</span></span><br><span class="line">		select * from teacher</span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span>	</span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>数据库设计</li>
+</ul>
+</blockquote>
+<p><img src="https://i.loli.net/2019/10/13/i4OBHXfMobshU2a.png" alt="1570948979_1_.png"></p>
+<h2 id="使用resultMap实现关联单个对象-N-1方式"><a href="#使用resultMap实现关联单个对象-N-1方式" class="headerlink" title="使用resultMap实现关联单个对象(N+1方式)"></a>使用<code>resultMap</code>实现关联单个对象(N+1方式)</h2><ol>
+<li>N+1查询方式：先查询出某个表的全部信息，根据这个表的信息查询另一个表的信息。</li>
+<li>与业务转配的区别：<blockquote>
+<ul>
+<li>在service里面写代码，由mybatis完成转配</li>
+</ul>
+</blockquote>
+</li>
+<li>实现步骤<blockquote>
+<ul>
+<li>在Student实现类中包含一个Teacher对象</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> tid;</span><br><span class="line">	<span class="keyword">private</span> Teacher teacher;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>在TeacherMapper中提供一个查询：</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selById"</span> <span class="attr">resultType</span>=<span class="string">"teacher"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span>&gt;</span></span><br><span class="line">	select * from teacher where id = #&#123;0&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>在StudentMapper中使用：<blockquote>
+<ul>
+<li><code>&lt;association&gt;</code>装配一个对象时使用。</li>
+<li>property：对象在类中的属性名。</li>
+<li>select：通过哪个查询查询这个对象的信息。</li>
+<li>column：把当前表的哪个列值最为参数传递给另一个查询。</li>
+<li>大前提是使用N+1方式时，如果列名和属性名相同可以不配置，使用Auto mapping特性，但是Mybatis默认只给列装配一次。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.zhuchuli.mapper.StudentMapper"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">"student"</span> <span class="attr">id</span>=<span class="string">"stuMap"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"id"</span> <span class="attr">column</span>=<span class="string">"id"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"name"</span> <span class="attr">column</span>=<span class="string">"name"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"age"</span> <span class="attr">column</span>=<span class="string">"age"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"tid"</span> <span class="attr">column</span>=<span class="string">"tid"</span>/&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 如果关联一个对象 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">"teacher"</span> <span class="attr">select</span>=<span class="string">"com.zhuchuli.mapper.TeacherMapper.selById"</span> <span class="attr">column</span>=<span class="string">"tid"</span>&gt;</span><span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selAll"</span> <span class="attr">resultMap</span>=<span class="string">"stuMap"</span>&gt;</span></span><br><span class="line">		select * from student</span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<ul>
+<li>可以将上面简化为：</li>
+</ul>
+</blockquote>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.zhuchuli.mapper.StudentMapper"</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">"student"</span> <span class="attr">id</span>=<span class="string">"stuMap"</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"tid"</span> <span class="attr">column</span>=<span class="string">"tid"</span>/&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 如果关联一个对象 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">"teacher"</span> <span class="attr">select</span>=<span class="string">"com.zhuchuli.mapper.TeacherMapper.selById"</span> <span class="attr">column</span>=<span class="string">"tid"</span>&gt;</span><span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selAll"</span> <span class="attr">resultMap</span>=<span class="string">"stuMap"</span>&gt;</span></span><br><span class="line">		select * from student</span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-lt-resultMap-gt-查询关联集合对象（N-1）"><a href="#使用-lt-resultMap-gt-查询关联集合对象（N-1）" class="headerlink" title="使用&lt;resultMap&gt;查询关联集合对象（N+1）"></a>使用<code>&lt;resultMap&gt;</code>查询关联集合对象（N+1）</h2><ol>
+<li><p>在Teacher中添加<code>List&lt;Student&gt;</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> List&lt;Student&gt; list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在StudentMapper.xml中添加通过tid查询</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selByTid"</span> <span class="attr">resultType</span>=<span class="string">"student"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span>&gt;</span></span><br><span class="line">	select * from student where tid = #&#123;0&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在TeacherMapper.xml中添加查询全部</p>
+<blockquote>
+<ul>
+<li><code>&lt;collection&gt;</code>当属性是集合类型时使用的标签</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE mapper</span></span><br><span class="line"><span class="meta">  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"</span></span><br><span class="line"><span class="meta">  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.zhuchuli.mapper.TeacherMapper"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">"teacher"</span> <span class="attr">id</span>=<span class="string">"mymap"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"id"</span> <span class="attr">property</span>=<span class="string">"id"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"name"</span> <span class="attr">property</span>=<span class="string">"name"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">collection</span> <span class="attr">property</span>=<span class="string">"list"</span> <span class="attr">ofType</span>=<span class="string">"student"</span> <span class="attr">select</span>=<span class="string">"com.zhuchuli.mapper.StudentMapper.selByTid"</span> <span class="attr">column</span>=<span class="string">"id"</span>&gt;</span><span class="tag">&lt;/<span class="name">collection</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selAll"</span> <span class="attr">resultMap</span>=<span class="string">"mymap"</span>&gt;</span></span><br><span class="line">		select * from teacher</span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="使用-lt-resultMap-gt-实现加载集合数据（联合查询方式）"><a href="#使用-lt-resultMap-gt-实现加载集合数据（联合查询方式）" class="headerlink" title="使用&lt;resultMap&gt;实现加载集合数据（联合查询方式）"></a>使用<code>&lt;resultMap&gt;</code>实现加载集合数据（联合查询方式）</h2><blockquote>
+<ul>
+<li>在TeacherMapper.xml添加<blockquote>
+<ul>
+<li>mybatis可以通过主键判断对象是否被加载过</li>
+<li>不需要担心重复创建Teacher</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">"teacher"</span> <span class="attr">id</span>=<span class="string">"mymap1"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"tid"</span> <span class="attr">property</span>=<span class="string">"id"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"tname"</span> <span class="attr">property</span>=<span class="string">"name"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">collection</span> <span class="attr">property</span>=<span class="string">"list"</span> <span class="attr">ofType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"sid"</span> <span class="attr">property</span>=<span class="string">"id"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"sname"</span> <span class="attr">property</span>=<span class="string">"name"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"age"</span> <span class="attr">property</span>=<span class="string">"age"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"tid"</span> <span class="attr">property</span>=<span class="string">"tid"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">collection</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selAll1"</span> <span class="attr">resultMap</span>=<span class="string">"mymap1"</span>&gt;</span></span><br><span class="line">	select t.id tid,t.name tname,s.id sid,s.name sname,age,tid from teacher t left join student s on t.id = s.tid</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="AutoMapping-结合别名实现多表查询"><a href="#AutoMapping-结合别名实现多表查询" class="headerlink" title="AutoMapping 结合别名实现多表查询"></a>AutoMapping 结合别名实现多表查询</h2><blockquote>
+<ul>
+<li>只能使用多表联合查询</li>
+<li>查询出的列名与属性名必须相同</li>
+<li>实现方式：<blockquote>
+<ul>
+<li><code>.</code>在sql是关键字，两侧添加反单引号</li>
+</ul>
+</blockquote>
+</li>
+<li>这个方法只适合对象的查询，不适合list集合的查询</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE mapper</span></span><br><span class="line"><span class="meta">  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"</span></span><br><span class="line"><span class="meta">  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.zhuchuli.mapper.StudentMapper"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selAll"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">		select t.id `teacher.id`,t.name `teacher.name`,s.id id,s.name name,age,tid from  student s left join teacher t on t.id = s.tid</span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Mybatis 注解</li>
+</ul>
+<ol>
+<li><p>注解：就是为了简化配置文件</p>
+</li>
+<li><p>Mybatis的注解简化Mapper.xml文件</p>
+<blockquote>
+<blockquote>
+<ul>
+<li>如果涉及动态SQL依然使用mapper.xml</li>
+</ul>
+</blockquote>
+</blockquote>
+</li>
+<li><p>mapper.xml和注解可以共存。</p>
+</li>
+<li><p>使用注解时mybatis.xml中<code>&lt;mapper&gt;</code>的使用:</p>
+<blockquote>
+<ul>
+<li><code>&lt;package/&gt;</code></li>
+<li><code>&lt;mapper class=&quot;&quot;&gt;</code></li>
+</ul>
+</blockquote>
+</li>
+<li><p>实现查询、修改、新增、删除等功能</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Select</span>(<span class="string">"select * from teacher"</span>)</span><br><span class="line">	<span class="function">List&lt;Teacher&gt; <span class="title">selAll</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Insert</span>(<span class="string">"insert into teacher(id,name) values(default,#&#123;name&#125;)"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">insTeacher</span><span class="params">(Teacher teacher)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Update</span>(<span class="string">"update teacher set name=#&#123;name&#125; where id=#&#123;id&#125;"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">updTeacher</span><span class="params">(Teacher teacher)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Delete</span>(<span class="string">"delete from teacher where id=#&#123;0&#125;"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">delTeacher</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Results</span>(value =&#123;</span><br><span class="line">			<span class="meta">@Result</span>(id=<span class="keyword">true</span>,property=<span class="string">"id"</span>,column=<span class="string">"id"</span>),</span><br><span class="line">			<span class="meta">@Result</span>(property=<span class="string">"name"</span>,column=<span class="string">"name"</span>),</span><br><span class="line">			<span class="meta">@Result</span>(property=<span class="string">"list"</span>,column=<span class="string">"id"</span>,many=<span class="meta">@Many</span>(select=<span class="string">"com.zhuchuli.mapper.StudentMapper.selById"</span>))</span><br><span class="line">			&#125;)</span><br><span class="line">	<span class="meta">@Select</span>(<span class="string">"select * from teacher"</span>)</span><br><span class="line">	<span class="function">List&lt;Teacher&gt; <span class="title">selTeacher</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><blockquote>
+<ul>
+<li>@Results()：相当于<code>&lt;resultMap&gt;</code></li>
+<li>@result()：相当于<code>&lt;id/&gt;或&lt;result/&gt;</code></li>
+<li>@Result(id=true)：相当于<code>&lt;id/&gt;</code></li>
+<li>@Many：相当于<code>&lt;collection/&gt;</code></li>
+<li>@One：相当于<code>&lt;association/&gt;</code></li>
+</ul>
+</blockquote>
+<h2 id="Mybatis运行原理"><a href="#Mybatis运行原理" class="headerlink" title="Mybatis运行原理"></a>Mybatis运行原理</h2></li>
+</ol>
+<ul>
+<li>运行过程中可能遇到的类：<blockquote>
+<ul>
+<li>Resources：Mybatis中IO流的工具类。<blockquote>
+<ul>
+<li>作用：负责加载配置文件</li>
+</ul>
+</blockquote>
+</li>
+<li>SqlSessionFactoryBuilder()：构造器<blockquote>
+<ul>
+<li>作用：创建SqlSessionFactory接口的实现类</li>
+</ul>
+</blockquote>
+</li>
+<li>XMLConfigBuilder：Mybatis全局配置文件内容构造器类<blockquote>
+<ul>
+<li>负责读取流内容并转换为Java代码</li>
+</ul>
+</blockquote>
+</li>
+<li>Configuration 封装了全局配置文件所有配置信息。<blockquote>
+<ul>
+<li>全局配置文件内容都存在该对象中。</li>
+</ul>
+</blockquote>
+</li>
+<li>DefaultSqlSessionFactory是SqlSessionFactory接口的实现类。</li>
+<li>Transaction 事务类<blockquote>
+<ul>
+<li>每一个SqlSession都会带一个Transaction对象</li>
+</ul>
+</blockquote>
+</li>
+<li>TransactionFactory 事务工厂<blockquote>
+<ul>
+<li>负责创建Transaction对象</li>
+</ul>
+</blockquote>
+</li>
+<li>Executor Mybatis执行器<blockquote>
+<ul>
+<li>作用：负责执行SQL语句</li>
+<li>相当于JDBC中的statement对象（或PreperedStatement或CallableStatement）</li>
+<li>默认的执行器SimpleExecutor</li>
+<li>批量操作：BatchExecutor</li>
+<li>通过openSession(参数控制)</li>
+</ul>
+</blockquote>
+</li>
+<li>DefaultSqlSession是SqlSession接口的实现类</li>
+<li>ExceptionFactory：Mybatis中错误异常工厂</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="Spring全家桶"><a href="#Spring全家桶" class="headerlink" title="Spring全家桶"></a>Spring全家桶</h2><blockquote>
+<ul>
+<li>SpringData</li>
+<li>SpringCloud</li>
+<li>SpringBoot</li>
+<li>SpringSession</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-Hibernate4" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -4364,292 +5341,6 @@
 </ul>
 </blockquote>
 </blockquote>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-文件上传" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/CPWS.github.io/2019/06/28/文件上传/" class="article-date">
-  	<time datetime="2019-06-28T01:51:14.000Z" itemprop="datePublished">2019-06-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/CPWS.github.io/2019/06/28/文件上传/">
-        文件上传
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-文件上传功能的实现"><a href="#1-文件上传功能的实现" class="headerlink" title="1. 文件上传功能的实现"></a>1. 文件上传功能的实现</h3><p><code>上传和下载</code>是<code>Web</code>应用开发需求中出现频率较高的词汇。在JSP应用开发过程中，编写“文件上传”功能代码主要有三种方式：</p>
-<blockquote>
-<ul>
-<li>采用自编写的<code>JavaBean</code>组件</li>
-<li>采用<code>JspSmart</code>公司自己编写的<code>JspSmartUnload</code>组件</li>
-<li>采用<code>O’Reilly</code>公司的<code>Cos</code>组件</li>
-</ul>
-</blockquote>
-<h4 id="1-1-采用自编写的JavaBean组件"><a href="#1-1-采用自编写的JavaBean组件" class="headerlink" title="1.1 采用自编写的JavaBean组件"></a>1.1 采用自编写的<code>JavaBean</code>组件</h4><blockquote>
-<ul>
-<li>要编写一个实现文件上传功能的组件，首先需要先了解数据传输的原理，根据数据处理的规律来完成相关的编码。步骤为：<blockquote>
-<blockquote>
-<p>1.获取上传数据的规律。案列如下：</p>
-</blockquote>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--如果要实现文件上传功能 需要添加 enctype=<span class="string">"MULTIPART/FORM-DATA"</span>--&gt;</span><br><span class="line">&lt;form enctype="MULTIPART/FORM-DATA"&gt;&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js版给form添加属性，实现文件上传</span></span><br><span class="line">form.encding=<span class="string">"multipart/form-data"</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--index.jsp--&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;文件上载&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;form action=<span class="string">"up.jsp"</span> enctype=<span class="string">"multipart/form-data"</span> method=<span class="string">"post"</span>&gt;</span><br><span class="line">        作者： &lt;input type=<span class="string">"text"</span> name=<span class="string">"author"</span>&gt;&lt;br&gt;</span><br><span class="line">        公司： &lt;input type=<span class="string">"text"</span> name=<span class="string">"company"</span>&gt;&lt;br&gt;</span><br><span class="line">        选择要上传的文件 &lt;input type=<span class="string">"file"</span> name=<span class="string">"filename"</span>&gt;&lt;br&gt;</span><br><span class="line">        &lt;input type=<span class="string">"submit"</span> value=<span class="string">"上载"</span>&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;!--up.jsp--&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;jsp:useBean id=<span class="string">"TheBean"</span> scope=<span class="string">"page"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.xmh.demo.UploadBean"</span> /&gt;</span><br><span class="line">    &lt;%</span><br><span class="line">        TheBean.doUpload(request);</span><br><span class="line">    %&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.xmh.demo;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletInputStream;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> java.io.BufferedWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.PrintWriter;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UploadBean</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doUpload</span><span class="params">(HttpServletRequest request)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        PrintWriter pw=<span class="keyword">new</span> PrintWriter(<span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> FileWriter(<span class="string">"d:\\xmh.txt"</span>)));</span><br><span class="line">        ServletInputStream in=request.getInputStream();</span><br><span class="line">        <span class="keyword">int</span> i=in.read();</span><br><span class="line">        <span class="keyword">while</span>(i!=-<span class="number">1</span>)&#123;</span><br><span class="line">            pw.print((<span class="keyword">char</span>)i);</span><br><span class="line">            i=in.read();</span><br><span class="line">        &#125;</span><br><span class="line">        pw.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<blockquote>
-<blockquote>
-<ol start="2">
-<li>编写上传组件。<blockquote>
-<ul>
-<li>根据上文所述，如果想要获取表单提取的数据，需要设计一个功能类来处理相关的数据信息。下面设计了一个FileUploadBean.java的类，他就是自定义处理上传功能的类。</li>
-</ul>
-</blockquote>
-</li>
-<li>使用自编写的上传组件。 <blockquote>
-<ul>
-<li>案例2</li>
-</ul>
-</blockquote>
-</li>
-</ol>
-</blockquote>
-</blockquote>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>自编写上传组件--文件上传示例<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"selfBean.jsp"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">        作者：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"author"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        公司：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"company"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        说明: <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">"comment"</span> &gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        选择要上载的文件: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">file</span> <span class="attr">name</span>=<span class="string">"filename"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        文件描述: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"description"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Upload"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;jsp:useBean id=<span class="string">"TheBean"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.xmh.demo.FileUploadBean"</span>  scope=<span class="string">"page"</span>&gt;</span><br><span class="line">    &lt;%</span><br><span class="line">        TheBean.setSavePath(<span class="string">"d:/"</span>);</span><br><span class="line">        TheBean.doUpload(request);</span><br><span class="line"></span><br><span class="line">        out.println(<span class="string">"Filename:"</span>+TheBean.getFilename());</span><br><span class="line">        out.println(<span class="string">"&lt;BR&gt;内容类型:"</span>+TheBean.getContentType());</span><br><span class="line">        out.println(<span class="string">"&lt;BR&gt;作者:"</span>+TheBean.getFieldValue(<span class="string">"author"</span>));</span><br><span class="line">        out.println(<span class="string">"&lt;BR&gt;公司:"</span>+TheBean.getFieldValue(<span class="string">"company"</span>));</span><br><span class="line">        out.println(<span class="string">"&lt;BR&gt;说明:"</span>+TheBean.getFieldValue(<span class="string">"comment"</span>));</span><br><span class="line">    %&gt;</span><br><span class="line">    &lt;/jsp:useBean&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.xmh.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletInputStream;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Hashtable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileUploadBean</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String savePath;</span><br><span class="line">    <span class="keyword">private</span> String filepath;</span><br><span class="line">    <span class="keyword">private</span> String filename;</span><br><span class="line">    <span class="keyword">private</span> String contentType;</span><br><span class="line">    <span class="keyword">private</span> Hashtable&lt;String, String&gt; fields;</span><br><span class="line">    <span class="comment">// 返回filename私有域的值</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getFilename</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> filename;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回filepath私有域的值</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getFilepath</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> filepath;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回savePath私有域的值</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSavePath</span><span class="params">(String savePath)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.savePath = savePath;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回contentType私有域的值</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getContentType</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> contentType;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回HTML表单中指定输入元素的值，元素的名字通过fieldName参数指定</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getFieldValue</span><span class="params">(String fieldName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (fields == <span class="keyword">null</span> || fieldName == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">return</span> (String) fields.get(fieldName);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setFilename</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> pos = s.indexOf(<span class="string">"filename=\""</span>);</span><br><span class="line">        <span class="keyword">if</span> (pos != -<span class="number">1</span>) &#123;</span><br><span class="line">            filepath = s.substring(pos + <span class="number">10</span>, s.length() - <span class="number">1</span>);</span><br><span class="line"><span class="comment">// Windows浏览器发送完整的文件路径和名字</span></span><br><span class="line"><span class="comment">// 但Linux/Unix和Mad浏览器只发送文件名字</span></span><br><span class="line">            pos = filepath.lastIndexOf(<span class="string">"\\"</span>);</span><br><span class="line">            <span class="keyword">if</span> (pos != -<span class="number">1</span>)</span><br><span class="line">                filename = filepath.substring(pos + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                filename = filepath;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setContentType</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> pos = s.indexOf(<span class="string">": "</span>);</span><br><span class="line">        <span class="keyword">if</span> (pos != -<span class="number">1</span>)</span><br><span class="line">            contentType = s.substring(pos + <span class="number">2</span>, s.length());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//处理请求数据的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doUpload</span><span class="params">(HttpServletRequest request)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        ServletInputStream in = request.getInputStream();</span><br><span class="line">        <span class="comment">// 创建字节数组充当缓冲容器的作用</span></span><br><span class="line">        <span class="keyword">byte</span>[] line = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">128</span>];</span><br><span class="line">        <span class="keyword">int</span> i = in.readLine(line, <span class="number">0</span>, <span class="number">128</span>);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; <span class="number">3</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">// -2丢弃换行字符</span></span><br><span class="line">        <span class="keyword">int</span> boundaryLength = i - <span class="number">2</span>;</span><br><span class="line">        String boundary = <span class="keyword">new</span> String(line, <span class="number">0</span>, boundaryLength);</span><br><span class="line">        fields = <span class="keyword">new</span> Hashtable&lt;String, String&gt;();</span><br><span class="line">        <span class="keyword">while</span>(i!=-<span class="number">1</span>)&#123;</span><br><span class="line">            String newLine=<span class="keyword">new</span> String(line,<span class="number">0</span>,i);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(newLine.startsWith(<span class="string">"Content-Disposition: form-data; name=\""</span>))&#123;</span><br><span class="line">                <span class="comment">//判断文件类型</span></span><br><span class="line">                <span class="keyword">if</span>(newLine.indexOf(<span class="string">"filename=\""</span>) != -<span class="number">1</span>)&#123;</span><br><span class="line">                    setFilename(<span class="keyword">new</span> String(line,<span class="number">0</span>,i-<span class="number">2</span>));</span><br><span class="line">                    <span class="keyword">if</span>(filename == <span class="keyword">null</span>)&#123;</span><br><span class="line">                        <span class="keyword">return</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    i=in.readLine(line,<span class="number">0</span>,<span class="number">128</span>);</span><br><span class="line">                    setContentType(<span class="keyword">new</span> String(line,<span class="number">0</span>,i-<span class="number">2</span>));</span><br><span class="line">                    i=in.readLine(line,<span class="number">0</span>,<span class="number">128</span>);</span><br><span class="line">                    newLine=<span class="keyword">new</span> String(line,<span class="number">0</span>,i);</span><br><span class="line">                    PrintWriter pw=<span class="keyword">new</span> PrintWriter(<span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> FileWriter((savePath == <span class="keyword">null</span> ? <span class="string">""</span>:savePath)+filename)));</span><br><span class="line">                    <span class="keyword">while</span>(i!=-<span class="number">1</span> &amp;&amp; !newLine.startsWith(boundary))&#123;</span><br><span class="line">                        <span class="comment">//文件的最后一行包含换行符</span></span><br><span class="line">                        <span class="comment">//因此必须检查当前行是否是最后一行</span></span><br><span class="line">                        i=in.readLine(line,<span class="number">0</span>,<span class="number">128</span>);</span><br><span class="line">                        <span class="keyword">if</span>( (i == boundaryLength+<span class="number">2</span> || i==boundaryLength+<span class="number">4</span>) &amp;&amp; (<span class="keyword">new</span> String(line,<span class="number">0</span>,i).startsWith(boundary)))&#123;</span><br><span class="line">                            pw.print(newLine.substring(<span class="number">0</span>,newLine.length()-<span class="number">2</span>));</span><br><span class="line">                        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                            pw.print(newLine);</span><br><span class="line">                        &#125;</span><br><span class="line">                        newLine=<span class="keyword">new</span> String(line,<span class="number">0</span>,i);</span><br><span class="line">                    &#125;</span><br><span class="line">                    pw.close();</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="comment">//普通表单输入元素</span></span><br><span class="line">                    <span class="comment">//获取输入元素名字</span></span><br><span class="line">                    <span class="keyword">int</span> pos=newLine.indexOf(<span class="string">"name=\""</span>);</span><br><span class="line">                    String fieldName=newLine.substring(pos+<span class="number">6</span>,newLine.length()-<span class="number">3</span>);</span><br><span class="line">                    i=in.readLine(line,<span class="number">0</span>,<span class="number">128</span>);</span><br><span class="line">                    newLine=<span class="keyword">new</span> String(line,<span class="number">0</span>,i);</span><br><span class="line">                    StringBuffer fieldValue=<span class="keyword">new</span> StringBuffer(<span class="number">128</span>);</span><br><span class="line">                    <span class="keyword">while</span>(i!=-<span class="number">1</span> &amp;&amp; !newLine.startsWith(boundary))&#123;</span><br><span class="line">                        <span class="comment">//最后一行包含换行符</span></span><br><span class="line">                        <span class="comment">//因此必须检查当前行是否是最后一行</span></span><br><span class="line">                        i=in.readLine(line,<span class="number">0</span>,<span class="number">128</span>);</span><br><span class="line">                        <span class="keyword">if</span>( (i==boundaryLength+<span class="number">2</span> || i==boundaryLength+<span class="number">4</span>) &amp;&amp;(<span class="keyword">new</span> String(line,<span class="number">0</span>,i).startsWith(boundary)))&#123;</span><br><span class="line">                            fieldValue.append(newLine.substring(<span class="number">0</span>,newLine.length()-<span class="number">2</span>));</span><br><span class="line">                        &#125;<span class="keyword">else</span></span><br><span class="line">                            fieldValue.append(newLine);</span><br><span class="line"></span><br><span class="line">                        newLine=<span class="keyword">new</span> String(line,<span class="number">0</span>,i);</span><br><span class="line">                    &#125;</span><br><span class="line">                    fields.put(fieldName,fieldValue.toString());</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            i=in.readLine(line,<span class="number">0</span>,<span class="number">128</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="1-2-JspSmartUpload上传组件"><a href="#1-2-JspSmartUpload上传组件" class="headerlink" title="1.2 JspSmartUpload上传组件"></a>1.2 <code>JspSmartUpload</code>上传组件</h4><p><code>JspSmartUpload</code>是由<code>JspSmart</code>公司开发的，它可以免费下载，下载地址:<br><code>https://pan.baidu.com/s/10OTcN5GOwNly-Ty9oybwQQ</code>，提取码：<code>4fzf</code><br>因为要反馈给用户上传成功与否，所以需要将上传功能的执行顺序优先于表单的文本数据执行。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--上传界面--&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>上传图片<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"upload_pic.jsp"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span> <span class="attr">name</span>=<span class="string">"form1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">align</span>=<span class="string">"center"</span> <span class="attr">cellpadding</span>=<span class="string">"1"</span> <span class="attr">cellspacing</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">height</span>=<span class="string">"45"</span> <span class="attr">align</span>=<span class="string">"center"</span> <span class="attr">valign</span>=<span class="string">"middle"</span>&gt;</span></span><br><span class="line">                    请选择上传的图片</span><br><span class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"上传"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--处理图片 ， 获取上传图图片，然后生成缩略图 --&gt;</span><br><span class="line">&lt;%@ page language=<span class="string">"java"</span> pageEncoding=<span class="string">"utf-8"</span></span><br><span class="line">     <span class="keyword">import</span>=<span class="string">"java.util.*,java.io.*"</span>%&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"com.jspsmart.upload.SmartUpload"</span>%&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"javax.servlet.jsp.tagext.TryCatchFinally"</span>%&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"javax.imageio.ImageIO"</span>%&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.awt.image.BufferedImage"</span>%&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"javax.servlet.*"</span>%&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"javax.servlet.http.*"</span>%&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.awt.*"</span> %&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    String path = request.getContextPath();</span><br><span class="line">    String basePath = request.getScheme() + <span class="string">"://"</span> + request.getServerName() + <span class="string">":"</span> + request.getServerPort()</span><br><span class="line">            + path + <span class="string">"/"</span>;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    SmartUpload mySmartUpload = <span class="keyword">new</span> SmartUpload();<span class="comment">//实例SmartUpload对象</span></span><br><span class="line">    <span class="keyword">long</span> file_size_max = <span class="number">4000000</span>;</span><br><span class="line">    String fileName2;<span class="comment">//文件名</span></span><br><span class="line">    String ext;<span class="comment">//文件扩展名</span></span><br><span class="line">    String url = <span class="string">"D:/"</span>;<span class="comment">//应保证在WebRoot目录下有此目录的存在</span></span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">    mySmartUpload.initialize(pageContext);</span><br><span class="line">    <span class="comment">//只允许上载此类文件</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//支持上载文件的后缀名</span></span><br><span class="line">        <span class="comment">//mySmartUpload.setAllowedFilesList("jpg,gif");</span></span><br><span class="line">        <span class="comment">//mySmartUpload.setAllowedFilesList("jpg,gif,jpeg,png");</span></span><br><span class="line">        <span class="comment">//不支持指定的后缀</span></span><br><span class="line">        mySmartUpload.setDeniedFilesList(<span class="string">"exe"</span>);</span><br><span class="line">        <span class="comment">//上载文件</span></span><br><span class="line">        mySmartUpload.upload();<span class="comment">//不指定编码的upload()方法</span></span><br><span class="line">        <span class="comment">//mySmartUpload.upload("utf-8");//指定编码的upload()方法</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        out.print(<span class="string">"&lt;script type=\"text/javascript\"&gt;"</span>);</span><br><span class="line">        out.print(<span class="string">"window.alert(\"文件格式不符\");"</span>);</span><br><span class="line">        out.print(<span class="string">"window.location=\"upload.html;\""</span>);</span><br><span class="line">        out.print(<span class="string">"&lt;/script&gt;"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        com.jspsmart.upload.File myFile = mySmartUpload.getFiles().getFile(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span> (myFile.isMissing()) &#123;<span class="comment">//如果没有拿到文件，提示</span></span><br><span class="line">            out.print(<span class="string">"&lt;script type=\"text/javascript\"&gt;"</span>);</span><br><span class="line">            out.print(<span class="string">"window.alert(\"请先选择要上传的文件\");"</span>);</span><br><span class="line">            out.print(<span class="string">"window.location=\"upload.html;\""</span>);</span><br><span class="line">            out.print(<span class="string">"&lt;/script&gt;"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            String myFileName = myFile.getFileName();<span class="comment">//取得上载的文件的文件名</span></span><br><span class="line">            ext = myFile.getFileExt();<span class="comment">//取得后缀名</span></span><br><span class="line">            <span class="keyword">if</span> (!(ext.length() &gt; <span class="number">0</span>)) &#123;</span><br><span class="line">                out.println(<span class="string">"**************myFileName的文件名是："</span> + myFileName);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> file_size = myFile.getSize();<span class="comment">//取得文件的大小</span></span><br><span class="line">            String saveUrl = <span class="string">""</span>;<span class="comment">//文件保存路径</span></span><br><span class="line">            <span class="keyword">if</span> (file_size &lt; file_size_max) &#123;</span><br><span class="line">                <span class="comment">//更改文件名，取得当前上传时间的毫秒数值</span></span><br><span class="line">                Calendar calendar = Calendar.getInstance();</span><br><span class="line">                String fileName = String.valueOf(calendar.getTimeInMillis());<span class="comment">//设置新的文件名</span></span><br><span class="line">                saveUrl += fileName + <span class="string">"."</span> + ext;</span><br><span class="line">                myFile.saveAs(saveUrl, mySmartUpload.SAVE_PHYSICAL);<span class="comment">//保存文件</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">//上传完成，开始生成缩略图</span></span><br><span class="line">                java.io.File file = <span class="keyword">new</span> java.io.File(saveUrl);<span class="comment">//读入刚才上传的文件</span></span><br><span class="line">                out.println(<span class="string">"ext = "</span> + ext);</span><br><span class="line">                String newUrl =  url + fileName + <span class="string">"_min."</span> + ext;<span class="comment">//新的缩略图保存地址</span></span><br><span class="line">                System.out.println(newUrl);</span><br><span class="line">                BufferedImage image=ImageIO.read(file);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">int</span> imageWidth=image.getWidth(); <span class="comment">//取出图片额宽度</span></span><br><span class="line">                <span class="keyword">int</span> imageHeight=image.getHeight();<span class="comment">//取出图片的高度</span></span><br><span class="line">                <span class="keyword">int</span> n_w=<span class="number">0</span>; <span class="comment">//缩略图的宽度</span></span><br><span class="line">                <span class="keyword">int</span> n_h=<span class="number">0</span>; <span class="comment">//缩略图的高度</span></span><br><span class="line">                System.out.println(<span class="string">"imageWidth="</span>+imageWidth + <span class="string">";"</span>+<span class="string">"imageHeight="</span>+imageHeight);</span><br><span class="line">                <span class="keyword">float</span> tempDouble;</span><br><span class="line">                <span class="keyword">if</span>(imageHeight &gt; imageWidth)&#123;</span><br><span class="line">                    tempDouble = imageHeight /<span class="number">200</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    tempDouble = imageWidth /<span class="number">200</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                n_w = (<span class="keyword">int</span>) (imageWidth/tempDouble);</span><br><span class="line">                n_h = (<span class="keyword">int</span>) (imageHeight/tempDouble);</span><br><span class="line">                FileOutputStream fos=<span class="keyword">new</span> FileOutputStream(newUrl);</span><br><span class="line">                BufferedImage bi=<span class="keyword">new</span> BufferedImage(n_w,n_h,BufferedImage.TYPE_INT_RGB);</span><br><span class="line">                Graphics g=bi.getGraphics();</span><br><span class="line">                g.drawImage(image,<span class="number">0</span>,<span class="number">0</span>,n_w,n_h,Color.LIGHT_GRAY,<span class="keyword">null</span>);</span><br><span class="line">                g.dispose();</span><br><span class="line">                ImageIO.write(bi,<span class="string">"jpg"</span>,fos);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                out.print(<span class="string">"&lt;script type=\"text/javascript\"&gt;"</span>);</span><br><span class="line">                out.print(<span class="string">"window.alert(\"上传文件大小不能超过\"+(file_size_max/1000)+\"K\");"</span>);</span><br><span class="line">                out.print(<span class="string">"window.location=\"upload.html;\""</span>);</span><br><span class="line">                out.print(<span class="string">"&lt;/script&gt;"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;处理上传的图片&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="1-3-Cos上传组件-（Cloud-Object-Storage）"><a href="#1-3-Cos上传组件-（Cloud-Object-Storage）" class="headerlink" title="1.3 Cos上传组件 （Cloud Object Storage）"></a>1.3 <code>Cos</code>上传组件 （Cloud Object Storage）</h4><ul>
-<li><code>Cos</code>组件是<code>O&#39;Reilly</code>公司开发的一款免费组件。</li>
-<li><code>Cos</code>包下载地址：<code>http://www.servlets.com/cos/</code><h5 id="2-3-1-在Cos组件中MultipartRequest类主要负责文件上传的处理"><a href="#2-3-1-在Cos组件中MultipartRequest类主要负责文件上传的处理" class="headerlink" title="2.3.1 在Cos组件中MultipartRequest类主要负责文件上传的处理"></a>2.3.1 在<code>Cos</code>组件中<code>MultipartRequest</code>类主要负责文件上传的处理</h5><blockquote>
-<ul>
-<li>(1) <code>MultipartRequest</code>有8个构造函数，它们分别是：<blockquote>
-<blockquote>
-<ul>
-<li><code>public MulipartRequest(HttpServletRequest request,String saveDirectory) throws IOException</code></li>
-<li><code>public MultipartRequest(HttpServletRequest request,String saveDirectory,int maxPostSize) throws IOException</code></li>
-<li><code>public MiltipartRequest(HttpServletRequest request,String saveDirectory,int maxPostSize,FileRenamePolicy policy) throws IOException</code></li>
-<li><code>public MultipartRequest(HttpServletRequest request,String saveDirectory,int maxPostSize,String encoding) throws IOException</code></li>
-<li><code>public MultipartRequest(HttpServletRequest request,String saveDirectory,int maxPostSize,String encoding,FileRenamePolicy policy) throws IOException</code></li>
-<li><code>public MultipartRequest(HttpServletRequest request,String saveDirectory,String encoding) throws IOException</code></li>
-<li><code>public MulipartRequest(HttpServletRequest request,String saveDirectory) throws IOException</code></li>
-<li><code>public MulipartRequest(HttpServletRequest request,String saveDirectory,int maxPostSize)throws IOException</code></li>
-</ul>
-</blockquote>
-</blockquote>
-</li>
-<li>(2) <code>MultipartRequest</code>类工具有8中方法：<blockquote>
-<blockquote>
-<ul>
-<li><code>public Enumeration getParameters()</code>: 取得请求参数的名称</li>
-<li><code>public String getParameter(String name)</code>: 此方法返回参数为<code>name</code>的值</li>
-<li><code>public String[] getParameterValues(String name)</code>：当指定参数具有多个值时，此方法会返回<code>String</code>数组</li>
-<li><code>public Enumeration getFileName()</code>：传回所有文件输入类型的名称</li>
-<li><code>public String getFilesystemNames(String name)</code>： 用此方法得到上传文件的真正的文件名称，这里的<code>name</code>指文件输入类型的名称</li>
-<li><code>public String getContentType(String name)</code>： 此方法得到上传文件的文件类型</li>
-<li><code>public File getFile(String name)</code>：此方法得到一个文件对象，代表存储在服务器上的<code>name</code>值</li>
-<li><code>public String getOriginalFileName(String name)</code>：返回文件在修改政策有效之前的文件名称。</li>
-<li>注意：<code>Cos</code>组件在上传大容量文件时，效率比起前面介绍的自编写<code>JavaBean</code>组件和<code>JspSmart</code>上传组件高。</li>
-<li>案例：</li>
-</ul>
-</blockquote>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--upload.html--&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>无标题文档<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--enctype的值很重要，upload.jsp处理上传的JSP--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"upload.jsp"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span> <span class="attr">name</span>=<span class="string">"form1"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file1"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file2"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file3"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"Submit"</span> <span class="attr">value</span>=<span class="string">"上传"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.io.File"</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"com.oreilly.servlet.MultipartRequest"</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.util.Enumeration"</span> %&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    <span class="comment">//文件上传后，保存在d:/JavaWebs</span></span><br><span class="line">    String saveDirectory=<span class="string">"d:"</span>+ File.separator+<span class="string">"JavaWebs"</span>;</span><br><span class="line">    <span class="comment">//每个文化最大500M,最多三个文件，所以...</span></span><br><span class="line">    <span class="keyword">int</span> maxPostSize=<span class="number">3</span>*<span class="number">500</span>*<span class="number">1024</span>*<span class="number">1024</span>;</span><br><span class="line">    <span class="comment">//response的编码为gd2312，同时采用缺省的文件名冲突解决策略，实现上传</span></span><br><span class="line">    MultipartRequest multi=<span class="keyword">new</span> MultipartRequest(request,saveDirectory,maxPostSize,<span class="string">"UTF-8"</span>);</span><br><span class="line">    <span class="comment">//输出反馈信息</span></span><br><span class="line">    Enumeration files=multi.getFileNames();</span><br><span class="line">    <span class="keyword">while</span> (files.hasMoreElements())&#123;</span><br><span class="line">        System.err.println(<span class="string">"ccc"</span>);</span><br><span class="line">        String name= (String) files.nextElement();</span><br><span class="line">        File f=multi.getFile(name);</span><br><span class="line">        <span class="keyword">if</span>(f!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            String fileName=multi.getFilesystemName(name);</span><br><span class="line">            String lastFileName=saveDirectory+<span class="string">"\\"</span>+fileName;</span><br><span class="line">            out.println(<span class="string">"上传的文件:"</span>+lastFileName);</span><br><span class="line">            out.println(<span class="string">"&lt;hr&gt;"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="以上内容大部分都是参考一本书叫做《软件开发-JSP》，感谢作者"><a href="#以上内容大部分都是参考一本书叫做《软件开发-JSP》，感谢作者" class="headerlink" title="以上内容大部分都是参考一本书叫做《软件开发 JSP》，感谢作者!!!!"></a>以上内容大部分都是参考一本书叫做《软件开发 JSP》，感谢作者!!!!</h2>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-解决中文乱码" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/CPWS.github.io/2019/06/28/解决中文乱码/" class="article-date">
-  	<time datetime="2019-06-28T01:47:18.000Z" itemprop="datePublished">2019-06-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/CPWS.github.io/2019/06/28/解决中文乱码/">
-        解决中文乱码
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-1-熟悉Web应用程序中与编码相关的部分"><a href="#1-1-熟悉Web应用程序中与编码相关的部分" class="headerlink" title="1.1 熟悉Web应用程序中与编码相关的部分"></a>1.1 熟悉Web应用程序中与编码相关的部分</h4><blockquote>
-<ul>
-<li>JSP编译<blockquote>
-<blockquote>
-<ul>
-<li>指定文件的存储编码,很明显。该设置应该位于文件的开头：<code>&lt;%@page pageEncoding=&quot;UTF-8&quot; %&gt;</code></li>
-<li>另外对于一般的class文件，可以在编译的时候指定编码。</li>
-</ul>
-</blockquote>
-</blockquote>
-</li>
-<li>JSP输出 <blockquote>
-<blockquote>
-<ul>
-<li>指定文件输出到Browser时的使用的编码，该设置也应该设置在文件的开头。<code>&lt;%@page contentType=&quot;text/html;charset=UTF8&quot; %&gt;</code></li>
-<li>该设置与<code>response.setCharacterEncoding(&quot;GBK&quot;);</code>等效</li>
-</ul>
-</blockquote>
-</blockquote>
-</li>
-<li>META设置<blockquote>
-<blockquote>
-<ul>
-<li>指定网页使用的编码，该设置对静态网页尤其有用，因为静态网页无法使用采用JSP的设置而且也无法执行<code>response.setCharacterEncoding(&quot;UTF-8&quot;)</code> ；例如：<br><code>&lt;meta http-equiv=&quot;Content-Type&quot; contentType=&quot;text/html;charset=UTF-8&quot;/&gt;</code></li>
-<li>注意：如果同时采用了JSP输出和meta设置两种编码指定方式，那么JSP指定的优先。因为JSP指定的直接体现在Response中。</li>
-</ul>
-</blockquote>
-</blockquote>
-</li>
-<li>Form设置<blockquote>
-<blockquote>
-<ul>
-<li>当浏览器提交表单时，可以指定相应的编码，例如:<code>&lt;form accept-charset=&quot;UTF-8&quot;&gt;&lt;/form&gt;</code>一般不需要设置，浏览器会直接使用网页的编码</li>
-</ul>
-</blockquote>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-<h4 id="1-2-熟悉Web应用程序产生中文乱码的原因"><a href="#1-2-熟悉Web应用程序产生中文乱码的原因" class="headerlink" title="1.2 熟悉Web应用程序产生中文乱码的原因"></a>1.2 熟悉Web应用程序产生中文乱码的原因</h4><blockquote>
-<ul>
-<li><code>JSP</code>页面被编译成<code>class</code>文件时,如果未指定字符集时,默认使用<code>ISO-8859-1</code>的编码格式，这样中文会出现乱码。</li>
-<li>提交表单时如果设定提交方式为<code>Post</code>而没有设置提交的编码的格式，则会以<code>ISO-8859-1</code>方式提交，而接收的<code>JSP</code>却以<code>UTF-8</code>的方式接收，这样也会导致中文乱码。</li>
-<li>提交表单时如果设定提交方式为<code>Get</code>而没有设置提交的编码的格式，Tomcat会以GET的默认编码格式ISO8859-1对汉字进行编码，编码后追加到<code>URL</code>，导致接收页面得到的参数为乱码。</li>
-</ul>
-</blockquote>
-<h4 id="1-3-解决中文乱码"><a href="#1-3-解决中文乱码" class="headerlink" title="1.3 解决中文乱码"></a>1.3 解决中文乱码</h4><blockquote>
-<ul>
-<li>设置文件本身的编码格式。这可以在<code>Eclipse</code>或<code>MyEclipse</code>中进行设置。</li>
-<li>在<code>JSP</code>页面中指定字符集，通常页面字符集的设置如下：</li>
-</ul>
-</blockquote>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span>  %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta http-equiv=<span class="string">"Content-Type"</span> contentType=<span class="string">"text/html;charset=UTF8"</span>/&gt;</span><br><span class="line">        &lt;title&gt;字符集设置联系&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<ul>
-<li>数据库连接时指定的字符集。</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String url=<span class="string">"jdbc:msqyl://localhost:3306/test?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=UTF-8"</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<ul>
-<li>在程序中获取页面数据时使用如下代码</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">response.setContentType(<span class="string">"text/html;charset=UTF-8"</span>);</span><br><span class="line">request.setCharacterEncoding(<span class="string">"UTF-8"</span>);</span><br></pre></td></tr></table></figure>
-
-<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><ul>
-<li>如果需要将中文作为参数传递，需要在传递和接受时进行相应的处理、具体方法如下所示：<blockquote>
-<ul>
-<li>在传递参数时对参数编码 : <code>&quot;...RearshRes.jsp?keywords=&quot;+java.net.URLEncoder.encode(keywords)</code></li>
-<li>然后在接收参数页面中使用如下语句接收 <code>keywords=new String(request.getParameter(&quot;keywords&quot;).getBytes(&quot;ISO-8859-1&quot;))</code></li>
-</ul>
-</blockquote>
-</li>
-</ul>
 
       
     </div>
