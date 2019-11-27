@@ -948,6 +948,7 @@
 </li>
 <li>缓存穿透</li>
 <li>缓存雪崩</li>
+<li>缓存击穿</li>
 </ul>
 <hr>
 <h2 id="Redis高级"><a href="#Redis高级" class="headerlink" title="Redis高级"></a>Redis高级</h2><ul>
@@ -993,6 +994,213 @@
 <li>Twitter开发的twemproxy</li>
 <li>豌豆荚开发的codis</li>
 <li>redis官方的redis-cluster</li>
+</ul>
+</blockquote>
+</li>
+<li><code>redis-cluster</code>特点</li>
+<li><code>redis cluster</code>容错性</li>
+</ul>
+<hr>
+<h2 id="Redis-Cluster集群搭建"><a href="#Redis-Cluster集群搭建" class="headerlink" title="Redis Cluster集群搭建"></a><code>Redis Cluster</code>集群搭建</h2><ul>
+<li>简介：<blockquote>
+<p>集群中至少应该有奇数个节点，所以搭建集群最少需要3台主机(master)。同时每个节点至少有一个备份节点（slaver），所以下面最少需要6台机器，才能完成Redis-Cluster集群（主节点，备节点由redis-cluster集群确定）</p>
+</blockquote>
+</li>
+<li>真集群：准备6台机器</li>
+<li>假集群：一台服务器存在6个redis服务。</li>
+<li>搭建流程<blockquote>
+<ul>
+<li>创建<code>Redis</code>节点安装目录，<code>mkdir /usr/local/redis_cluster</code> //指定目录下 创建redis_cluster</li>
+<li>在<code>redis_cluster</code>目录下，创建7001-7006个文件夹下，<code>mkdir 7001 7002 7003 7004 7005 7006</code></li>
+<li>并将redis-conf分别拷贝到7001-7006文件夹下：<code>cp /root/redis-4.0.1/redis.conf ./7001</code></li>
+<li>分别修改如下配置文件，修改如下内容：<blockquote>
+<ul>
+<li>同时<code>protected-mode</code>是为了禁止公网访问redis cache，加强了redis的安全性。</li>
+<li>没有bind IP</li>
+<li>没有设置访问密码</li>
+<li>由于Linux上的redis处于安全保护模式，这就让你无法从虚拟机外部去轻松建立连接。</li>
+<li>如果外部访问：redis.conf中设置保护模式：protected-mode yes </li>
+<li>bind 127.0.0.1// 注释掉</li>
+<li>port 7000 //绑定端口，必须修改，以此来区分Redis实例</li>
+<li>daemonize yes//后台运行</li>
+<li>pidfile /var/run/redis-7001.pid//修改pid进行文件名，以端口号命名</li>
+<li>cluster-enabled yes//启用集群</li>
+<li>cluster-config-file nodes-7000.conf //配置每个节点的配置文件，同样以端口为名称</li>
+<li>cluster-node-timeout 15000 //配置集群的超时时间，可改可不改</li>
+<li>appendonly yes://启动AOF增量持久化策略</li>
+<li>appendfsync always//发生改变就记录日志</li>
+</ul>
+</blockquote>
+</li>
+<li>把redis/src/的文件拷贝到7001-7006目录下 cp -r ./src /usr/local/redis_cluster/7001</li>
+<li>分别启动redis-server</li>
+</ul>
+</blockquote>
+</li>
+<li>创建集群<blockquote>
+<ul>
+<li>Redis官方提供了redis-trib.rb这个工具，就在解压目录下的src目录中（为了方便操作），将其文件复制到/usr//local/bin目录下，可直接访问此命令:<code>cd redis-4.0.1/</code>、<code>cd src</code>、<code>cp redis-trib.rb /usr/local/bin/</code></li>
+<li>可以直接在命令中执行：ip:port格式<code>redis-trib.rb create --replicas 1 127.0.0.1:7001 ...</code> </li>
+<li>如果出现下面此错误：则需要安装ruby，这个工具是用ruby实现的。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/27/r5NAg4F9Mikn1oj.png" alt="1574817437_1_.png"> </p>
+<ul>
+<li>安装ruby<blockquote>
+<ul>
+<li><code>yum -y install ruby ruby-devel rubygems rpm-build</code></li>
+<li><code>gem install redis</code></li>
+<li>如下错误原因，centos默认支持ruby到2.0.0，可gem安装redis需要最低是2.2.2</li>
+<li>解决办法是：先安装rvm，再把ruby升级</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/27/sk3GPXBix9MYUbW.png" alt="1574817822_1_.png"></p>
+<ul>
+<li><p>安装rvm （出现错误时查看以下一个点）</p>
+<blockquote>
+<ul>
+<li><code>gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3</code></li>
+<li><code>curl -sSL https://get.rvm.io | bash -s stable</code></li>
+<li><code>find / -name rvm -print</code></li>
+<li><code>source /usr/local/rvm/scripts/rvm</code></li>
+<li><code>rvm list known</code>//查看rvm库中已知的ruby版本。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>安装一个ruby版本</p>
+<blockquote>
+<ul>
+<li><code>rvm install 2.4.4</code></li>
+<li><code>rvm use 2.4.4</code>//使用一个ruby版本</li>
+<li><code>rvm use 2.4.4 --default</code>//设置默认版本</li>
+<li><code>ruby --version</code>//查看ruby版本</li>
+<li><code>gem install redis</code>//安装redis</li>
+</ul>
+</blockquote>
+</li>
+<li><p>重新执行<code>redis-trib.rb create --replicas 1 127.0.0.1:7001 ...</code>创建集群，结果如下：</p>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/27/adNWkpr5PLX7jhS.png" alt="1574820682_1_.png"></p>
+<ul>
+<li>最终结果</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/27/YH6WpwbCTnctAUu.png" alt="1574820970_1_.png"></p>
+<ul>
+<li>创建成功。</li>
+</ul>
+<hr>
+<h2 id="Linux-CentOS下通过ruby搭建redis集群"><a href="#Linux-CentOS下通过ruby搭建redis集群" class="headerlink" title="Linux CentOS下通过ruby搭建redis集群"></a>Linux CentOS下通过ruby搭建redis集群</h2><ul>
+<li>通过下载安装包<blockquote>
+<ul>
+<li><code>ruby-2.3.1.tar.gz</code></li>
+<li><code>redis-3.3.0.gem</code></li>
+</ul>
+</blockquote>
+</li>
+<li>通过wget命令<blockquote>
+<ul>
+<li><code>wget https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz</code></li>
+<li><code>wget http://rubygems.org/downloads/redis-3.3.0.gem</code></li>
+</ul>
+</blockquote>
+</li>
+<li>1跟2都会先出现 zlib包不存在以及openssl不存在的问题，zlib可以通过如下方式解决<blockquote>
+<ul>
+<li><code>yum -y install zlib-devel</code></li>
+<li>进入ruby源码文件夹,安装ruby自身提供的zlib包<blockquote>
+<ul>
+<li><code>cd ruby-2.3.1/ext/zlib</code></li>
+<li><code>ruby ./extconf.rb</code></li>
+<li><code>make</code></li>
+<li><code>make install</code></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>通过yum install<blockquote>
+<ul>
+<li>默认安装的ruby版本低于2.2，无法创建redis集群，可以安装了之后再通过rvm工具升级，还不如直接使用rvm</li>
+</ul>
+</blockquote>
+</li>
+<li>通过ruby的版本管理工具rvm<blockquote>
+<ul>
+<li>4.1:<code>curl -L get.rvm.io | bash -s stable</code></li>
+<li><code>yum install -y crul</code>（如果发现curl没有安装，则执行这个之后再执行4.1）</li>
+<li>如果遇到<code>CURLE_SSL_CONNECT_ERROR return</code> status(35)的错误，执行<code>yum -y update nss</code>，再重新执行4.1</li>
+<li>此时打印信息</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/27/oldEYHkaNhJFgwi.png" alt="1574819789_1_.png"></p>
+<blockquote>
+<ul>
+<li>通过以上信息，需要try to install GPG v2再 fetch the public key</li>
+<li>因此执行 <code>command curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -</code> 再执行 4.1</li>
+</ul>
+</blockquote>
+<ul>
+<li><code>find / -name rvm -print</code></li>
+<li><code>source /usr/local/rvm/scripts/rvm</code></li>
+<li><code>rvm list known</code></li>
+</ul>
+<hr>
+<h2 id="Redis-cluster集群验证"><a href="#Redis-cluster集群验证" class="headerlink" title="Redis cluster集群验证"></a><code>Redis cluster</code>集群验证</h2><ul>
+<li>Redis集群测试<blockquote>
+<ul>
+<li>为方便测试，可将<code>redis-cli</code>客户端命令放到<code>/usr/local/bin</code>目录下</li>
+<li><code>cd /root/redis-4.0.14/src</code> //进入该目录</li>
+<li><code>cp redis-cli /usr/local/bin</code></li>
+</ul>
+</blockquote>
+</li>
+<li>在某台机器上（或）连接集群的7001端口的节点上：<blockquote>
+<ul>
+<li><code>redis-cli -h 127.0.0.1 -c -p 7001</code></li>
+</ul>
+</blockquote>
+</li>
+<li>查看集群信息<blockquote>
+<ul>
+<li><code>info replication</code></li>
+</ul>
+</blockquote>
+</li>
+<li>查看主从关系<blockquote>
+<ul>
+<li>输入命令 <code>cluster nodes</code></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/27/sVkTmc4ZuMAqEfH.png" alt="1574821797_1_.png"></p>
+<p><img src="https://i.loli.net/2019/11/27/uTgBP5xiIEMNK3z.png" alt="1574821814_1_.png"></p>
+<ul>
+<li><p>主从复制：主做增删改，从做查询功能</p>
+</li>
+<li><p>外部使用(针对centos6)</p>
+<blockquote>
+<ul>
+<li>开启端口权限，依次开放端口7001 7002…7006 <blockquote>
+<ul>
+<li><code>vi /etc/sysconfig/iptables</code> </li>
+</ul>
+</blockquote>
+</li>
+<li>重启防火墙<blockquote>
+<ul>
+<li><code>service iptables restart</code></li>
+</ul>
+</blockquote>
+</li>
 </ul>
 </blockquote>
 </li>
