@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>nginx | Prossible&#39;s Blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="什么是nginx 是一个使用c语言开发的高性能的http服务器及反向代理服务器。 Nginx是一款高性能的http 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器。由俄罗斯的程序设计师Igor Sysoev所开发，官方测试nginx能够支支撑5万并发链接，并且cpu、内存等资源消耗却非常低，运行非常稳定。   Nginx的应用场景 http服务器。Nginx是一个http服务可以">
+<meta name="keywords" content="nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx">
+<meta property="og:url" content="https://CPWS.github.io/2019/11/27/nginx/index.html">
+<meta property="og:site_name" content="Prossible&#39;s Blog">
+<meta property="og:description" content="什么是nginx 是一个使用c语言开发的高性能的http服务器及反向代理服务器。 Nginx是一款高性能的http 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器。由俄罗斯的程序设计师Igor Sysoev所开发，官方测试nginx能够支支撑5万并发链接，并且cpu、内存等资源消耗却非常低，运行非常稳定。   Nginx的应用场景 http服务器。Nginx是一个http服务可以">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/zQnIYqt4TShNEO2.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/Yz6u8eRSIdqE9Al.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/x13mWjrUBS9zi2e.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/mYjQ9oKtSybpBrA.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/GZNuLDlJ8yiRwaM.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/MNfPipO8eo2USCh.png">
+<meta property="og:updated_time" content="2019-11-27T06:02:22.517Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nginx">
+<meta name="twitter:description" content="什么是nginx 是一个使用c语言开发的高性能的http服务器及反向代理服务器。 Nginx是一款高性能的http 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器。由俄罗斯的程序设计师Igor Sysoev所开发，官方测试nginx能够支支撑5万并发链接，并且cpu、内存等资源消耗却非常低，运行非常稳定。   Nginx的应用场景 http服务器。Nginx是一个http服务可以">
+<meta name="twitter:image" content="https://i.loli.net/2019/11/27/zQnIYqt4TShNEO2.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/CPWS.github.io/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://img.mp.itc.cn/q_mini,c_zoom,w_640/upload/20161221/c495640d0fc24a91b9c95dc0d54b6002_th.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">zhuli</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+				        
+							<li><a href="/CPWS.github.io/">主页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/CPWS.github.io/tags/Java框架下载路径/" style="font-size: 10px;">Java框架下载路径</a> <a href="/CPWS.github.io/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/CPWS.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/CPWS.github.io/tags/数据库系统概述/" style="font-size: 10px;">数据库系统概述</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">zhuli</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://img.mp.itc.cn/q_mini,c_zoom,w_640/upload/20161221/c495640d0fc24a91b9c95dc0d54b6002_th.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">zhuli</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+		        
+					<li><a href="/CPWS.github.io/">主页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-nginx" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/CPWS.github.io/2019/11/27/nginx/" class="article-date">
+  	<time datetime="2019-11-27T02:46:39.000Z" itemprop="datePublished">2019-11-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nginx
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/CPWS.github.io/tags/nginx/">nginx</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是nginx"><a href="#什么是nginx" class="headerlink" title="什么是nginx"></a>什么是<code>nginx</code></h2><ul>
+<li>是一个使用c语言开发的高性能的http服务器及反向代理服务器。</li>
+<li>Nginx是一款高性能的http 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器。由俄罗斯的程序设计师Igor Sysoev所开发，官方测试nginx能够支支撑5万并发链接，并且cpu、内存等资源消耗却非常低，运行非常稳定。</li>
+</ul>
+<hr>
+<h2 id="Nginx的应用场景"><a href="#Nginx的应用场景" class="headerlink" title="Nginx的应用场景"></a><code>Nginx</code>的应用场景</h2><ul>
+<li>http服务器。Nginx是一个http服务可以独立提供http服务。可以做网页静态服务器。</li>
+<li>虚拟主机。可以实现在一台服务器虚拟出多个网站。例如个人网站使用的虚拟主机。</li>
+<li>反向代理，负载均衡。当网站的访问量达到一定程度后，单台服务器不能满足用户的请求时，需要用多台服务器集群可以使用nginx做反向代理。并且多台服务器可以平均分担负载，不会因为某台服务器负载高宕机而某台服务器闲置的情况。</li>
+</ul>
+<hr>
+<h2 id="Nginx的安装"><a href="#Nginx的安装" class="headerlink" title="Nginx的安装"></a><code>Nginx</code>的安装</h2><ul>
+<li><code>Nginx</code>一般推荐安装到linux系统，而且要安装c语言的编译环境gcc。</li>
+<li>下载地址:<blockquote>
+<ul>
+<li>进入<code>http://nginx.org/en/download.html</code>下载<code>nginx1.8.0</code>版本（当前最新稳定版本）。</li>
+</ul>
+</blockquote>
+</li>
+<li>安装步骤：<blockquote>
+<ul>
+<li>先安装nginx依赖的包：<blockquote>
+<ul>
+<li>nginx是C语言开发，建议在linux上运行，本教程使用Centos6.5作为安装环境。</li>
+<li>第一步：<code>gcc</code>：安装nginx需要先将官网下载的源码进行编译，编译依赖gcc环境，如果没有gcc环境，需要安装gcc：<code>yum install gcc-c++</code>；</li>
+<li>第二步：<code>PCRE</code>：PCRE(Perl Compatible Regular Expressions)是一个Perl库，包括 perl 兼容的正则表达式库。nginx的http模块使用pcre来解析正则表达式，所以需要在linux上安装pcre库。<code>yum install -y pcre pcre-devel</code>；注：pcre-devel是使用pcre开发的一个二次开发库。nginx也需要此库；</li>
+<li>第三步：<code>Zlib</code>：zlib库提供了很多种压缩和解压缩的方式，nginx使用zlib对http包的内容进行gzip，所以需要在linux上安装zlib库。<code>yum install -y zlib zlib-devel</code>；</li>
+<li>第四步：<code>openssl</code>;OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用;nginx不仅支持http协议，还支持https（即在ssl协议上传输http），所以需要在linux安装openssl库;<code>yum install -y openssl openssl-devel</code>;</li>
+</ul>
+</blockquote>
+</li>
+<li>安装完依赖包之后，nginx的安装步骤：<blockquote>
+<ul>
+<li>第一步：把nginx的源码上传到linux系统。可以通过<code>finalshell</code>工具，该工具的下载链接在最下方。</li>
+<li>第二步：把压缩包解压缩。</li>
+<li>第三步：进行configure。<br>./configure \</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>-prefix=/usr/local/nginx \</li>
+<li>-pid-path=/var/run/nginx/nginx.pid \</li>
+<li>-lock-path=/var/lock/nginx.lock \</li>
+<li>-error-log-path=/var/log/nginx/error.log \</li>
+<li>-http-log-path=/var/log/nginx/access.log \</li>
+<li>-with-http_gzip_static_module \</li>
+<li>-http-client-body-temp-path=/var/temp/nginx/client \</li>
+<li>-http-proxy-temp-path=/var/temp/nginx/proxy \</li>
+<li>-http-fastcgi-temp-path=/var/temp/nginx/fastcgi \</li>
+<li>-http-uwsgi-temp-path=/var/temp/nginx/uwsgi \</li>
+<li>-http-scgi-temp-path=/var/temp/nginx/scgi</li>
+</ul>
+<p>注意：上边将临时文件目录指定为/var/temp/nginx，需要在/var下创建temp及nginx目录</p>
+<blockquote>
+<blockquote>
+<ul>
+<li>第四步：make</li>
+<li>第五步：make install</li>
+</ul>
+</blockquote>
+</blockquote>
+<hr>
+<h2 id="Nginx的启动、停止"><a href="#Nginx的启动、停止" class="headerlink" title="Nginx的启动、停止"></a>Nginx的启动、停止</h2><ul>
+<li>启动：进入nginx的sbin目录，<code>./nginx</code>就可以启动。</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/27/zQnIYqt4TShNEO2.png" alt="图片1.png"></p>
+<ul>
+<li>如果访问不到，首先查看防火墙是否关闭。</li>
+<li>service iptables status</li>
+<li>关闭nginx：<blockquote>
+<ul>
+<li>可以使用kill命令，但是不推荐使用。</li>
+<li>推荐使用：./nginx -s stop</li>
+</ul>
+</blockquote>
+</li>
+<li>刷新配置：./nginx -s reload</li>
+</ul>
+<hr>
+<h2 id="Nginx的配置"><a href="#Nginx的配置" class="headerlink" title="Nginx的配置"></a><code>Nginx</code>的配置</h2><ul>
+<li>在<code>/usr/local/nginx/conf</code>目录下<code>nginx.conf</code>文件是<code>nginx</code>的配置文件。</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/27/Yz6u8eRSIdqE9Al.png" alt="图片2.png"></p>
+<hr>
+<h2 id="使用nginx配置虚拟机"><a href="#使用nginx配置虚拟机" class="headerlink" title="使用nginx配置虚拟机"></a>使用<code>nginx</code>配置虚拟机</h2><ul>
+<li><p>在<code>nginx.conf</code>文件中添加一个<code>Service</code>节点，修改端口号就可以</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       81;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html81;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过域名区分虚拟机</p>
+<blockquote>
+<ul>
+<li>域名介绍</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/27/x13mWjrUBS9zi2e.png" alt="1574833893_1_.png"></p>
+<blockquote>
+<ul>
+<li>可以通过修改host文件指定域名的ip地址。</li>
+<li>Host文件的位置：<code>C:\Windows\System32\drivers\etc</code></li>
+</ul>
+</blockquote>
+<ul>
+<li>配置基于域名的虚拟主机<blockquote>
+<ul>
+<li>需要修改nginx.conf配置文件。</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  test3.taotao.com;</span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html-test3;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>修改配置后需要重新加载配置文件。</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="Nginx的反向代理"><a href="#Nginx的反向代理" class="headerlink" title="Nginx的反向代理"></a><code>Nginx</code>的反向代理</h2><ul>
+<li>什么是反向代理<blockquote>
+<ul>
+<li>正向代理</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/27/mYjQ9oKtSybpBrA.png" alt="1574834242_1_.png"></p>
+<blockquote>
+<ul>
+<li>反向代理</li>
+</ul>
+</blockquote>
+<p><img src="https://i.loli.net/2019/11/27/GZNuLDlJ8yiRwaM.png" alt="1574834269_1_.png"></p>
+<blockquote>
+<ul>
+<li>反向代理服务器是引用在服务端。决定哪台服务器提供服务。</li>
+<li>反向代理的模拟</li>
+<li>反向代理:应该有一个nginx服务器有多个应用服务器（可以是tomcat）、可以使用一台虚拟机，安装一个nginx，多个tomcat，来模拟。</li>
+<li>Nginx的配置文件：</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">upstream tomcats&#123;</span><br><span class="line">	server 192.168.25.148:8080;</span><br><span class="line">	server 192.168.25.148:8081;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  tomcat.taotao.com;</span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass   http://tomcats;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="nginx负载均衡"><a href="#nginx负载均衡" class="headerlink" title="nginx负载均衡"></a><code>nginx</code>负载均衡</h2><ul>
+<li>只需要在upstream的server后面添加一个weight即可代表权重。权重越高，分配请求的数量就越多。默认权重是1</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/27/MNfPipO8eo2USCh.png" alt="图片3.png"></p>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><ul>
+<li><code>finalshell</code>下载链接：<code>http://www.hostbuf.com/</code></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/CPWS.github.io/2019/11/27/fastdsf/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          fastdsf
+        
+      </div>
+    </a>
+  
+  
+    <a href="/CPWS.github.io/2019/11/21/redis/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">redis</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="nginx" data-title="nginx" data-url="https://CPWS.github.io/CPWS.github.io/2019/11/27/nginx/"  data-images="http://img.mp.itc.cn/q_mini,c_zoom,w_640/upload/20161221/c495640d0fc24a91b9c95dc0d54b6002_th.jpeg" data-content="nginx">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 zhuli
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/CPWS.github.io/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/CPWS.github.io/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
