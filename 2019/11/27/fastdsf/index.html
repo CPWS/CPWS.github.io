@@ -9,14 +9,34 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="图片服务器的搭建什么是FastDFS FastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用FastDFS很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。 原理图  文件上传流程 原理图  文件下载流程上传文件的文件名 客户端上传文件后存储服务器将文件ID返回给客户端，此文">
+<meta name="keywords" content="fastdsf">
+<meta property="og:type" content="article">
 <meta property="og:title" content="fastdsf">
 <meta property="og:url" content="https://CPWS.github.io/2019/11/27/fastdsf/index.html">
 <meta property="og:site_name" content="Prossible&#39;s Blog">
+<meta property="og:description" content="图片服务器的搭建什么是FastDFS FastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用FastDFS很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。 原理图  文件上传流程 原理图  文件下载流程上传文件的文件名 客户端上传文件后存储服务器将文件ID返回给客户端，此文">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-27T02:46:56.054Z">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/3k4axngMQ1hBAZE.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/dsPWK7Gzoqx6g5D.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/tikuyeGvSfTjxYp.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/59dQHOenCBVxD81.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/QDgurAGni1mTVtC.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/csa9MxqUkXIy7tw.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/NtJUT1PlVbA83RM.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/Bj7YmMU46VHeTEo.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/BFGehoOzHvRw1E2.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/BFGehoOzHvRw1E2.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/2f5rJPbv9K41uFp.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/1unTtGsXxYe68Qk.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/HqiotR3QY8bZAJe.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/hOaiNgXWCkD4HA5.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/27/FgsMOf15WZPSwkj.png">
+<meta property="og:updated_time" content="2019-11-27T06:44:50.966Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="fastdsf">
+<meta name="twitter:description" content="图片服务器的搭建什么是FastDFS FastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用FastDFS很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。 原理图  文件上传流程 原理图  文件下载流程上传文件的文件名 客户端上传文件后存储服务器将文件ID返回给客户端，此文">
+<meta name="twitter:image" content="https://i.loli.net/2019/11/27/3k4axngMQ1hBAZE.png">
   
     <link rel="alternative" href="/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
   
@@ -108,7 +128,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/CPWS.github.io/tags/Java框架下载路径/" style="font-size: 10px;">Java框架下载路径</a> <a href="/CPWS.github.io/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/CPWS.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/CPWS.github.io/tags/数据库系统概述/" style="font-size: 10px;">数据库系统概述</a>
+						<a href="/CPWS.github.io/tags/Java框架下载路径/" style="font-size: 10px;">Java框架下载路径</a> <a href="/CPWS.github.io/tags/fastdsf/" style="font-size: 10px;">fastdsf</a> <a href="/CPWS.github.io/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/CPWS.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/CPWS.github.io/tags/数据库系统概述/" style="font-size: 10px;">数据库系统概述</a>
 					</div>
 				</section>
 				
@@ -188,6 +208,10 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/CPWS.github.io/tags/fastdsf/">fastdsf</a></li></ul>
+	</div>
+
         
 
         
@@ -197,7 +221,197 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="图片服务器的搭建"><a href="#图片服务器的搭建" class="headerlink" title="图片服务器的搭建"></a>图片服务器的搭建</h1><h2 id="什么是FastDFS"><a href="#什么是FastDFS" class="headerlink" title="什么是FastDFS"></a>什么是<code>FastDFS</code></h2><ul>
+<li><code>FastDFS</code>是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用<code>FastDFS</code>很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。</li>
+<li>原理图</li>
+</ul>
+<h2 id><a href="#" class="headerlink" title></a><img src="https://i.loli.net/2019/11/27/3k4axngMQ1hBAZE.png" alt="图片4.png"></h2><h2 id="文件上传流程"><a href="#文件上传流程" class="headerlink" title="文件上传流程"></a>文件上传流程</h2><ul>
+<li>原理图</li>
+</ul>
+<h2 id="-1"><a href="#-1" class="headerlink" title></a><img src="https://i.loli.net/2019/11/27/dsPWK7Gzoqx6g5D.png" alt="图片5.png"></h2><h2 id="文件下载流程"><a href="#文件下载流程" class="headerlink" title="文件下载流程"></a>文件下载流程</h2><h2 id="-2"><a href="#-2" class="headerlink" title></a><img src="https://i.loli.net/2019/11/27/tikuyeGvSfTjxYp.png" alt="图片6.png"></h2><h2 id="上传文件的文件名"><a href="#上传文件的文件名" class="headerlink" title="上传文件的文件名"></a>上传文件的文件名</h2><ul>
+<li><p>客户端上传文件后存储服务器将文件ID返回给客户端，此文件ID用于以后访问该文件的索引信息。文件索引信息包括：组名，虚拟磁盘路径，数据两级目录，文件名。</p>
+<p><img src="https://i.loli.net/2019/11/27/59dQHOenCBVxD81.png" alt="图片7.png"></p>
+</li>
+<li><p>组名：文件上传后所在的storage组名称，在文件上传成功后有storage服务器返回，需要客户端自行保存。 </p>
+</li>
+<li><p>虚拟磁盘路径：storage配置的虚拟路径，与磁盘选项store_path*对应。如果配置了store_path0则是M00，如果配置了store_path1则是M01，以此类推。</p>
+</li>
+<li><p>数据两级目录：storage服务器在每个虚拟磁盘路径下创建的两级目录，用于存储数据文件。</p>
+</li>
+<li><p>文件名：与文件上传时不同。是由存储服务器根据特定信息生成，文件名包含：源存储服务器IP地址、文件创建时间戳、文件大小、随机数和文件拓展名等信息。</p>
+</li>
+</ul>
+<hr>
+<h2 id="FastDFS搭建"><a href="#FastDFS搭建" class="headerlink" title="FastDFS搭建"></a><code>FastDFS</code>搭建</h2><ul>
+<li><p>原理图</p>
+<p><img src="https://i.loli.net/2019/11/27/QDgurAGni1mTVtC.png" alt="图片8.png"></p>
+</li>
+<li><p>可以使用一台虚拟机来模拟，只有一个Tracker、一个Storage服务。</p>
+</li>
+<li><p>配置nginx访问图片。</p>
+</li>
+<li><p>搭建步骤：</p>
+<blockquote>
+<ul>
+<li>第一步：把fastDFS都上传到linux系统。</li>
+<li>第二步：安装FastDFS之前，先安装libevent工具包。<code>yum -y install libevent</code></li>
+<li>第三步：安装libfastcommonV1.0.7工具包。<blockquote>
+<ul>
+<li>解压缩；</li>
+<li><code>./make.sh</code>；</li>
+<li><code>./make.sh install</code>；</li>
+<li>把<code>/usr/lib64/libfastcommon.so</code>文件向<code>/usr/lib/</code>下复制一份</li>
+</ul>
+</blockquote>
+</li>
+<li>第四步：安装Tracker服务。<blockquote>
+<ul>
+<li>解压缩；</li>
+<li><code>./make.sh</code>；</li>
+<li><code>./make.sh install</code>；</li>
+<li>安装后在<code>/usr/bin/</code>目录下有以fdfs开头的文件都是编译出来的。配置文件都放到<code>/etc/fdfs</code>文件夹。</li>
+<li>把<code>/root/FastDFS/conf</code>目录下的所有的配置文件都复制到/etc/fdfs下。</li>
+<li>配置<code>tracker</code>服务。修改<code>/root/FastDFS/conf/tracker.conf</code>文件。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2019/11/27/csa9MxqUkXIy7tw.png" alt="图片9.png"></p>
+<blockquote>
+<blockquote>
+<ul>
+<li>启动tracker。<code>/usr/bin/fdfs_trackerd</code> <code>/etc/fdfs/tracker.conf</code></li>
+<li>重启使用命令：<code>/usr/bin/fdfs_trackerd</code> <code>/etc/fdfs/tracker.conf restart</code></li>
+<li>第五步：安装storage服务。</li>
+<li>如果是在不同的服务器安装，第四步的1~4需要重新执行。</li>
+<li>配置storage服务。修改/root/FastDFS/conf/storage.conf文件</li>
+</ul>
+</blockquote>
+</blockquote>
+<p><img src="https://i.loli.net/2019/11/27/NtJUT1PlVbA83RM.png" alt="图片10.png"></p>
+<p><img src="https://i.loli.net/2019/11/27/Bj7YmMU46VHeTEo.png" alt="图片11.png"></p>
+<p><img src="https://i.loli.net/2019/11/27/BFGehoOzHvRw1E2.png" alt="图片12.png"></p>
+<blockquote>
+<blockquote>
+<ul>
+<li>启动storage服务。<code>/usr/bin/fdfs_storaged /etc/fdfs/storage.conf</code></li>
+<li>重新启动storage服务。<code>/usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart</code></li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<ul>
+<li>第六步：测试服务。<blockquote>
+<ul>
+<li>修改配置文件<code>/etc/fdfs/client.conf</code></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<p><img src="https://i.loli.net/2019/11/27/BFGehoOzHvRw1E2.png" alt="图片12.png"></p>
+<p><img src="https://i.loli.net/2019/11/27/2f5rJPbv9K41uFp.png" alt="图片13.png"></p>
+<blockquote>
+<blockquote>
+<ul>
+<li>测试：<code>/usr/bin/fdfs_test /etc/fdfs/client.conf upload anti-steal.jpg</code></li>
+<li>第七步：搭建nginx提供http服务。</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>可以使用官方提供的nginx插件。要使用nginx插件需要重新编译。</li>
+<li><code>fastdfs-nginx-module_v1.16.tar.gz</code></li>
+<li>解压插件压缩包</li>
+<li>修改/root/fastdfs-nginx-module/src/config文件，把其中的local去掉。</li>
+</ul>
+</blockquote>
+</blockquote>
+<p><img src="https://i.loli.net/2019/11/27/1unTtGsXxYe68Qk.png" alt="图片15.png"></p>
+<blockquote>
+<blockquote>
+<ul>
+<li>对nginx重新config<br>./configure \</li>
+<li>-prefix=/usr/local/nginx \</li>
+<li>-pid-path=/var/run/nginx/nginx.pid \</li>
+<li>-lock-path=/var/lock/nginx.lock \</li>
+<li>-error-log-path=/var/log/nginx/error.log \</li>
+<li>-http-log-path=/var/log/nginx/access.log \</li>
+<li>-with-http_gzip_static_module \</li>
+<li>-http-client-body-temp-path=/var/temp/nginx/client \</li>
+<li>-http-proxy-temp-path=/var/temp/nginx/proxy \</li>
+<li>-http-fastcgi-temp-path=/var/temp/nginx/fastcgi \</li>
+<li>-http-uwsgi-temp-path=/var/temp/nginx/uwsgi \</li>
+<li>-http-scgi-temp-path=/var/temp/nginx/scgi \</li>
+<li>-add-module=/root/fastdfs-nginx-module/src</li>
+<li>make</li>
+<li>make install</li>
+<li>把<code>/root/fastdfs-nginx-module/src/mod_fastdfs.conf</code>文件复制到<code>/etc/fdfs</code>目录下。编辑：</li>
+</ul>
+</blockquote>
+</blockquote>
+<p><img src="https://i.loli.net/2019/11/27/HqiotR3QY8bZAJe.png" alt="图片16.png"></p>
+<blockquote>
+<blockquote>
+<ul>
+<li><code>tracker_server=192.168.166.131:22122</code></li>
+</ul>
+</blockquote>
+</blockquote>
+<p><img src="https://i.loli.net/2019/11/27/hOaiNgXWCkD4HA5.png" alt="图片18.png"></p>
+<p><img src="https://i.loli.net/2019/11/27/FgsMOf15WZPSwkj.png" alt="图片19.png"></p>
+<blockquote>
+<blockquote>
+<ul>
+<li>nginx的配置：在nginx的配置文件中添加一个Server：</li>
+</ul>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  192.168.166.131;</span><br><span class="line"></span><br><span class="line">        location /group1/M00/&#123;</span><br><span class="line">                #root /home/FastDFS/fdfs_storage/data;</span><br><span class="line">                ngx_fastdfs_module;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<ul>
+<li>将<code>libfdfsclient.so</code>拷贝至/<code>usr/lib</code>下，<code>cp /usr/lib64/libfdfsclient.so /usr/lib/</code></li>
+<li>启动nginx</li>
+</ul>
+</blockquote>
+</blockquote>
+<hr>
+<h2 id="图片服务的使用"><a href="#图片服务的使用" class="headerlink" title="图片服务的使用"></a>图片服务的使用</h2><ul>
+<li>官方提供一个jar包</li>
+<li>使用方法：<blockquote>
+<ul>
+<li>把FastDFS提供的jar包添加到工程中</li>
+<li>初始化全局配置。加载一个配置文件。</li>
+<li>创建一个TrackerClient对象。</li>
+<li>创建一个TrackerServer对象。</li>
+<li>声明一个StorageServer对象，null。</li>
+<li>获得StorageClient对象。</li>
+<li>直接调用StorageClient对象方法上传文件即可。</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testUpload</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">// 1、把FastDFS提供的jar包添加到工程中</span></span><br><span class="line">		<span class="comment">// 2、初始化全局配置。加载一个配置文件。</span></span><br><span class="line">		ClientGlobal.init(<span class="string">"D:\\workspaces-itcast\\JaveEE18\\taotao-manager\\taotao-manager-web\\src\\main\\resources\\properties\\client.conf"</span>);</span><br><span class="line">		<span class="comment">// 3、创建一个TrackerClient对象。</span></span><br><span class="line">		TrackerClient trackerClient = <span class="keyword">new</span> TrackerClient();</span><br><span class="line">		<span class="comment">// 4、创建一个TrackerServer对象。</span></span><br><span class="line">		TrackerServer trackerServer = trackerClient.getConnection();</span><br><span class="line">		<span class="comment">// 5、声明一个StorageServer对象，null。</span></span><br><span class="line">		StorageServer storageServer = <span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">// 6、获得StorageClient对象。</span></span><br><span class="line">		StorageClient storageClient = <span class="keyword">new</span> StorageClient(trackerServer, storageServer);</span><br><span class="line">		<span class="comment">// 7、直接调用StorageClient对象方法上传文件即可。</span></span><br><span class="line">		String[] strings = storageClient.upload_file(<span class="string">"D:\\Documents\\Pictures\\images\\2f2eb938943d.jpg"</span>, <span class="string">"jpg"</span>, <span class="keyword">null</span>);</span><br><span class="line">		<span class="keyword">for</span> (String string : strings) &#123;</span><br><span class="line">			System.out.println(string);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>Client.conf</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tracker_server=192.168.25.133:22122</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="使用工具类上传图片"><a href="#使用工具类上传图片" class="headerlink" title="使用工具类上传图片"></a>使用工具类上传图片</h2><ul>
+<li>使用工具类<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFastDfsClient</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		FastDFSClient client = <span class="keyword">new</span> FastDFSClient(<span class="string">"D:\\workspaces-itcast\\JaveEE18\\taotao-manager\\taotao-manager-web\\src\\main\\resources\\properties\\client.conf"</span>);</span><br><span class="line">		String uploadFile = client.uploadFile(<span class="string">"D:\\Documents\\Pictures\\images\\200811281555127886.jpg"</span>, <span class="string">"jpg"</span>);</span><br><span class="line">		System.out.println(uploadFile);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
       
     </div>
     
