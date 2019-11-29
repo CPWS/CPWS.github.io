@@ -107,7 +107,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/CPWS.github.io/tags/Java框架下载路径/" style="font-size: 10px;">Java框架下载路径</a> <a href="/CPWS.github.io/tags/fastdsf/" style="font-size: 10px;">fastdsf</a> <a href="/CPWS.github.io/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/CPWS.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/CPWS.github.io/tags/数据库系统概述/" style="font-size: 10px;">数据库系统概述</a>
+						<a href="/CPWS.github.io/tags/Java框架下载路径/" style="font-size: 10px;">Java框架下载路径</a> <a href="/CPWS.github.io/tags/fastdsf/" style="font-size: 10px;">fastdsf</a> <a href="/CPWS.github.io/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/CPWS.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/CPWS.github.io/tags/搜索引擎框架介绍/" style="font-size: 10px;">搜索引擎框架介绍</a> <a href="/CPWS.github.io/tags/数据库系统概述/" style="font-size: 10px;">数据库系统概述</a>
 					</div>
 				</section>
 				
@@ -162,6 +162,192 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Log4j与Junit测试" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/CPWS.github.io/2019/09/09/Log4j与Junit测试/" class="article-date">
+  	<time datetime="2019-09-09T08:28:00.000Z" itemprop="datePublished">2019-09-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/CPWS.github.io/2019/09/09/Log4j与Junit测试/">
+        Log4j与Junit测试
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Log4j的作用和级别"><a href="#Log4j的作用和级别" class="headerlink" title="Log4j的作用和级别"></a>Log4j的作用和级别</h2><hr>
+<ul>
+<li>什么是日志<ul>
+<li>日志是系统运行过程中的后台输出信息，方便程序员进行系统运行的管控以及Bug查找</li>
+</ul>
+</li>
+<li>什么是<code>Log4j</code><ul>
+<li><code>Log4j</code>是一个日志输出插件，专门用来进行日志的管理的。</li>
+</ul>
+</li>
+<li>传统方式获取日志<ul>
+<li>使用<code>System.out.println()</code>;</li>
+<li>问题：<ul>
+<li>日志信息无法保存。</li>
+<li>无法显示完整日志信息。</li>
+<li>日志的显示没有级别所有日志混杂在一起显示（无法进行日志信息筛选）。</li>
+<li>日志显示格式不友好。</li>
+</ul>
+</li>
+<li>解决：使用Log4j</li>
+<li>使用Log4j进行日志管理特点:<ul>
+<li>日志可以单独保存在文件。</li>
+<li>可以获取完整的日志信息。</li>
+<li>可以进行日志显示的筛选。</li>
+<li>格式友好。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Log4j的使用流程<ul>
+<li>导入<code>log4j</code>的jar包</li>
+<li>配置<code>Log4j</code>的配置文件</li>
+<li><code>log4j</code>的日志级别<ul>
+<li><code>FATAL</code> 致命的错误</li>
+<li><code>Error</code> 错误级</li>
+<li><code>WARM</code> 警告级</li>
+<li><code>INFO</code> 信息级</li>
+<li><code>DEBUG</code> 调试级</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="日志记录器（Logger）"><a href="#日志记录器（Logger）" class="headerlink" title="日志记录器（Logger）"></a>日志记录器（<code>Logger</code>）</h2><p><code>org.apache.log4j.Logger</code>类实例的作用是用来取代System.ou或者System.err的日志写出器，主要用来输出日志信息。</p>
+<ul>
+<li>可以通过如下几个方式来获取Logger类的实例<ul>
+<li>根据指定名称来获取一个日志记录器的实例：<code>Logger logger=Logger.getLogger(String name);</code></li>
+<li>根据指定的类信息中的类名来获取一个日志记录器的实例：<code>Logger logger=Logger.getLogger(Class clazz);</code></li>
+</ul>
+</li>
+<li>获取(<code>Logger</code>)日志实例之后，就可以使用它提供的以下方法来记录日志了：<ul>
+<li><code>public void debug(Object msg)</code></li>
+<li><code>public void debug(Object msg,Throwable t)</code></li>
+<li><code>public void info(Object msg)</code></li>
+<li><code>public void info(Object msg,Throwable t)</code></li>
+<li><code>public void warn(Object msg)</code></li>
+<li><code>public void warn(Object msg,Throwable t)</code></li>
+<li><code>public void error(Object msg)</code></li>
+<li><code>public void error(Object msg,Throwable t)</code></li>
+</ul>
+</li>
+<li><code>log4j</code>的日志级别<ul>
+<li><code>FATAL</code> 致命的错误 对应的level为0 使用方法<code>logger.fatal()</code></li>
+<li><code>Error</code> 错误级 对应的level为3 使用方法<code>logger.error()</code></li>
+<li><code>WARM</code> 警告级 对应的level为4 使用方法<code>logger.warn()</code></li>
+<li><code>INFO</code> 信息级 对应的level为6 使用方法<code>logger.info()</code></li>
+<li><code>DEBUG</code> 调试级 对应的level为7 使用方法<code>logger.debug()</code></li>
+</ul>
+</li>
+<li>日志级别的设置是通过在Log4j的配置文件中指定的。</li>
+</ul>
+<hr>
+<h2 id="日志输出目的地（Appender）"><a href="#日志输出目的地（Appender）" class="headerlink" title="日志输出目的地（Appender）"></a>日志输出目的地（<code>Appender</code>）</h2><p><code>Appender</code>的功能是把格式好的日志信息输出到指定的目的地。</p>
+<ul>
+<li>日志目的地通过<code>Log4j</code>配置文件来指定的。</li>
+<li>对于不同的日志目的地，Log4j提供不同的<code>Appender</code>实现类，常用的<code>Appender</code>实现类包括：<ul>
+<li>用于控制台的<code>org.apache.log4j.ConsoleAppender</code>。</li>
+<li>用于文件的<code>org.apache.log4j.FileAppender</code>。</li>
+<li><code>org.apache.log4j.RollingFileAppender</code>–文件到达指定大小时产生一个新的文件。</li>
+<li><code>org.apache.log4j.DailyRollingFileAppender</code> – 每天产生一个日志文件。</li>
+<li>用于以流格式发送到任意位置的<code>org.apache.log4j.WriterAppender</code>。</li>
+<li>用于添加到数据库的<code>org.apache.log4j.jdbc.JDBCAppender</code>。</li>
+<li>用于邮件发送的<code>org.apache.log4j.net.SMTPAppender</code>。</li>
+</ul>
+</li>
+<li>通过在配置文件中指定不同的<code>Appender</code>实现类，就可以让日志内容输出到相应的目的地。</li>
+</ul>
+<hr>
+<h2 id="日志格式化器（Layout）"><a href="#日志格式化器（Layout）" class="headerlink" title="日志格式化器（Layout）"></a>日志格式化器（<code>Layout</code>）</h2><p><code>Layout</code>用来把日志信息按指定的格式格式化字符串。而具体的格式是通过log4j的配置文件来配置的。</p>
+<ul>
+<li><code>Log4j</code>中提供用来格式化输出结果的各种布局实现类，包括：<ul>
+<li><code>org.apache.log4j.SimpleLayout</code>：简单输出。此布局的输出中仅包含日志消息的层次，紧跟着“-”，然后是日志消息字符串。</li>
+<li><code>org.apache.log4j.PatternLayout</code>：模式布局。可以根据指定的模式字符串来决定消息的输出格式。它是一种最常用的一种格式化字符串。</li>
+<li><code>org.apache.log4j.TTCCLayout</code>：日志的格式包含产生的日期，线程，类别等信息。</li>
+<li><code>org.apache.log4j.HTMLLayout</code>：以HTML表格形式布局。</li>
+<li><code>org.apache.xml.XMLLayout</code>：以XML形式布局。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Log4j的使用"><a href="#Log4j的使用" class="headerlink" title="Log4j的使用"></a>Log4j的使用</h2><ul>
+<li><p><code>Log4j</code>的配置文件：“XMl格式的文件”，“Java属性文件:log4j.properties(键=值)”</p>
+</li>
+<li><p><code>Log4j.properties</code></p>
+</li>
+<li><p><code>log4j.xml</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE log4j:configuration SYSTEM "log4j.dtd"&gt;</span></span><br><span class="line"><span class="comment">&lt;!--日志级别以及优先级排序: OFF &gt; FATAL &gt; ERROR &gt; WARN &gt; INFO &gt; DEBUG &gt; TRACE &gt; ALL --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">status</span>=<span class="string">"WARN"</span> <span class="attr">monitorInterval</span>=<span class="string">"30"</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!--先定义所有的appender--&gt;</span></span><br><span class="line">     <span class="comment">&lt;!--设置日志目的地类型和日志格式化器--&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">appenders</span>&gt;</span></span><br><span class="line">         <span class="comment">&lt;!--这个输出控制台的配置--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">console</span> <span class="attr">name</span>=<span class="string">"Console"</span> <span class="attr">target</span>=<span class="string">"SYSTEM_OUT"</span>&gt;</span></span><br><span class="line">         <span class="comment">&lt;!--输出日志的格式--&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">PatternLayout</span> <span class="attr">pattern</span>=<span class="string">"[%d&#123;HH:mm:ss:SSS&#125;] [%p] - %l - %m%n"</span>/&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">console</span>&gt;</span></span><br><span class="line">         <span class="comment">&lt;!--文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，这个也挺有用的，适合临时测试用--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">File</span> <span class="attr">name</span>=<span class="string">"log"</span> <span class="attr">fileName</span>=<span class="string">"log/test.log"</span> <span class="attr">append</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">PatternLayout</span> <span class="attr">pattern</span>=<span class="string">"%d&#123;HH:mm:ss.SSS&#125; %-5level %class&#123;36&#125; %L %M - %msg%xEx%n"</span>/&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">File</span>&gt;</span></span><br><span class="line">         <span class="comment">&lt;!-- 这个会打印出所有的info及以下级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">RollingFile</span> <span class="attr">name</span>=<span class="string">"RollingFileInfo"</span> <span class="attr">fileName</span>=<span class="string">"$&#123;sys:user.home&#125;/logs/info.log"</span></span></span><br><span class="line"><span class="tag">                      <span class="attr">filePattern</span>=<span class="string">"$&#123;sys:user.home&#125;/logs/$$&#123;date:yyyy-MM&#125;/info-%d&#123;yyyy-MM-dd&#125;-%i.log"</span>&gt;</span></span><br><span class="line">             <span class="comment">&lt;!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）--&gt;</span>       </span><br><span class="line">             <span class="tag">&lt;<span class="name">ThresholdFilter</span> <span class="attr">level</span>=<span class="string">"info"</span> <span class="attr">onMatch</span>=<span class="string">"ACCEPT"</span> <span class="attr">onMismatch</span>=<span class="string">"DENY"</span>/&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">PatternLayout</span> <span class="attr">pattern</span>=<span class="string">"[%d&#123;HH:mm:ss:SSS&#125;] [%p] - %l - %m%n"</span>/&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">Policies</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">TimeBasedTriggeringPolicy</span>/&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">SizeBasedTriggeringPolicy</span> <span class="attr">size</span>=<span class="string">"100 MB"</span>/&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">Policies</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">RollingFile</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">RollingFile</span> <span class="attr">name</span>=<span class="string">"RollingFileWarn"</span> <span class="attr">fileName</span>=<span class="string">"$&#123;sys:user.home&#125;/logs/warn.log"</span></span></span><br><span class="line"><span class="tag">                      <span class="attr">filePattern</span>=<span class="string">"$&#123;sys:user.home&#125;/logs/$$&#123;date:yyyy-MM&#125;/warn-%d&#123;yyyy-MM-dd&#125;-%i.log"</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">ThresholdFilter</span> <span class="attr">level</span>=<span class="string">"warn"</span> <span class="attr">onMatch</span>=<span class="string">"ACCEPT"</span> <span class="attr">onMismatch</span>=<span class="string">"DENY"</span>/&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">PatternLayout</span> <span class="attr">pattern</span>=<span class="string">"[%d&#123;HH:mm:ss:SSS&#125;] [%p] - %l - %m%n"</span>/&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">Policies</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">TimeBasedTriggeringPolicy</span>/&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">SizeBasedTriggeringPolicy</span> <span class="attr">size</span>=<span class="string">"100 MB"</span>/&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">Policies</span>&gt;</span></span><br><span class="line">             <span class="comment">&lt;!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 --&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">DefaultRolloverStrategy</span> <span class="attr">max</span>=<span class="string">"20"</span>/&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">RollingFile</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">RollingFile</span> <span class="attr">name</span>=<span class="string">"RollingFileError"</span> <span class="attr">fileName</span>=<span class="string">"$&#123;sys:user.home&#125;/logs/error.log"</span></span></span><br><span class="line"><span class="tag">                      <span class="attr">filePattern</span>=<span class="string">"$&#123;sys:user.home&#125;/logs/$$&#123;date:yyyy-MM&#125;/error-%d&#123;yyyy-MM-dd&#125;-%i.log"</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">ThresholdFilter</span> <span class="attr">level</span>=<span class="string">"error"</span> <span class="attr">onMatch</span>=<span class="string">"ACCEPT"</span> <span class="attr">onMismatch</span>=<span class="string">"DENY"</span>/&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">PatternLayout</span> <span class="attr">pattern</span>=<span class="string">"[%d&#123;HH:mm:ss:SSS&#125;] [%p] - %l - %m%n"</span>/&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">Policies</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">TimeBasedTriggeringPolicy</span>/&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">SizeBasedTriggeringPolicy</span> <span class="attr">size</span>=<span class="string">"100 MB"</span>/&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">Policies</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">RollingFile</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">appenders</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!--设置根记录器--&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--设置级别--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">level</span> <span class="attr">value</span>=<span class="string">"DEBUG"</span> /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--设置目的地--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">"STDOUT"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">"File"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!--然后定义logger，只有定义了logger并引入的appender，appender才会生效--&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">loggers</span>&gt;</span></span><br><span class="line">         <span class="comment">&lt;!--过滤掉spring和mybatis的一些无用的DEBUG信息--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">logger</span> <span class="attr">name</span>=<span class="string">"org.springframework"</span> <span class="attr">level</span>=<span class="string">"INFO"</span>&gt;</span><span class="tag">&lt;/<span class="name">logger</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">logger</span> <span class="attr">name</span>=<span class="string">"org.mybatis"</span> <span class="attr">level</span>=<span class="string">"INFO"</span>&gt;</span><span class="tag">&lt;/<span class="name">logger</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">root</span> <span class="attr">level</span>=<span class="string">"all"</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">"Console"</span>/&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">"RollingFileInfo"</span>/&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">"RollingFileWarn"</span>/&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">"RollingFileError"</span>/&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">loggers</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>Log4j</code>在默认的情况下，会首先查找使用<code>log4j.xml</code>的配置，然后再去查找<code>log4j.properties</code>。</p>
+</li>
+<li><p><code>log4j</code>的配置文件必须放置于项目的类路径（ClassPath）下。</p>
+</li>
+<li><p>在<code>Java</code>中使用<code>Log4j</code>打印日志信息的步骤如下：</p>
+<ul>
+<li>得到记录器。<ul>
+<li><code>public static Logger logger=Logger.getLogger(String name);</code></li>
+<li><code>static Logger logger=Logger.getLogger(Test.class.getName());</code></li>
+</ul>
+</li>
+<li>读取配置文件。<ul>
+<li><code>BasicConfigurator.configure();</code> //自动快速的使用默认的log4j环境</li>
+<li><code>PropertyConfigurator.configure(String configFileName);</code>//读取使用Java的特性文件编写的配置文件。</li>
+</ul>
+</li>
+<li>插入记录信息。<ul>
+<li><code>Logger.debug(Object message);</code><h2 id="Junit单元测试"><a href="#Junit单元测试" class="headerlink" title="Junit单元测试"></a>Junit单元测试</h2><h3 id="Junit-概述"><a href="#Junit-概述" class="headerlink" title="Junit-概述"></a>Junit-概述</h3><h3 id="Junit-环境设置"><a href="#Junit-环境设置" class="headerlink" title="Junit-环境设置"></a>Junit-环境设置</h3><h3 id="Junit-基本用法"><a href="#Junit-基本用法" class="headerlink" title="Junit-基本用法"></a>Junit-基本用法</h3><h3 id="Junit-API"><a href="#Junit-API" class="headerlink" title="Junit-API"></a>Junit-API</h3><h3 id="Junit-编写测试"><a href="#Junit-编写测试" class="headerlink" title="Junit-编写测试"></a>Junit-编写测试</h3><h3 id="Junit-使用断言"><a href="#Junit-使用断言" class="headerlink" title="Junit-使用断言"></a>Junit-使用断言</h3><h3 id="Junit-执行过程"><a href="#Junit-执行过程" class="headerlink" title="Junit-执行过程"></a>Junit-执行过程</h3><h3 id="Junit-执行测试"><a href="#Junit-执行测试" class="headerlink" title="Junit-执行测试"></a>Junit-执行测试</h3><h3 id="Junit-囊括测试"><a href="#Junit-囊括测试" class="headerlink" title="Junit-囊括测试"></a>Junit-囊括测试</h3><h3 id="Junit-忽略测试"><a href="#Junit-忽略测试" class="headerlink" title="Junit-忽略测试"></a>Junit-忽略测试</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
   
