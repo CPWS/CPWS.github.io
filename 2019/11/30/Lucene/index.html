@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Lucene | Prossible&#39;s Blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Lucene&amp;amp;Solr第一天 什么是全文检索 数据分类  结果化数据：有固定的格式和有限长度，比如Oracle或mysql表中的数据。  使用SQL语句查询结构化数据，速度快。 如果数据量大时，可以在数据库中创建索引，但是此时创建的索引是不支持模糊查询，需要创建另外一套索引库。    非结构化数据：没有固定格式也没有有限长度。比如：磁盘上的文件，excel、word、pdf、txt、ppt">
+<meta name="keywords" content="Lucene">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lucene">
+<meta property="og:url" content="https://CPWS.github.io/2019/11/30/Lucene/index.html">
+<meta property="og:site_name" content="Prossible&#39;s Blog">
+<meta property="og:description" content="Lucene&amp;amp;Solr第一天 什么是全文检索 数据分类  结果化数据：有固定的格式和有限长度，比如Oracle或mysql表中的数据。  使用SQL语句查询结构化数据，速度快。 如果数据量大时，可以在数据库中创建索引，但是此时创建的索引是不支持模糊查询，需要创建另外一套索引库。    非结构化数据：没有固定格式也没有有限长度。比如：磁盘上的文件，excel、word、pdf、txt、ppt">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-01T12:10:20.723Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lucene">
+<meta name="twitter:description" content="Lucene&amp;amp;Solr第一天 什么是全文检索 数据分类  结果化数据：有固定的格式和有限长度，比如Oracle或mysql表中的数据。  使用SQL语句查询结构化数据，速度快。 如果数据量大时，可以在数据库中创建索引，但是此时创建的索引是不支持模糊查询，需要创建另外一套索引库。    非结构化数据：没有固定格式也没有有限长度。比如：磁盘上的文件，excel、word、pdf、txt、ppt">
+  
+    <link rel="alternative" href="/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/CPWS.github.io/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://img.mp.itc.cn/q_mini,c_zoom,w_640/upload/20161221/c495640d0fc24a91b9c95dc0d54b6002_th.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">zhuli</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+				        
+							<li><a href="/CPWS.github.io/">主页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/CPWS.github.io/tags/Java框架下载路径/" style="font-size: 10px;">Java框架下载路径</a> <a href="/CPWS.github.io/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/CPWS.github.io/tags/fastdsf/" style="font-size: 10px;">fastdsf</a> <a href="/CPWS.github.io/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/CPWS.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/CPWS.github.io/tags/solr/" style="font-size: 10px;">solr</a> <a href="/CPWS.github.io/tags/搜索引擎框架介绍/" style="font-size: 10px;">搜索引擎框架介绍</a> <a href="/CPWS.github.io/tags/数据库系统概述/" style="font-size: 10px;">数据库系统概述</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">zhuli</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://img.mp.itc.cn/q_mini,c_zoom,w_640/upload/20161221/c495640d0fc24a91b9c95dc0d54b6002_th.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">zhuli</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/CPWS.github.io/archives">所有文章</a></li>
+		        
+					<li><a href="/CPWS.github.io/">主页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Lucene" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/CPWS.github.io/2019/11/30/Lucene/" class="article-date">
+  	<time datetime="2019-11-30T04:52:24.000Z" itemprop="datePublished">2019-11-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Lucene
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/CPWS.github.io/tags/Lucene/">Lucene</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Lucene-amp-Solr第一天"><a href="#Lucene-amp-Solr第一天" class="headerlink" title="Lucene&amp;Solr第一天"></a><code>Lucene</code>&amp;<code>Solr</code>第一天</h1><hr>
+<h2 id="什么是全文检索"><a href="#什么是全文检索" class="headerlink" title="什么是全文检索"></a>什么是全文检索</h2><ul>
+<li>数据分类<blockquote>
+<ul>
+<li>结果化数据：有固定的格式和有限长度，比如<code>Oracle</code>或<code>mysql</code>表中的数据。<blockquote>
+<ul>
+<li>使用SQL语句查询结构化数据，速度快。</li>
+<li>如果数据量大时，可以在数据库中创建索引，但是此时创建的索引是不支持模糊查询，需要创建另外一套索引库。</li>
+</ul>
+</blockquote>
+</li>
+<li>非结构化数据：没有固定格式也没有有限长度。比如：磁盘上的文件，excel、word、pdf、txt、ppt等<blockquote>
+<ul>
+<li>查询非结构化数据：1、目测（顺序扫描法）、IO读取、3、全文检索</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>对数据源创建索引，在索引上搜索这个过程就是全文检索。（创建索引+查询）</li>
+</ul>
+<hr>
+<h2 id="全文检索的应用场景"><a href="#全文检索的应用场景" class="headerlink" title="全文检索的应用场景"></a>全文检索的应用场景</h2><ul>
+<li>搜索引擎：百度、搜狗、360 搜搜</li>
+<li>站内搜索：淘宝、京东、微博、论坛</li>
+</ul>
+<hr>
+<h2 id="怎么实现全文检索"><a href="#怎么实现全文检索" class="headerlink" title="怎么实现全文检索"></a>怎么实现全文检索</h2><ul>
+<li>使用<code>lucene</code>实现</li>
+</ul>
+<hr>
+<h2 id="Lucene简介"><a href="#Lucene简介" class="headerlink" title="Lucene简介"></a>Lucene简介</h2><ul>
+<li>是<code>Apache</code>下的开源用来实现全文检索的工具包，API</li>
+</ul>
+<hr>
+<h2 id="Lucene实现全文检索的流程"><a href="#Lucene实现全文检索的流程" class="headerlink" title="Lucene实现全文检索的流程"></a>Lucene实现全文检索的流程</h2><ol>
+<li>创建索引<blockquote>
+<ul>
+<li>获取源文档<blockquote>
+<ul>
+<li>什么是源文档？场景1：搜索引擎：指的是互联网上的所有网页。场景2：站内搜索：磁盘上的文件或表中的数据。</li>
+<li>获取源文档方式？场景1：搜索引擎：网络爬虫。场景2：站内搜索：IO流、sql查询</li>
+</ul>
+</blockquote>
+</li>
+<li>构建文档对象（Document）<blockquote>
+<ul>
+<li>一个<code>Document</code>对象中放的是：一个网页内容、或一个文件、或表中一条数据。</li>
+</ul>
+</blockquote>
+</li>
+<li>对内容分词（分析文档）<blockquote>
+<ul>
+<li>举例：一个文件包含信息：文件路径、文件名称、文件大小、文件内容。（document）</li>
+<li>举例：一个网页包含信息：网络地址URL，网页内容、网页标题。(document)</li>
+<li>举例：一条数据包含的信息：一条数据每个列的内容。（document）（有多少个列就有多少个域）</li>
+<li>效果：<code>The Spring Framework provides a comprehensive programming and configuration model.</code>；</li>
+<li>按空格大小分</li>
+<li>处理大小写</li>
+<li>停用词</li>
+<li>标点符号</li>
+<li>结果： spring、framework、provides、comprehensive、programming、configuration、model（每一个对应一个term）</li>
+</ul>
+</blockquote>
+</li>
+<li>创建索引（存储）<blockquote>
+<ul>
+<li>分词后的格式： name:spring name是自定义的域名城，spring是此域中的值；name:spring就是一个词汇item；一个文档中可以有多个域。不同的文档可以有不同的域。</li>
+<li>创建索引是对语汇单元索引，通常词语找文档，这种索引结构叫做倒排索引结构。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>查询索引<blockquote>
+<ul>
+<li>用户查询接口：就是用户输入关键字的位置</li>
+<li>创建查询</li>
+<li>执行查询</li>
+<li>渲染结果</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<hr>
+<h2 id="Lucene入门案例"><a href="#Lucene入门案例" class="headerlink" title="Lucene入门案例"></a>Lucene入门案例</h2><ul>
+<li><p>所需要的<code>jar</code>包：</p>
+<ul>
+<li>核心的<code>jar</code>：<code>lucene-core-4.10.3.jar</code>、<code>lucene-analyzers-common-4.10.3.jar</code></li>
+<li>IO所需要的包：commons-io.jar </li>
+</ul>
+</li>
+<li><p>创建索引</p>
+<ul>
+<li>场景：给磁盘上的文件创建索引</li>
+<li>步骤<ul>
+<li>指定索引库位置 <code>Directory</code></li>
+<li>创建写入索引位置<code>IndexWriter</code></li>
+<li>获取源文档 <code>IO流</code></li>
+<li>写入文档<code>indexWriter.addDocument(doc)；</code></li>
+<li>关闭资源 <code>indexWriter.close();</code></li>
+</ul>
+</li>
+<li>使用luke工具查看索引文件</li>
+<li>luke安装地址：<code>https://github.com/DmitryKey/luke/releases</code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.gdaib.lucene;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Path;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.commons.io.FileUtils;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.analysis.Analyzer;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.analysis.standard.StandardAnalyzer;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.document.Document;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.document.Field;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.document.Field.Store;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.document.TextField;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.index.IndexWriter;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.index.IndexWriterConfig;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.store.FSDirectory;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.util.Version;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexWriterTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">	</span><br><span class="line">		<span class="comment">//1.指定索引库位置</span></span><br><span class="line">		FSDirectory directory = FSDirectory.open(<span class="keyword">new</span> File(<span class="string">"D:\\桌面\\Java\\lucene\\indexRepo"</span>));</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//指定分词器</span></span><br><span class="line">		Analyzer analyzer=<span class="keyword">new</span> StandardAnalyzer();</span><br><span class="line">		</span><br><span class="line">		IndexWriterConfig config=<span class="keyword">new</span> IndexWriterConfig(Version.LATEST,analyzer);</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2.创建写入索引对象</span></span><br><span class="line">		IndexWriter indexWriter=<span class="keyword">new</span> IndexWriter(directory, config);</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line"><span class="comment">//		3.获取源文档 </span></span><br><span class="line">		File srcFile = <span class="keyword">new</span> File(<span class="string">"D:\\txt"</span>);</span><br><span class="line">		File[] listFiles = srcFile.listFiles();</span><br><span class="line">		</span><br><span class="line"><span class="comment">//		4. 把文档写入索引库</span></span><br><span class="line">		<span class="keyword">for</span> (File file : listFiles) &#123;</span><br><span class="line">			Document doc=<span class="keyword">new</span> Document();</span><br><span class="line">			<span class="comment">//文件路径、</span></span><br><span class="line">			String filePath = file.getPath();</span><br><span class="line">			Field pathField=<span class="keyword">new</span> TextField(<span class="string">"path"</span>, filePath, Store.YES) ;</span><br><span class="line">			doc.add(pathField);</span><br><span class="line">			<span class="comment">//文件名称、</span></span><br><span class="line">			String fileName = file.getName();</span><br><span class="line">			Field nameField=<span class="keyword">new</span> TextField(<span class="string">"name"</span>, fileName, Store.YES) ;</span><br><span class="line">			doc.add(nameField);</span><br><span class="line">			<span class="comment">//文件大小、</span></span><br><span class="line">			<span class="keyword">long</span> fileSize=FileUtils.sizeOf(file);</span><br><span class="line">			Field sizeField=<span class="keyword">new</span> TextField(<span class="string">"size"</span>, fileSize+<span class="string">""</span>, Store.YES) ;</span><br><span class="line">			doc.add(sizeField);</span><br><span class="line">			<span class="comment">//文件内容</span></span><br><span class="line">			String fileContent = FileUtils.readFileToString(file);</span><br><span class="line">			Field contentField=<span class="keyword">new</span> TextField(<span class="string">"content"</span>, fileContent+<span class="string">""</span>, Store.YES) ;</span><br><span class="line">			doc.add(contentField);</span><br><span class="line">			</span><br><span class="line">			indexWriter.addDocument(doc);</span><br><span class="line">		&#125;</span><br><span class="line"><span class="comment">//		5.关闭资源</span></span><br><span class="line">		indexWriter.close();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>查询索引</p>
+<ul>
+<li>指定索引库位置</li>
+<li>创建读取索引对象</li>
+<li>创建查询索引对象</li>
+<li>执行索引</li>
+<li>获取索引结果<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.gdaib.lucene;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Path;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.document.Document;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.index.DirectoryReader;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.index.IndexReader;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.index.Term;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.search.IndexSearcher;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.search.Query;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.search.ScoreDoc;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.search.TermQuery;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.search.TopDocs;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.store.Directory;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.store.FSDirectory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexReaderTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//1. 指定索引库的位置</span></span><br><span class="line">		Directory directory = FSDirectory.open(<span class="keyword">new</span> File(<span class="string">"D:\\桌面\\Java\\lucene\\indexRepo"</span>));</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2.创建读取索引对象</span></span><br><span class="line">		IndexReader indexReader=DirectoryReader.open(directory);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//3. 创建查询索引对象</span></span><br><span class="line">		IndexSearcher indexSearcher = <span class="keyword">new</span> IndexSearcher(indexReader);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//4.执行查询方法 query:指定条件，result：查询数据量的限制</span></span><br><span class="line">		Term t=<span class="keyword">new</span> Term(<span class="string">"name"</span>,<span class="string">"spring"</span>);</span><br><span class="line">		Query query=<span class="keyword">new</span> TermQuery(t);</span><br><span class="line">		<span class="comment">//5.获取获取查询结果</span></span><br><span class="line">		TopDocs topDocs = indexSearcher.search(query, <span class="number">100</span>);</span><br><span class="line">		System.out.println(<span class="string">"总记录数："</span>+topDocs.totalHits);</span><br><span class="line">		ScoreDoc[] scoreDocs = topDocs.scoreDocs;</span><br><span class="line">		<span class="keyword">for</span> (ScoreDoc scoreDoc : scoreDocs) &#123;</span><br><span class="line">			<span class="keyword">int</span> docId = scoreDoc.doc;</span><br><span class="line">			Document doc = indexSearcher.doc(docId);</span><br><span class="line">			<span class="comment">//获取文档的内容</span></span><br><span class="line">			System.out.println(<span class="string">"文件名："</span>+doc.get(<span class="string">"name"</span>));</span><br><span class="line">			System.out.println(<span class="string">"文件大小："</span>+doc.get(<span class="string">"size"</span>));</span><br><span class="line">			System.out.println(<span class="string">"文件路径："</span>+doc.get(<span class="string">"path"</span>));</span><br><span class="line">			System.out.println(<span class="string">"文件内容："</span>+doc.get(<span class="string">"content"</span>));</span><br><span class="line">			System.out.println(<span class="string">"***********"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//6.关闭资源</span></span><br><span class="line">		indexReader.close();</span><br><span class="line">				</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="分词器"><a href="#分词器" class="headerlink" title="分词器"></a>分词器</h2><ul>
+<li><code>Analyzer</code>每个分词器的<code>tokenStream</code>方法<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.gdaib.lucene;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.analysis.Analyzer;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.analysis.TokenStream;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.analysis.cjk.CJKAnalyzer;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.analysis.cn.smart.SmartChineseAnalyzer;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.analysis.standard.StandardAnalyzer;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.analysis.tokenattributes.CharTermAttribute;</span><br><span class="line"><span class="keyword">import</span> org.wltea.analyzer.lucene.IKAnalyzer;</span><br><span class="line"></span><br><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * StandardAnalyzer：按照空格分词（英文），中文是一个字一个字分隔（Analyzer analyzer=new StandardAnalyzer();）</span></span><br><span class="line"><span class="comment"> * CJKAnalyzer：Analyzer analyzer = new CJKAnalyzer();//中文两个字两个字</span></span><br><span class="line"><span class="comment"> * SmartChineseAnalyzer：中文还算可以，但是英文容易出现缺字母</span></span><br><span class="line"><span class="comment"> * IK-Analyzer：第三方分词器 IK-Analyzer 需要导入jar，需要加入两个配置文件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> </span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnalyzerTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">	</span><br><span class="line">		<span class="comment">//Analyzer analyzer=new StandardAnalyzer();</span></span><br><span class="line">		<span class="comment">//Analyzer analyzer = new CJKAnalyzer();//中文两个字两个字</span></span><br><span class="line">		<span class="comment">//Analyzer analyzer = new SmartChineseAnalyzer();</span></span><br><span class="line">		<span class="comment">//第三方分词器 IK-Analyzer 需要导入jar</span></span><br><span class="line">		Analyzer analyzer=<span class="keyword">new</span> IKAnalyzer();</span><br><span class="line">		TokenStream tokenStream = analyzer.tokenStream(<span class="keyword">null</span>, <span class="string">"apache场景1：搜索引擎：指的是互联网上的所有网页。场景2：站内搜索：磁盘上的文件或表中的数据。"</span>);</span><br><span class="line">		</span><br><span class="line">		CharTermAttribute charTermAttribute = tokenStream.addAttribute(CharTermAttribute.class);</span><br><span class="line">		</span><br><span class="line">		tokenStream.reset();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">while</span>(tokenStream.incrementToken()) &#123;</span><br><span class="line">			System.out.println(charTermAttribute);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="分词器的使用时机"><a href="#分词器的使用时机" class="headerlink" title="分词器的使用时机"></a>分词器的使用时机</h2><ul>
+<li>需要查询就需要分词器</li>
+<li>查询时也需要分词</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/CPWS.github.io/2019/11/29/Elasticsearch/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Elasticsearch</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="Lucene" data-title="Lucene" data-url="https://CPWS.github.io/CPWS.github.io/2019/11/30/Lucene/"  data-images="http://img.mp.itc.cn/q_mini,c_zoom,w_640/upload/20161221/c495640d0fc24a91b9c95dc0d54b6002_th.jpeg" data-content="Lucene">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 zhuli
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/CPWS.github.io/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/CPWS.github.io/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
