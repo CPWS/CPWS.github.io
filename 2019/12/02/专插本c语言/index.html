@@ -17,10 +17,12 @@
 <meta property="og:site_name" content="Prossible&#39;s Blog">
 <meta property="og:description" content="最简单的C语言程序1234567#include &amp;lt;stdio.h&amp;gt;int main()&amp;#123;	printf(&quot;世界，你好\n&quot;);		return 0;	&amp;#125;   main是主函数的函数名，表示这是一个主函数。 每一个C源程序都必须有且只能有一个主函数（main函数）。 函数调用语句printf()函数的功能是把要输出的内容送到显示器去显示。 printf()函数是一个">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-02T09:17:27.376Z">
+<meta property="og:image" content="https://i.loli.net/2019/12/03/ORnwkt2uKjQYSls.png">
+<meta property="og:updated_time" content="2019-12-03T07:17:32.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="专插本c语言">
 <meta name="twitter:description" content="最简单的C语言程序1234567#include &amp;lt;stdio.h&amp;gt;int main()&amp;#123;	printf(&quot;世界，你好\n&quot;);		return 0;	&amp;#125;   main是主函数的函数名，表示这是一个主函数。 每一个C源程序都必须有且只能有一个主函数（main函数）。 函数调用语句printf()函数的功能是把要输出的内容送到显示器去显示。 printf()函数是一个">
+<meta name="twitter:image" content="https://i.loli.net/2019/12/03/ORnwkt2uKjQYSls.png">
   
     <link rel="alternative" href="/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
   
@@ -252,8 +254,8 @@
 <li><p>空类型：在调用函数值时，通常应向调用者返回一个函数值。这个返回的函数值是具有一定的数据类型的，应在函数定义及函数说明中给以说明，例如在例题中给出的max函数定义中，函数头为：<code>int max(int a,int b);</code>其中int类型说明符表达该函数的返回值整形量。但是，也有一类函数，调用后并不需要向调用者返回函数值，这种函数可以定义为“空类型”。其类型说明符为<code>void</code>。</p>
 </li>
 </ol>
-<h3 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h3><hr>
-<ul>
+<hr>
+<h3 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h3><ul>
 <li>对于基本数据类型，按照其值是否可改变又分为常量和变量两种。</li>
 <li>在程序运行中，其值不发生改变的量称为常量，其值是可以改变的量称为变量。</li>
 <li>它们可以与数据类型结合起来分类。例如：可以分为整型常量，整型变量，浮点常量，浮点变量，字符常量，字符变量，枚举常量，枚举变量。在程序中，常量可以不经说明而直接引用的，而变量则必须先定义后使用。</li>
@@ -278,12 +280,11 @@
 </ul>
 </li>
 </ul>
-<hr>
 <ul>
 <li>变量：其值可以改变的量称为变量。一个变量应该有一个名字，在内存中占据一定的存储单元。变量定义必须放在变量使用之前。一般放在函数体的口头部分。要区分变量名和变量值两个概念。</li>
 </ul>
 <hr>
-<ul>
+<h3 id="整型数据"><a href="#整型数据" class="headerlink" title="整型数据"></a>整型数据</h3><ul>
 <li><p>整型常量的表示方式（<code>在程序中是根据前缀来区分各种进制数的。</code>）</p>
 <blockquote>
 <ul>
@@ -340,7 +341,329 @@
 </blockquote>
 </li>
 </ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,b,c,d;</span><br><span class="line">	<span class="keyword">unsigned</span> u;</span><br><span class="line">	a=<span class="number">12</span>;</span><br><span class="line">	b=<span class="number">-24</span>;</span><br><span class="line">	u=<span class="number">10</span>;</span><br><span class="line">	c=a+u;d=b+u;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"a+u=%d，b+u=%d\n"</span>,c,d);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>整型数据的溢出</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="comment">//整型数据的溢出 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">short</span> <span class="keyword">int</span> a,b;</span><br><span class="line">	a=<span class="number">32767</span>;</span><br><span class="line">	b=a+<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d,%d\n"</span>,a,b);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不同数据类型之间的运算</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">long</span> x,y;</span><br><span class="line">	<span class="keyword">int</span> a,b,c,d;</span><br><span class="line">	x=<span class="number">5</span>;</span><br><span class="line">	y=<span class="number">6</span>;</span><br><span class="line">	a=<span class="number">7</span>;</span><br><span class="line">	b=<span class="number">8</span>;</span><br><span class="line">	c=x+a;</span><br><span class="line">	d=y+b;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"c=x+a=%d,d=y+b=%d\n"</span>,c,d);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <hr>
+<h3 id="实型数据"><a href="#实型数据" class="headerlink" title="实型数据"></a>实型数据</h3><ul>
+<li><p>实型常量的表示方法</p>
+</li>
+<li><p>实型也称为浮点型。实型常量也称为实数或者浮点数。在c语言中，实数只采用十进制。它有二中形式：十进制小数形式，指数形式。</p>
+</li>
+<li><p>十进制数形式：由数码0~9和小数点组成</p>
+<blockquote>
+<ul>
+<li>例如0.02,5.0,5.789,0.13,5.0,300.,-267.8230等均为合法的实数。注意：必须有小说点.</li>
+</ul>
+</blockquote>
+</li>
+<li><p>指数形式：由十进制数，加阶码标志<code>e</code>和<code>E</code>以及阶码（只能是整数，可以带符号）组成。</p>
+<blockquote>
+<ul>
+<li>aEm (a为十进制数，n为十进制整数)</li>
+</ul>
+</blockquote>
+</li>
+<li><p>标准C允许浮点数使用后缀。后缀为“F”或者“f”即表示该数为浮点数。如356f和356.是等价的。</p>
+</li>
+<li><p>实型数据在内存中的存放形式</p>
+<blockquote>
+<ul>
+<li>实型数据一般占4个字节（32位）内存空间。按指数形式存储。实数3.14159在内存中的存放形式如下：</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>小数部分</th>
+<th>指数部分</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>.314159</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<blockquote>
+<ul>
+<li>小数部分占的位（bit）愈多，数的有效数字就愈多，精度俞高</li>
+<li>指数部分占的位数愈多，则能表示的数值范围愈大。 </li>
+</ul>
+</blockquote>
+<ul>
+<li><p>实型变量的分类</p>
+<blockquote>
+<ul>
+<li>单精度（float）和双精度（double），长双精度（long double）三类。</li>
+<li>单精度值显示7位有效数字。数值范围：3.4E-38~3.4E+38</li>
+<li>双精度显示16位有效数字。数字范围：1.7E-308~1.7E+308</li>
+</ul>
+</blockquote>
+</li>
+<li><p>实型数据的舍入误差</p>
+<blockquote>
+<ul>
+<li>由于实型变量是由有限的存储单元组成的，因此能提供的有效数字总是有限的。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> a,b;</span><br><span class="line">	a=<span class="number">123456.789e5</span>;</span><br><span class="line">	b=a+<span class="number">20</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lf\n"</span>,a);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lf\n"</span>,b);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>练习：<blockquote>
+<ul>
+<li>1.0/3*3等于多少？</li>
+<li>3/2呢？</li>
+<li>1/3*3呢？</li>
+</ul>
+</blockquote>
+</li>
+<li>编程（1）（2）（3）</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%f\n"</span>,<span class="number">1.0</span>/<span class="number">3</span>*<span class="number">3</span>); <span class="comment">//3.00000</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%f\n"</span>,<span class="number">1</span>/<span class="number">3</span>*<span class="number">3</span>); <span class="comment">//0.0000</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%f\n"</span>,<span class="number">3</span>/<span class="number">2</span>);<span class="comment">//0.00000</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="字符型数据"><a href="#字符型数据" class="headerlink" title="字符型数据"></a>字符型数据</h3><ul>
+<li>字符型数据包括字符常量和字符变量</li>
+<li>字符常量<blockquote>
+<ul>
+<li>字符常量是用单引号括起来的一个字符。</li>
+<li>例如’a’,’b’,’=’,’+’,’?’都是合法的字符常量。</li>
+<li>在C语言中，字符常量有以下特点:<blockquote>
+<ul>
+<li>字符常量只能用单引号括起来，不能用双引号或其他括号。</li>
+<li>字符常量只能是单个字符，不能是字符串。</li>
+<li>字符可以是字符集中任意字符。但是数字被定义为字符型之后就不能参与数值运算。如’5’和5是不同的。’5’是字符常量，不能参与运算。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>字符变量<blockquote>
+<ul>
+<li>字符变量：字符变量用来存储字符常量，即单个字符。</li>
+<li>字符变量的类型说明符是char。字符变量类型定义格式和书写规则都与整形变量相同。例如 char a,b;</li>
+<li>转义字符：转义字符是一种特殊的字符常量。转义字符是以反射线“\”开头，后跟一个或多个字符。转义字符具有特定的含义，不同于字符原有的意义，古称“转义”字符。例如：在前面各例题printf函数的格式中用到“\n”就是一个转义字符，其意义就是“回车换行”。转义字符主要用来表示那些用一般字符不便于表示的控制代码。</li>
+</ul>
+</blockquote>
+</li>
+<li>字符型数据常用的转义字符及其含义</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>转义字符的意义</th>
+<th>ASCII代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\n</td>
+<td>回车换行</td>
+<td>10</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>横向调到下一制表位置</td>
+<td>9</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格</td>
+<td>8</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+<td>13</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>走纸换页</td>
+<td>12</td>
+</tr>
+<tr>
+<td>|    反斜线符””</td>
+<td>92</td>
+<td></td>
+</tr>
+<tr>
+<td>&#39;</td>
+<td>单引号符</td>
+<td>39</td>
+</tr>
+<tr>
+<td>&quot;</td>
+<td>双引号</td>
+<td>34</td>
+</tr>
+<tr>
+<td>\a</td>
+<td>鸣铃</td>
+<td>7</td>
+</tr>
+<tr>
+<td>\ddd</td>
+<td>1~3位八进制数所代表的字符</td>
+<td></td>
+</tr>
+<tr>
+<td>\xhh</td>
+<td>1~2位十六进制数所代表的字符</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>练习</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,b,c;</span><br><span class="line">	a=<span class="number">5</span>;b=<span class="number">6</span>;c=<span class="number">7</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">" b c\ted\rf\n"</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"hijk\tL\bM\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>字符数据在内存中的存储形式及使用方法</p>
+<blockquote>
+<ul>
+<li>每个字符变量被分配一个字节的内存空间，因此只能存放一个字符。字符值是以<code>ASCII</code>码的形式存放在变量的内存单元之中的。</li>
+<li>如x的十进制<code>ASCII</code>码值是120，y的十进制数<code>ASCII</code>码是121。对字符变量a,b赋值’x’，’7’值： a=’x’;b=’7’;</li>
+<li>实际上是在a,b两个单元内存中存放120和55的二进制代码</li>
+<li>‘A’的ASCII值：65；’a’的ASCII值：97；’0’的ASCII值48；</li>
+</ul>
+</blockquote>
+</li>
+<li><p>练习：向字符变量赋以整数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//-128~127</span></span><br><span class="line"><span class="comment">//197</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123; <span class="comment">//字符变量  ASCII值</span></span><br><span class="line">	SetConsoleOutputCP(<span class="number">437</span>);</span><br><span class="line">	<span class="keyword">char</span> a,b;</span><br><span class="line">	a=<span class="number">197</span>;</span><br><span class="line">	b=<span class="number">198</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,<span class="keyword">sizeof</span>(<span class="keyword">char</span>));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%c,%c\n"</span>,a,b);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d,%d\n"</span>,a,b); </span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>练习2：小写字符换大写字母</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a,b;</span><br><span class="line">	a=<span class="string">'a'</span>;</span><br><span class="line">	b=<span class="string">'b'</span>;</span><br><span class="line">	a=a<span class="number">-32</span>;</span><br><span class="line">	b=b<span class="number">-32</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"a=%c,b=%c\na=%d,b=%d"</span>,a,b,a,b);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>练习3：比较char a=33与int b=33;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a;<span class="keyword">int</span> b;</span><br><span class="line">	a=<span class="number">33</span>;</span><br><span class="line">	b=<span class="number">33</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"a=%d,b=%d"</span>,a,b);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h3 id="字符串常量"><a href="#字符串常量" class="headerlink" title="字符串常量"></a>字符串常量</h3><ul>
+<li>字符串常量是由一对双引号括起来的字符序列。例如：”CHINA”、”C Program”等都是合法的字符串。</li>
+<li>字符串常量和字符常量是不同的量。他们之间的主要区别如下：(补充：char占八位而已！)<blockquote>
+<ul>
+<li>字符常量由单引号括起来，字符串常量由双引号括起来的。</li>
+<li>字符常量只能是单个字符，字符串常量则可以包含一个或多个字符。</li>
+<li>可以把一个字符常量赋值给字符串常量，但不能把一个字符串常量赋值给一个字符常量。例如：<code>可以char a=&#39;a&#39; 不能char a=&quot;a&quot;</code></li>
+<li>字符常量占一个字节的内存空间。字符串常量占的内存字节数等于字符串中字节数加1。增加的一个字节中存放字符<code>\0</code>(ASCII为0)。这是字符串结束的标志。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h3 id="各类数值型数据之间的混合运算"><a href="#各类数值型数据之间的混合运算" class="headerlink" title="各类数值型数据之间的混合运算"></a>各类数值型数据之间的混合运算</h3><ul>
+<li><p>变量的数据类型是可以转换的。转换的方式有两种，一种是自动转换，一种是强制转换。自动转换发生在不同数据类型的量混合运算时，有编译系统自动完成。自动转换遵循以下规则：</p>
+<blockquote>
+<ul>
+<li>若参与运算的类型不同，则先转换成同一类型，然后进行运算。</li>
+<li>转换按数据长度增加的方向进行，以保证精度不降低。如int型和long型运算时，先把int量转换成long型后再进行计算。</li>
+<li>所有的浮点运算都是以双精度进行的，即使仅含有float单精度量运算的表达式，也要转换成double型，再做运算。</li>
+<li>char型和short型参与运算时，必须转换成int型。</li>
+<li>在赋值运算时，赋值号两边量的数据类型不同时，赋值号右边量的类型将转换成左边量的类型。如果右边量的数据类型长度比左边长时，将丢失一部分数据，这样会降低精度，丢失的部分按四舍五入的方式向前舍入。</li>
+<li>类型自动转换规格  <code>double&lt;---long&lt;----unsigned&lt;---int &lt;----short char</code></li>
+</ul>
+</blockquote>
+</li>
+<li><p>练习1</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> PI=<span class="number">3.14159</span>;</span><br><span class="line">	<span class="keyword">double</span> s;<span class="keyword">int</span> r=<span class="number">5</span>;</span><br><span class="line">	s=r*r*PI;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"s=%lf\n"</span>,s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>练习2 实现四舍五入</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> a=<span class="number">4.49</span>;</span><br><span class="line">	<span class="keyword">int</span> c= (<span class="keyword">int</span>)(a+<span class="number">0.5</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>强制类型转换</p>
+<blockquote>
+<ul>
+<li>强制类型转换是通过类型转换运算来实现的。</li>
+<li>其一般形式类：<code>（类型说明符）(表达式)</code>：其功能是把表达式的运算结果强制转换成类型说明符所表示的类型。</li>
+<li>例如 <code>(float) a</code>：把a转换为实型；<code>(int)(x+y)</code>：把x+y结果转换为整型.</li>
+<li>在使用强制转换时应注意以下问题： <blockquote>
+<ol>
+<li>类型说明符和表达式都必须加括号（单个变量可以不加括号）。</li>
+<li>无论是强制转换或是自动转换，都是为了本次的运算的需要而对变量的数据长度进行的临时性转换，而不改变数据说明时对该变量的定义的类型。 </li>
+</ol>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>练习1</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> f=<span class="number">5.75</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"(int)f=%d,f=%f"</span>,(<span class="keyword">int</span>)f,f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h3 id="算术运算符和算数表达式"><a href="#算术运算符和算数表达式" class="headerlink" title="算术运算符和算数表达式"></a>算术运算符和算数表达式</h3><ul>
+<li><p>加法运算符”+”：加法运算符为双目运算符，即应有两个量参与加法运算。如a+b,a+8等。具有结合性。</p>
+</li>
+<li><p>减法运算符”-“：减法运算符为双目运算符。但“-”也可以做负值运算符，此时是单目运算符。如-x，-5等具有左结合性。</p>
+</li>
+<li><p>乘法运算符”*”：双目运算，具有左结合性。</p>
+</li>
+<li><p>除法运算符”/“：双目运算具有左结合性。参与运算量均为整型时，结果也是整型，舍去小数。如果运算中有一个是实型，则结果为double型。</p>
+</li>
+<li><p>求余数”%”：双目运算符，具有左结合性。</p>
+</li>
+<li><p>练习1</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%f"</span>,<span class="number">3.0</span>/<span class="number">4</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>练习2</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n\n%d,%d\n"</span>,<span class="number">20</span>/<span class="number">7</span>,<span class="number">-20</span>/<span class="number">7</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%f,%f\n"</span>,<span class="number">20.0</span>/<span class="number">7</span>,<span class="number">-20.0</span>/<span class="number">7</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>练习3</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,<span class="number">100</span>%<span class="number">3</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运算符的优先级：C语言中，运算符的运算优先级共分为15级。1级最高，15级最低。在表达式中，优先级较高的优先于优先级较低的进行运算。而在一个运算量两侧的运算符优先级相同时，则按运算符的结合性所规定的结合方向处理。</p>
+</li>
+<li><p>运算符的结合性:C语言中各运算符的结合性分为两种，即左结合性（自左至右）和右结合性（自右至左）。</p>
+</li>
+</ul>
+<h2 id><a href="#" class="headerlink" title></a><img src="https://i.loli.net/2019/12/03/ORnwkt2uKjQYSls.png" alt="1575355235_1_.png"></h2><h3 id="自增、自减运算符"><a href="#自增、自减运算符" class="headerlink" title="自增、自减运算符"></a>自增、自减运算符</h3><ul>
+<li><p>自增1，自增1运算符：自增1运算符记为<code>&quot;++&quot;</code>，其功能是使变量的值自增1；</p>
+</li>
+<li><p>自减1，自减1运算符：自减1运算符记为<code>&quot;--&quot;</code>，其功能是使变量的值自减1；</p>
+</li>
+<li><p>自增1，自减1运算符均为单目运算符，都具有结合性。可以有一下几种形式：</p>
+<blockquote>
+<ul>
+<li>++i：i自增1后再参与其他运算。</li>
+<li>–i：i自减1后再参与其他运算。</li>
+<li>i++：i参与运算后，在自增1.</li>
+<li>i–：i参与运算后，在自减1.</li>
+</ul>
+</blockquote>
+</li>
+<li><p>i++，i–要仔细分析。</p>
+</li>
+<li><p>练习1</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">8</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,++i);<span class="comment">//9</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,--i);<span class="comment">//8</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,i++);<span class="comment">//8</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,i--);<span class="comment">//9</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,-i++);<span class="comment">//-8</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,-i--);<span class="comment">//-9</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,i);<span class="comment">//8</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>练习2</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">5</span>,j=<span class="number">5</span>,p,q;</span><br><span class="line">	p=(i++)+(i++)+(i++);</span><br><span class="line">	q=(++j)+(++j)+(++j);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d,%d,%d,%d"</span>,p,q,i,j); </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h3 id="赋值运算符与赋值表达式"><a href="#赋值运算符与赋值表达式" class="headerlink" title="赋值运算符与赋值表达式"></a>赋值运算符与赋值表达式</h3><ul>
+<li>简单赋值运算符和表达式：简单赋值运算符记为”=”。由”=”连接的式子称为赋值表达式。其一般形式为：变量=表达式</li>
+<li>例如： x=a+b; w=sin(a)+sin(b)；</li>
+<li>赋值运算符的功能是计算表达式的值再赋值左边的变量。</li>
+<li>赋值运算符具有右结合性。</li>
+</ul>
 
       
     </div>
