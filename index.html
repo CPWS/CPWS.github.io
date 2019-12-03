@@ -644,10 +644,128 @@
 </ul>
 <hr>
 <h3 id="赋值运算符与赋值表达式"><a href="#赋值运算符与赋值表达式" class="headerlink" title="赋值运算符与赋值表达式"></a>赋值运算符与赋值表达式</h3><ul>
-<li>简单赋值运算符和表达式：简单赋值运算符记为”=”。由”=”连接的式子称为赋值表达式。其一般形式为：变量=表达式</li>
-<li>例如： x=a+b; w=sin(a)+sin(b)；</li>
-<li>赋值运算符的功能是计算表达式的值再赋值左边的变量。</li>
-<li>赋值运算符具有右结合性。</li>
+<li><p>简单赋值运算符和表达式：简单赋值运算符记为”=”。由”=”连接的式子称为赋值表达式。其一般形式为：变量=表达式</p>
+</li>
+<li><p>例如： x=a+b; w=sin(a)+sin(b)；</p>
+</li>
+<li><p>赋值运算符的功能是计算表达式的值再赋值左边的变量。</p>
+</li>
+<li><p>赋值运算符具有右结合性。</p>
+</li>
+<li><p>类型转换</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	SetConsoleOutputCP(<span class="number">437</span>);</span><br><span class="line">	<span class="keyword">int</span> a,b=<span class="number">232</span>;</span><br><span class="line">	<span class="keyword">float</span> x,y=<span class="number">8.88</span>;</span><br><span class="line">	<span class="keyword">char</span> c1=<span class="string">'k'</span>,c2;</span><br><span class="line">	a=y;<span class="comment">//8</span></span><br><span class="line">	x=b;<span class="comment">//232.0000</span></span><br><span class="line">	a=c1;<span class="comment">//107</span></span><br><span class="line">	c2=b;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d,%f,%d,%c"</span>,a,x,a,c2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h3 id="复合的赋值运算符"><a href="#复合的赋值运算符" class="headerlink" title="复合的赋值运算符"></a>复合的赋值运算符</h3><ul>
+<li>在赋值符<code>=</code>之前加上其他二目运算符即可构成复合赋值符。如+=、-=</li>
+<li>复合赋值符能提高编译效率并产生质量较高的目标代码。</li>
+</ul>
+<hr>
+<h3 id="逗号运算符和逗号表达式"><a href="#逗号运算符和逗号表达式" class="headerlink" title="逗号运算符和逗号表达式"></a>逗号运算符和逗号表达式</h3><ul>
+<li>在C语言中逗号”,”也是一种运算符，称为逗号运算符。其功能是把两个表达式连接起来组成一个表达式，称为逗号表达式。</li>
+<li>其一般形式为：<code>表达式1，表达式2</code></li>
+<li>其求值过程是分别求两个表达式的值，并以表达式2的值作为整个逗号表达式的值。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a=<span class="number">2</span>,b=<span class="number">4</span>,c=<span class="number">6</span>,x,y;</span><br><span class="line">	y=((x=a+b),(b+c));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"y=%d,x=%d"</span>,y,x);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>对于逗号表达式还要说明两点<blockquote>
+<ul>
+<li>逗号表达式一般形式中的表达式1和表达式2也可以又是逗号表达式。如<code>(表达式1,(表达式3,表达式2))</code>形成了嵌套情形。因此可以把逗号表达式扩展为以下形式：<code>y=(表达式1,表达式2);</code>，整个逗号表达式的值等于等于表达式n的值。</li>
+<li>程序中使用逗号表达式，通常是要分别求逗号表达式内各表达式的值，并不一定要求整个逗号表达式的值。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2 id="顺序程序设计"><a href="#顺序程序设计" class="headerlink" title="顺序程序设计"></a>顺序程序设计</h2><ul>
+<li><p>从程序的流程来看，程序可以分为三种基本结构：顺序结构、分支结构、循环结构。</p>
+<h2 id="C基本语句介绍"><a href="#C基本语句介绍" class="headerlink" title="C基本语句介绍"></a>C基本语句介绍</h2></li>
+<li><p>C程序的执行部分是由语句组成的。程序的功能也是由执行语句实现的。</p>
+</li>
+<li><p>C语句可以分为以下5类：</p>
+<ul>
+<li>表达式语句</li>
+<li>函数调用语句</li>
+<li>控制语句</li>
+<li>复合语句</li>
+<li>空语句</li>
+</ul>
+</li>
+<li><p>表达式语句：表达式语句有表达式+分号组成； <code>x=2;</code></p>
+</li>
+<li><p>函数调用语句：由函数名和实际参数，加上”;”组成；其一般形式：函数名(实际参数表);<code>printf(&quot;hello world&quot;);</code></p>
+</li>
+<li><p>复合语句:<code>{x=y+x;x=2;y=2;}</code></p>
+</li>
+<li><p>控制语句:循环语句(while、do..while,for)</p>
+</li>
+<li><p>空语句：<code>while(1){...}</code></p>
+</li>
+<li><p>赋值语句：赋值表达式+分号组成</p>
+</li>
+<li><p>数据输入输出的概念以及C语言中的实现</p>
+<blockquote>
+<ul>
+<li>所谓输入输出是以计算机为主体而言的。</li>
+<li>本章所介绍的是向标准输出设备显示器输出数据的语句。</li>
+<li>在C语言中，所有的数据输入/输出都是由库函数完成的。因此都是函数语句。</li>
+<li>在使用C语言函数库时，要用到预编译命令<code>#include</code>，将有关“头文件”包含到源文件中。使用标准输入输出库函数时需要用到”stdio.h”文件，因此源文件开头应有以下预编译命令：<code>#include &quot;stdio.h&quot;或#include &lt;stdio.h&gt;</code>，stdio是标准input或output意思。</li>
+<li>考虑到printf和scanf函数使用频繁，系统允许在使用这两个函数时不加<code>#include&lt;stdio.h&gt;或#include &quot;stdio.h&quot;</code></li>
+</ul>
+</blockquote>
+<h3 id="putchar函数-字符输出函数"><a href="#putchar函数-字符输出函数" class="headerlink" title="putchar函数(字符输出函数)"></a>putchar函数(字符输出函数)</h3></li>
+<li><p>putchar是字符输出函数，其功能是在显示器上输出单个字符。</p>
+</li>
+<li><p>其一般形式为 putchar(字符变量)</p>
+</li>
+<li><p>例如：putchar(‘a’);puthchar(x);</p>
+</li>
+<li><p>对于控制字符则执行控制功能，不在屏幕上显示。 </p>
+</li>
+<li><p>使用本函数之前必须要用文件包含命令<code>#include &quot;stdio.h&quot;或#include &lt;stdio.h&gt;</code></p>
+</li>
+<li><p>练习1：输出单个字符</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a=<span class="string">'B'</span>,b=<span class="string">'o'</span>,c=<span class="string">'k'</span>;</span><br><span class="line">	<span class="built_in">putchar</span>(a);<span class="built_in">putchar</span>(b);<span class="built_in">putchar</span>(b);<span class="built_in">putchar</span>(c);<span class="built_in">putchar</span>(<span class="string">'\t'</span>);</span><br><span class="line">	<span class="built_in">putchar</span>(a);<span class="built_in">putchar</span>(b);</span><br><span class="line">	<span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">	<span class="built_in">putchar</span>(b);<span class="built_in">putchar</span>(c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="getChar函数-键盘输入函数"><a href="#getChar函数-键盘输入函数" class="headerlink" title="getChar函数(键盘输入函数)"></a>getChar函数(键盘输入函数)</h3><ul>
+<li>getchar函数的功能是从键盘上输入一个字符。</li>
+<li>其一般形式是：getchar();</li>
+<li>通常把输入的字符赋予一个字符变量，构成赋值语句。如<code>char c;c=getchar();</code>;</li>
+<li>练习1：从键盘输入一个字符并输出。<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> c;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"input a character\n"</span>);</span><br><span class="line">	c=getchar();</span><br><span class="line">	<span class="built_in">putchar</span>(c);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="printf函数（输出格式函数）"><a href="#printf函数（输出格式函数）" class="headerlink" title="printf函数（输出格式函数）"></a>printf函数（输出格式函数）</h3><ul>
+<li>printf函数称为格式输出函数，其关键字最末一个字母f即可“格式（format）之意”。其功能是按照用户指定的格式，把指定的数据显示到显示器屏幕上。</li>
+<li>printf函数调用的一般形式<blockquote>
+<ul>
+<li>printf函数一个标准库函数，它的函数原型在头文件”stdio.h”。但作为一个特例，允许使用printf函数而不需要导入”stdio.h”文件</li>
+<li>一般形式为：printf(“格式控制字符串”,输出表列);</li>
+<li>格式字符串：%d表示按十进制整型输出。%ld按十进制长整型输出。%c表示按字符型输出。</li>
+<li>非格式字符串按原样输出。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2019/12/03/LsflcXKponN9geW.png" alt="1575378060_1_.png"></p>
+<ul>
+<li><p>练习</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a=<span class="number">88</span>,b=<span class="number">89</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,a,b);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d,%d\n"</span>,a,b);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%c,%c\n"</span>,a,b);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"a=%d,b=%d\n"</span>,a,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>练习</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a=<span class="number">15</span>;</span><br><span class="line">	<span class="keyword">float</span> b=<span class="number">123.1234567</span>;</span><br><span class="line">	<span class="keyword">double</span> c=<span class="number">12345678.1234567</span>;</span><br><span class="line">	<span class="keyword">char</span> d=<span class="string">'p'</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"a=%d,%5d,%o,%x\n"</span>,a,a,a,a);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"b=%f,%lf,%5.4lf,%e\n"</span>,b,b,b,b);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"c=%lf,%f,%8.4lf\n"</span>,c,c,c);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"d=%c,%8c\n"</span>,d,d);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="scanf函数（格式输入函数）"><a href="#scanf函数（格式输入函数）" class="headerlink" title="scanf函数（格式输入函数）"></a>scanf函数（格式输入函数）</h3><hr>
+<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><ul>
+<li>这里使用的是dev-c++;</li>
+<li>下载路径：<code>https://bloodshed-dev-c.en.softonic.com/download</code></li>
 </ul>
 
       
