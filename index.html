@@ -762,7 +762,179 @@
 
 </li>
 </ul>
-<h3 id="scanf函数（格式输入函数）"><a href="#scanf函数（格式输入函数）" class="headerlink" title="scanf函数（格式输入函数）"></a>scanf函数（格式输入函数）</h3><hr>
+<h3 id="scanf函数（格式输入函数）"><a href="#scanf函数（格式输入函数）" class="headerlink" title="scanf函数（格式输入函数）"></a>scanf函数（格式输入函数）</h3><ul>
+<li><p>scanf函数称为格式输入函数，即按用户指定的格式从键盘上把数据输入到指定的变量中。</p>
+</li>
+<li><p>练习1 输入三角形的三边长，求三角形面积。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> a,b,c,s,area;<span class="comment">//a,b,c为三边长，s为周长，area为面积</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%f,%f,%f"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">	s=<span class="number">1.0</span>/<span class="number">2</span>*(a+b+c);</span><br><span class="line">	area=<span class="built_in">sqrt</span>(s*(s-a)*(s-b)*(s-c)); </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"a=%7.2f,b=%7.2f,c=%7.2f,s=%7.2f\n"</span>,a,b,c,s);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"area=%7.2f\n"</span>,area);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>练习2：求一元二次方程的根</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> a,b,c,disc,x1,x2,p,q;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"input number a,b,c!\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"a=%f,b=%f,c=%f"</span>,&amp;a,&amp;b,&amp;c); </span><br><span class="line">	disc=b*b<span class="number">-4</span>*a*c;</span><br><span class="line">	p=-b/(<span class="number">2</span>*a);</span><br><span class="line">	q=<span class="built_in">sqrt</span>(disc)/(<span class="number">2</span>*a);</span><br><span class="line">	x1=p+q;</span><br><span class="line">	x2=p-q;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\nx1=%5.2f,x2=%5.2f"</span>,x1,x2);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h2 id="分支结构程序"><a href="#分支结构程序" class="headerlink" title="分支结构程序"></a>分支结构程序</h2><h3 id="关系运算符和表达式"><a href="#关系运算符和表达式" class="headerlink" title="关系运算符和表达式"></a>关系运算符和表达式</h3><ul>
+<li>关系运算符：在程序中经常需要比较两个两的大小关系，以决定程序下一步的工作。比较两个两的运算符称为关系运算符。</li>
+<li><code>C</code>语言运算符的优先级<blockquote>
+<ul>
+<li><code>()</code>（小括号）、<code>[]</code>（数组下标）、<code>.</code>（结构成员）、<code>-&gt;</code>（指针型结构成员）</li>
+<li><code>!</code>（逻辑非）、<code>.</code>（位取反）、<code>-</code>（负号）、<code>++</code>（加1）、<code>--</code>（减1）、<code>&amp;</code>（变量地址）</li>
+<li><code>*</code>（指针所指内容）、<code>type</code>（函数说明）、<code>sizeof</code>（长度计算）</li>
+<li><code>*</code>（乘）、<code>/</code>（除）、<code>%</code>（取模）</li>
+<li><code>+</code>（加）、<code>-</code>（减）</li>
+<li><code>&lt;&lt;</code>（左移）、<code>&gt;&gt;</code>（右移）</li>
+<li><code>&lt;</code>（小于）、<code>&gt;</code>（大于）、<code>&lt;=</code>（小于等于）、<code>&gt;=</code>（大于等于）</li>
+<li><code>==</code>（等于）、<code>!=</code>（不等于）</li>
+<li><code>&amp;</code>（位与）</li>
+<li>…</li>
+</ul>
+</blockquote>
+</li>
+<li>优先级从下到上逐渐变高。</li>
+<li>在C语言中有以下关系运算符</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小于或等于</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大于或等于</td>
+</tr>
+<tr>
+<td>==</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不等于</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>关系运算符都是双目运算符，结合性均为左结合。关系运算符的优先级低于算数运算符的优先级，高于赋值运算符。</p>
+</li>
+<li><p>在六个关系运算符中，前四个<code>&lt;</code>、<code>&lt;=</code>、<code>&gt;</code>、<code>&gt;=</code>的优先级相同，高于<code>==</code>和<code>!=</code>，<code>==</code>和<code>!=</code>优先级相同。</p>
+</li>
+<li><p>关系运算符的一般形式为：表达式 关系运算符 表达式</p>
+</li>
+<li><p>例如： a+b&gt;c-d; x.3/2;都是合法的关系运算符表达式。</p>
+</li>
+<li><p>关系运算符也可以出现嵌套的情况；例如 x&gt;(y&gt;z)；a!=(m==n)等都是合法的关系运算符表达式.</p>
+</li>
+<li><p>关系表达式的值是真还是假，用“1”和“0”表示。</p>
+</li>
+<li><p>如5&gt;3的值为真是1；（a=1）&gt; （a=3）的值为假，是0；</p>
+</li>
+<li><p>练习1</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> c=<span class="string">'k'</span>;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">2</span>,k=<span class="number">3</span>;</span><br><span class="line">	<span class="keyword">float</span> x=<span class="number">3e+5</span>,y=<span class="number">0.85</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d,%d\n"</span>,<span class="string">'a'</span>+<span class="number">5</span>&lt;c,-i<span class="number">-2</span>*j &gt;= k+<span class="number">1</span>);<span class="comment">//1 0</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d,%d\n"</span>,<span class="number">1</span>&lt;j&lt;<span class="number">5</span>,x<span class="number">-5.25</span>&lt;=x+y);<span class="comment">//1  1</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d,%d"</span>,i+j+k==<span class="number">-2</span>*j,k==j==i+<span class="number">5</span>);<span class="comment">// 0 0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="逻辑运算符和表达式"><a href="#逻辑运算符和表达式" class="headerlink" title="逻辑运算符和表达式"></a>逻辑运算符和表达式</h3><ul>
+<li><p>C语言提供了三种逻辑运算符：<code>&amp;&amp;</code>：与运算符；<code>||</code>：或运算符；<code>!</code>非运算符。</p>
+</li>
+<li><p>与运算符<code>&amp;&amp;</code>和或运算符<code>||</code>均为双目运算符，具有左结合性。非运算符<code>!</code>为单目运算符，具有右结合性。</p>
+</li>
+<li><p>逻辑运算符和其他运算符的的优先级关系如下：</p>
+<blockquote>
+<ul>
+<li><code>!</code>—-&gt;<code>&amp;&amp;</code> —-&gt; <code>||</code></li>
+</ul>
+</blockquote>
+</li>
+<li><p>与运算符：同时为真即真，有假即假</p>
+</li>
+<li><p>或运算符：有真即真，全假为假</p>
+</li>
+<li><p>非运算符：与原来的相反。</p>
+</li>
+<li><p>逻辑表达式</p>
+<blockquote>
+<ul>
+<li>一般形式： 表达式 逻辑运算符 表达式</li>
+<li>其中的表达式可以又是逻辑表达式 ，从而组成了嵌套的情形。</li>
+<li>例如（a&amp;&amp;v）&amp;&amp;c 具有左结合性。 </li>
+</ul>
+</blockquote>
+</li>
+<li><p>练习1：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> c=<span class="string">'k'</span>;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">2</span>,k=<span class="number">3</span>;</span><br><span class="line">	<span class="keyword">float</span> x=<span class="number">3e+5</span>,y=<span class="number">0.85</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d,%d\n"</span>,!x*!y,!!!x);<span class="comment">//0 0</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d,%d\n"</span>,x||i&amp;&amp;j<span class="number">-3</span>,i&lt;j&amp;&amp;x&lt;y);<span class="comment">//1 0</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d,%d\n"</span>,i==<span class="number">5</span>&amp;&amp;c&amp;&amp;(j=<span class="number">8</span>),x+y||x+j+k);<span class="comment">//0 1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h3><ul>
+<li>用<code>if</code>语句可以构成分支结构。它根据给定的条件进行判断，以决定执行某个分支程序段。用C语言的if语句有三种基本形式。</li>
+<li>第一种形式为基本形式：<blockquote>
+<ul>
+<li><code>if(表达式) 语句</code></li>
+<li>其语义是：如果表达式的值为真，则执行其后的语句，否则不执行该语句。其过程为下图：</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">startID=&gt;start: 开始框</span><br><span class="line">inputoutputID=&gt;inputoutput: 输入输出框</span><br><span class="line">operationID=&gt;operation: 语句</span><br><span class="line">conditionID=&gt;condition: 表达式</span><br><span class="line">yes=&gt;operation: 语句</span><br><span class="line"></span><br><span class="line">endID=&gt;end: 结束框</span><br><span class="line"></span><br><span class="line">startID-&gt;inputoutputID</span><br><span class="line">inputoutputID-&gt;operationID</span><br><span class="line">operationID-&gt;conditionID</span><br><span class="line">conditionID(yes,bottom)-&gt;yes-&gt;endID</span><br><span class="line">conditionID(no)-&gt;endID</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>练习1：输入两个数，并输出最大的值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,b,max;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\ninput two number:\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d,%d"</span>,&amp;a,&amp;b);</span><br><span class="line">	max=a;</span><br><span class="line">	<span class="keyword">if</span>(max&lt;b)max=b;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"max=%d"</span>,max);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第二种形式为基本形式：</p>
+<blockquote>
+<ul>
+<li>第二种形式：if-else</li>
+<li>if(表达式) 语句1;else 语句2;</li>
+<li>其过程为下图：</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">startID=&gt;start: 开始框</span><br><span class="line">inputoutputID=&gt;inputoutput: 输入输出框</span><br><span class="line">operationID=&gt;operation: 语句</span><br><span class="line">conditionID=&gt;condition: 表达式</span><br><span class="line">true=&gt;operation: 语句1</span><br><span class="line">error=&gt;operation: 语句2</span><br><span class="line">endID=&gt;end: 结束框</span><br><span class="line"></span><br><span class="line">startID-&gt;inputoutputID-&gt;operationID-&gt;conditionID</span><br><span class="line">conditionID(yes)-&gt;true-&gt;endID</span><br><span class="line">conditionID(no,right)-&gt;error-&gt;endID</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>练习2：输入两个数，并输出最大的值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,b,max;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\ninput two number:\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d,%d"</span>,&amp;a,&amp;b);</span><br><span class="line">	<span class="keyword">if</span>(a&gt;b)&#123;</span><br><span class="line">		max=a;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		max=b;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"max=%d"</span>,max);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第三种形式为<code>if-else-if</code>形式</p>
+<blockquote>
+<ul>
+<li>当出现多个分支时选择当前形式比较合适。</li>
+<li>其一般形式： <code>if(表达式1) 语句1;else if(表达式2) 语句2;else 语句3;</code></li>
+<li>流程图如下：</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">startID=&gt;start: 开始框</span><br><span class="line">inputoutputID=&gt;inputoutput: 输入输出框</span><br><span class="line">operationID=&gt;operation: 语句</span><br><span class="line">conditionID=&gt;condition: 表达式</span><br><span class="line">true1=&gt;operation: 语句1</span><br><span class="line">true2=&gt;operation: 语句2</span><br><span class="line">true3=&gt;operation: 语句3</span><br><span class="line">error=&gt;condition: 表达式</span><br><span class="line">error2=&gt;condition: 表达式</span><br><span class="line">endID=&gt;end: 结束框</span><br><span class="line"></span><br><span class="line">startID-&gt;inputoutputID-&gt;operationID-&gt;conditionID</span><br><span class="line">conditionID(yes)-&gt;true1-&gt;endID</span><br><span class="line">conditionID(no,right)-&gt;error</span><br><span class="line">error(yes)-&gt;true2-&gt;endID</span><br><span class="line">error(no,right)-&gt;error2</span><br><span class="line">error2(yes)-&gt;true3-&gt;endID</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>练习1</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> c;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"input a character: "</span>);</span><br><span class="line">	c=getchar();</span><br><span class="line">	<span class="keyword">if</span>(c&lt;<span class="number">32</span>)<span class="built_in">printf</span>(<span class="string">"this is a control character\n"</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(c&gt;=<span class="string">'0'</span>&amp;&amp;c&lt;=<span class="string">'9'</span>)<span class="built_in">printf</span>(<span class="string">"this is a digit\n"</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(c&gt;=<span class="string">'A'</span>&amp;&amp;c&lt;=<span class="string">'Z'</span>)<span class="built_in">printf</span>(<span class="string">"this is a capital letter"</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(c&gt;=<span class="string">'a'</span>&amp;&amp;c&lt;=<span class="string">'z'</span>)<span class="built_in">printf</span>(<span class="string">"this is a small letter\n"</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"thi is an other character\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在使用if语句中还应该注意以下问题：</p>
+<blockquote>
+<ul>
+<li>在三种形式的if语句中，在if关键字之后均为表达式。该表达式通常是逻辑表达式或关系表达式，但也可以是其他表达式，如赋值表达式等，甚至可以是一个变量。</li>
+<li>例如： if(a=5)语句;  if(b) 语句; 都是允许的。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
 <h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><ul>
 <li>这里使用的是dev-c++;</li>
 <li>下载路径：<code>https://bloodshed-dev-c.en.softonic.com/download</code></li>
