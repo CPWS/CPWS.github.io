@@ -1,214 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
-  
-  <title>Lucene | Prossible&#39;s Blog</title>
+    <meta charset="UTF-8">
 
-  <!-- keywords -->
-  
+    
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Lucene&amp;amp;Solr第一天 什么是全文检索 数据分类  结果化数据：有固定的格式和有限长度，比如Oracle或mysql表中的数据。  使用SQL语句查询结构化数据，速度快。 如果数据量大时，可以在数据库中创建索引，但是此时创建的索引是不支持模糊查询，需要创建另外一套索引库。    非结构化数据：没有固定格式也没有有限长度。比如：磁盘上的文件，excel、word、pdf、txt、ppt">
-<meta name="keywords" content="Lucene">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Lucene">
-<meta property="og:url" content="https://CPWS.github.io/2019/11/30/Lucene/index.html">
-<meta property="og:site_name" content="Prossible&#39;s Blog">
-<meta property="og:description" content="Lucene&amp;amp;Solr第一天 什么是全文检索 数据分类  结果化数据：有固定的格式和有限长度，比如Oracle或mysql表中的数据。  使用SQL语句查询结构化数据，速度快。 如果数据量大时，可以在数据库中创建索引，但是此时创建的索引是不支持模糊查询，需要创建另外一套索引库。    非结构化数据：没有固定格式也没有有限长度。比如：磁盘上的文件，excel、word、pdf、txt、ppt">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-05T09:00:14.102Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lucene">
-<meta name="twitter:description" content="Lucene&amp;amp;Solr第一天 什么是全文检索 数据分类  结果化数据：有固定的格式和有限长度，比如Oracle或mysql表中的数据。  使用SQL语句查询结构化数据，速度快。 如果数据量大时，可以在数据库中创建索引，但是此时创建的索引是不支持模糊查询，需要创建另外一套索引库。    非结构化数据：没有固定格式也没有有限长度。比如：磁盘上的文件，excel、word、pdf、txt、ppt">
-  
-    <link rel="alternative" href="/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
-  
-  <link rel="stylesheet" href="/CPWS.github.io/css/style.css">
-  
-  
+    
 
-  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
-  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <title>Lucene | Prossible&#39;s Blog</title>
+    <meta name="author" content="zhuli">
+    <meta name="keywords" content>
+    <meta name="description" content="Lucene&amp;amp;Solr第一天什么是全文检索数据分类结果化数据：有固定的格式和有限长度，比如Oracle或mysql表中的数据。使用SQL语句查询结构化数据，速度快。如果数据量大时，可以在数据库中创建索引，但是此时创建的索引是不支持模糊查询，需要创建另外一套索引库。非结构化数据：没有固定格式也没有有限长度。比如：磁盘上的文件，excel、word、pdf、txt、ppt等查询非结构化数据：1、目测（顺序扫描法）、IO读取、3、全文检索对数据源创...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 
-  
-</head></html>
+    
+    <link rel="alternate" href="https://sanonz.github.io/atom.xml" title="Prossible&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="https://cpws.github.io/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/CPWS.github.io/fonts/icomoon.eot?q628ml");
+        src: url("/CPWS.github.io/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/CPWS.github.io/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/CPWS.github.io/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/CPWS.github.io/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    <link rel="stylesheet" href="/CPWS.github.io/css/style.css">
+
+    <!--[if lt IE 9]>
+    <style type="text/css">
+    .nav-inner {top:0;}
+    .author-meta {position:static;top:0;}
+    .search-form {height:36px;}
+    </style>
+    <script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
 <body>
-  <div id="container">
-    <div id="particles-js"></div>
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img lazy-src="http://img.mp.itc.cn/q_mini,c_zoom,w_640/upload/20161221/c495640d0fc24a91b9c95dc0d54b6002_th.jpeg" class="js-avatar">
-			
-		</a>
 
-		<hgroup>
-		  <h1 class="header-author"><a href="/">zhuli</a></h1>
-		</hgroup>
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">Prossible&#39;s Blog</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
 
-		
-
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						<div class="icon-wrap icon-link hide" data-idx="2">
-							<div class="loopback_l"></div>
-							<div class="loopback_r"></div>
-						</div>
-						
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
-						
-						<li>友情链接</li>
-						
-						
-					</ul>
-				</div>
-			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/CPWS.github.io/archives">所有文章</a></li>
-				        
-							<li><a href="/CPWS.github.io/">主页</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/CPWS.github.io/tags/Elasticsearch/" style="font-size: 10px;">Elasticsearch</a> <a href="/CPWS.github.io/tags/Hibernate4/" style="font-size: 10px;">Hibernate4</a> <a href="/CPWS.github.io/tags/HttpClient/" style="font-size: 10px;">HttpClient</a> <a href="/CPWS.github.io/tags/Java框架下载路径/" style="font-size: 10px;">Java框架下载路径</a> <a href="/CPWS.github.io/tags/Java邮箱接口/" style="font-size: 10px;">Java邮箱接口</a> <a href="/CPWS.github.io/tags/Log4j与Junit测试/" style="font-size: 10px;">Log4j与Junit测试</a> <a href="/CPWS.github.io/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/CPWS.github.io/tags/Mybatis3/" style="font-size: 10px;">Mybatis3</a> <a href="/CPWS.github.io/tags/SSM/" style="font-size: 10px;">SSM</a> <a href="/CPWS.github.io/tags/SSM框架整合-配置文件/" style="font-size: 10px;">SSM框架整合-配置文件</a> <a href="/CPWS.github.io/tags/Struts2/" style="font-size: 10px;">Struts2</a> <a href="/CPWS.github.io/tags/Struts2-5/" style="font-size: 10px;">Struts2.5</a> <a href="/CPWS.github.io/tags/c语言/" style="font-size: 10px;">c语言</a> <a href="/CPWS.github.io/tags/fastdsf/" style="font-size: 10px;">fastdsf</a> <a href="/CPWS.github.io/tags/hibernate5/" style="font-size: 10px;">hibernate5</a> <a href="/CPWS.github.io/tags/maven/" style="font-size: 10px;">maven</a> <a href="/CPWS.github.io/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/CPWS.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/CPWS.github.io/tags/solr/" style="font-size: 10px;">solr</a> <a href="/CPWS.github.io/tags/spring4/" style="font-size: 10px;">spring4</a> <a href="/CPWS.github.io/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/CPWS.github.io/tags/搜索引擎框架介绍/" style="font-size: 10px;">搜索引擎框架介绍</a> <a href="/CPWS.github.io/tags/数据库系统概述/" style="font-size: 10px;">数据库系统概述</a> <a href="/CPWS.github.io/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/CPWS.github.io/tags/文档study/" style="font-size: 10px;">文档study</a> <a href="/CPWS.github.io/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/CPWS.github.io/tags/注解与反射/" style="font-size: 10px;">注解与反射</a> <a href="/CPWS.github.io/tags/深入使用struts2/" style="font-size: 10px;">深入使用struts2</a> <a href="/CPWS.github.io/tags/解决中文乱码/" style="font-size: 10px;">解决中文乱码</a>
-					</div>
-				</section>
-				
-				
-				
-				<section class="switch-part switch-part3">
-					<div id="js-friends">
-					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
-			        
-			        </div>
-				</section>
-				
-
-				
-			</div>
-		</div>
-	</header>				
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/CPWS.github.io/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/CPWS.github.io/categories/front-end">
+                <span class="nav-text">前端</span>
+            </a>
+        
+            <a class="nav-item" href="/CPWS.github.io/categories/back-end">
+                <span class="nav-text">后端</span>
+            </a>
+        
+            <a class="nav-item" href="/CPWS.github.io/tags">
+                <span class="nav-text">标签</span>
+            </a>
+        
+            <a class="nav-item" href="/CPWS.github.io/archives">
+                <span class="nav-text">归档</span>
+            </a>
+        
+            <a class="nav-item" href="https://sanonz.github.io/atom.xml">
+                <span class="nav-text">订阅</span>
+            </a>
+        
+            <a class="nav-item" href="/CPWS.github.io/about">
+                <span class="nav-text">关于</span>
+            </a>
+        
+    </nav>
 </div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="https://CPWS.github.io"></form>
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Lucene-amp-Solr第一天"><span class="toc-number">1.</span> <span class="toc-text">Lucene&amp;Solr第一天</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是全文检索"><span class="toc-number">1.1.</span> <span class="toc-text">什么是全文检索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全文检索的应用场景"><span class="toc-number">1.2.</span> <span class="toc-text">全文检索的应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#怎么实现全文检索"><span class="toc-number">1.3.</span> <span class="toc-text">怎么实现全文检索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lucene简介"><span class="toc-number">1.4.</span> <span class="toc-text">Lucene简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lucene实现全文检索的流程"><span class="toc-number">1.5.</span> <span class="toc-text">Lucene实现全文检索的流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lucene入门案例"><span class="toc-number">1.6.</span> <span class="toc-text">Lucene入门案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分词器"><span class="toc-number">1.7.</span> <span class="toc-text">分词器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分词器的使用时机"><span class="toc-number">1.8.</span> <span class="toc-text">分词器的使用时机</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lucene-amp-Solr第二天"><span class="toc-number">2.</span> <span class="toc-text">Lucene&amp;Solr第二天</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#索引库的维护"><span class="toc-number">2.1.</span> <span class="toc-text">索引库的维护</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lucene的查询"><span class="toc-number">2.2.</span> <span class="toc-text">Lucene的查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关度排序"><span class="toc-number">2.3.</span> <span class="toc-text">相关度排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是solr"><span class="toc-number">2.4.</span> <span class="toc-text">什么是solr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#solr的安装和配置"><span class="toc-number">2.5.</span> <span class="toc-text">solr的安装和配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solr后台的使用"><span class="toc-number">2.6.</span> <span class="toc-text">Solr后台的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用solrj维护索引库"><span class="toc-number">2.7.</span> <span class="toc-text">使用solrj维护索引库</span></a></li></ol></li></ol>
+        
     </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">zhuli</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img lazy-src="http://img.mp.itc.cn/q_mini,c_zoom,w_640/upload/20161221/c495640d0fc24a91b9c95dc0d54b6002_th.jpeg" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">zhuli</h1>
-			</hgroup>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/CPWS.github.io/archives">所有文章</a></li>
-		        
-					<li><a href="/CPWS.github.io/">主页</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-      <div class="body-wrap"><article id="post-Lucene" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/CPWS.github.io/2019/11/30/Lucene/" class="article-date">
-  	<time datetime="2019-11-30T04:52:24.000Z" itemprop="datePublished">2019-11-30</time>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <div id="wrapper" class="wrapper" style="max-width: 800px">
+                <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            Lucene
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="https://CPWS.github.io/2019/11/30/Lucene/index.html">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2019-11-30T04:52:24.000Z" itemprop="datePublished">2019-11-30</time>
 </a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Lucene
-      
-    </h1>
-  
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/CPWS.github.io/tags/Lucene/">Lucene</a></li></ul>
-	</div>
-
-        
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/CPWS.github.io/categories/back-end/">back-end</a>
-	</div>
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/CPWS.github.io/tags/Lucene/">Lucene</a>
+</div>
 
 
-        
-        <div class="clearfix"></div>
-      </div>
-      
+        </div>
+    </header>
     
-    <div class="article-entry" itemprop="articleBody">
-      
+    <section class="article-body markdown-body">
+        
         <h1 id="Lucene-amp-Solr第一天"><a href="#Lucene-amp-Solr第一天" class="headerlink" title="Lucene&amp;Solr第一天"></a><code>Lucene</code>&amp;<code>Solr</code>第一天</h1><hr>
 <h2 id="什么是全文检索"><a href="#什么是全文检索" class="headerlink" title="什么是全文检索"></a>什么是全文检索</h2><ul>
 <li>数据分类<blockquote>
@@ -343,109 +270,126 @@
 </ul>
 <hr>
 <h1 id="Lucene-amp-Solr第二天"><a href="#Lucene-amp-Solr第二天" class="headerlink" title="Lucene&amp;Solr第二天"></a><code>Lucene</code>&amp;<code>Solr</code>第二天</h1><h2 id="索引库的维护"><a href="#索引库的维护" class="headerlink" title="索引库的维护"></a>索引库的维护</h2><h2 id="Lucene的查询"><a href="#Lucene的查询" class="headerlink" title="Lucene的查询"></a>Lucene的查询</h2><h2 id="相关度排序"><a href="#相关度排序" class="headerlink" title="相关度排序"></a>相关度排序</h2><h2 id="什么是solr"><a href="#什么是solr" class="headerlink" title="什么是solr"></a>什么是<code>solr</code></h2><h2 id="solr的安装和配置"><a href="#solr的安装和配置" class="headerlink" title="solr的安装和配置"></a><code>solr</code>的安装和配置</h2><h2 id="Solr后台的使用"><a href="#Solr后台的使用" class="headerlink" title="Solr后台的使用"></a><code>Solr</code>后台的使用</h2><h2 id="使用solrj维护索引库"><a href="#使用solrj维护索引库" class="headerlink" title="使用solrj维护索引库"></a>使用<code>solrj</code>维护索引库</h2>
-      
-    </div>
-    
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/CPWS.github.io/2019/12/02/专插本c语言/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
-      <div class="article-nav-title">
         
-          专插本c语言
-        
-      </div>
-    </a>
-  
-  
-    <a href="/CPWS.github.io/2019/11/29/Elasticsearch/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Elasticsearch</div>
-      <strong class="article-nav-caption">&gt;</strong>
-    </a>
-  
-</nav>
-
-  
+    </section>
 </article>
 
 
-<div class="ds-share share" data-thread-key="Lucene" data-title="Lucene" data-url="https://CPWS.github.io/CPWS.github.io/2019/11/30/Lucene/"  data-images="http://img.mp.itc.cn/q_mini,c_zoom,w_640/upload/20161221/c495640d0fc24a91b9c95dc0d54b6002_th.jpeg" data-content="Lucene">
-    <div class="ds-share-inline">
-      <ul  class="ds-share-icons-16">
-      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-      </ul>
-      <div class="ds-share-icons-more">
-      </div>
-    </div>
- </div>
- 
+
+<a id="pagenext" href="/CPWS.github.io/2019/11/29/Elasticsearch/" class="article-next" title="Elasticsearch"><i class="icon-arrow-right"></i></a>
+
+
+<a id="pageprev" href="/CPWS.github.io/2019/12/02/专插本c语言/" class="article-prev" title="专插本c语言"><i class="icon-arrow-left"></i></a>
 
 
 
-
-
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "cpws.github.io",
+        owner: "zhuchuli",
+        admin: ["zhuchuli"],
+        id: "2019/11/30/Lucene",
+        distractionFreeMode: true,
+        title: "Lucene",
+        body: "https://CPWS.github.io/2019/11/30/Lucene/",
+        labels: ["Lucene"]
+    }).render('comments');
+    </script>
 </div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-      <div class="footer-left">
-        &copy; 2019 zhuli
-      </div>
-        <div class="footer-right">
-          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+
+
+            </div>
         </div>
-    </div>
-  </div>
-</footer>
-    </div>
+        <footer class="footer">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
+
     
-  <link rel="stylesheet" href="/CPWS.github.io/fancybox/jquery.fancybox.css">
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?e4027971a230b210f4671f485b33846a";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+</footer>
 
+    </main>
 
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: true,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-<script src="/CPWS.github.io/js/main.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
 
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
 
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle();
+        });
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp();
+            }, 3000);
+        }
+    });
+    </script>
+    
+        <script src="/CPWS.github.io/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
 
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
 
-<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
 
+            if(space > avg) {
+                var len = space - avg / 2;
+                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                pageprev.css($.extend({left: hw + len}, styles));
+                pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
 
-  </div>
 </body>
 </html>
