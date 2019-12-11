@@ -1459,11 +1459,16 @@
 <p>函数默认的返回值类型为<code>int</code>；</p>
 </blockquote>
 <h3 id="形式参数和实际参数"><a href="#形式参数和实际参数" class="headerlink" title="形式参数和实际参数"></a>形式参数和实际参数</h3><ul>
-<li>形式参数：在定义函数时括号内带有的参数；</li>
-<li>实际参数：在主函数或或其他函数调用该函数时传递的参数。</li>
-<li>在大多数情况下，主调函数和背调函数之间有数据传递关系。</li>
-<li>return后面的括弧中的值作为函数带回的值（称为函数返回值）。</li>
-<li>在不同的函数之间传递数据，可以使用的方法:<blockquote>
+<li><p>形式参数：在定义函数时括号内带有的参数；</p>
+</li>
+<li><p>实际参数：在主函数或或其他函数调用该函数时传递的参数。</p>
+</li>
+<li><p>在大多数情况下，主调函数和背调函数之间有数据传递关系。</p>
+</li>
+<li><p>return后面的括弧中的值作为函数带回的值（称为函数返回值）。</p>
+</li>
+<li><p>在不同的函数之间传递数据，可以使用的方法:</p>
+<blockquote>
 <ul>
 <li>参数：通过形式参数和实际参数。</li>
 <li>返回值：用return语句返回计算结果。</li>
@@ -1471,6 +1476,22 @@
 </ul>
 </blockquote>
 </li>
+<li><p>案例实现：</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,b,c;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d,%d"</span>,&amp;a,&amp;b);</span><br><span class="line">	c=max(a,b);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,c);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> d;</span><br><span class="line">	d = x&gt;y?x:y;</span><br><span class="line">	<span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数的返回值"><a href="#函数的返回值" class="headerlink" title="函数的返回值"></a>函数的返回值</h3><ul>
+<li>通常，希望通过函数调用时使主调函数能得到一个确定的值，这就是函数的返回值。</li>
+<li>函数的返回值是通过函数中的return语句获得的。</li>
+<li>return后面的值可以是一个表达式。</li>
+<li>在C语言中，凡不加类型说明的函数，自动按整型处理。</li>
+<li>练习1</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">float</span> <span class="title">max</span><span class="params">(<span class="keyword">float</span> x,<span class="keyword">float</span> y)</span></span>;</span><br><span class="line">	<span class="keyword">float</span> a,b,c;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%f,%f"</span>,&amp;a,&amp;b);</span><br><span class="line">	c=max(a,b);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"max is %f\n"</span>,c);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">max</span><span class="params">(<span class="keyword">float</span> x,<span class="keyword">float</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> z;</span><br><span class="line">	z=x&gt;y?x:y;</span><br><span class="line">	<span class="keyword">return</span> z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数的调用"><a href="#函数的调用" class="headerlink" title="函数的调用"></a>函数的调用</h3><ul>
+<li>函数调用的一般形式：<code>函数名(实参表列);</code></li>
 </ul>
 <h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><ul>
 <li>这里使用的是dev-c++;</li>
